@@ -355,7 +355,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         <CreditCard className="w-4 h-4" />
                         <RotateCcw className="w-4 h-4" />
                       </div>
-                      <p className="text-xs text-gray-500">Secure checkout via Stripe</p>
+                      <p className="text-xs text-gray-500">Secure checkout via {plugin.slug === 'aioa-elementor' ? 'Stripe' : 'Codecanyon'}</p>
                     </div>
                   </CardContent>
                 </Card>
