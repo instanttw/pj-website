@@ -15,7 +15,7 @@ async function getFeaturedPlugins() {
       `)
       .eq('is_featured', true)
       .eq('is_active', true)
-      .limit(6);
+      .limit(8);
 
     if (error) {
       console.error('Error fetching featured plugins:', error);
