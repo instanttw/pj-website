@@ -6,25 +6,45 @@ import { Star, Download, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
 async function getPlugins() {
-  const { data: plugins } = await supabase
-    .from('plugins')
-    .select(`
-      *,
-      categories(name, slug)
-    `)
-    .eq('is_active', true)
-    .order('download_count', { ascending: false });
+  try {
+    const { data: plugins, error } = await supabase
+      .from('plugins')
+      .select(`
+        *,
+        categories(name, slug)
+      `)
+      .eq('is_active', true)
+      .order('download_count', { ascending: false });
 
-  return (plugins || []) as any[];
+    if (error) {
+      console.error('Error fetching plugins:', error);
+      return [];
+    }
+
+    return (plugins || []) as any[];
+  } catch (error) {
+    console.error('Error connecting to database:', error);
+    return [];
+  }
 }
 
 async function getCategories() {
-  const { data: categories } = await supabase
-    .from('categories')
-    .select('*')
-    .order('name');
+  try {
+    const { data: categories, error } = await supabase
+      .from('categories')
+      .select('*')
+      .order('name');
 
-  return (categories || []) as any[];
+    if (error) {
+      console.error('Error fetching categories:', error);
+      return [];
+    }
+
+    return (categories || []) as any[];
+  } catch (error) {
+    console.error('Error connecting to database:', error);
+    return [];
+  }
 }
 
 export default async function PluginsPage() {

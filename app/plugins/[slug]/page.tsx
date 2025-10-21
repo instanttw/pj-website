@@ -8,38 +8,68 @@ import { Star, Download, Calendar, Package as PackageIcon, ExternalLink, FileTex
 import { supabase } from '@/lib/supabase';
 
 async function getPlugin(slug: string) {
-  const { data: plugin } = await supabase
-    .from('plugins')
-    .select(`
-      *,
-      categories(name, slug)
-    `)
-    .eq('slug', slug)
-    .eq('is_active', true)
-    .maybeSingle();
+  try {
+    const { data: plugin, error } = await supabase
+      .from('plugins')
+      .select(`
+        *,
+        categories(name, slug)
+      `)
+      .eq('slug', slug)
+      .eq('is_active', true)
+      .maybeSingle();
 
-  return plugin as any;
+    if (error) {
+      console.error('Error fetching plugin:', error);
+      return null;
+    }
+
+    return plugin as any;
+  } catch (error) {
+    console.error('Error connecting to database:', error);
+    return null;
+  }
 }
 
 async function getPluginPricing(pluginId: string) {
-  const { data: pricing } = await supabase
-    .from('plugin_pricing')
-    .select('*')
-    .eq('plugin_id', pluginId)
-    .order('sort_order');
+  try {
+    const { data: pricing, error } = await supabase
+      .from('plugin_pricing')
+      .select('*')
+      .eq('plugin_id', pluginId)
+      .order('sort_order');
 
-  return (pricing || []) as any[];
+    if (error) {
+      console.error('Error fetching plugin pricing:', error);
+      return [];
+    }
+
+    return (pricing || []) as any[];
+  } catch (error) {
+    console.error('Error connecting to database:', error);
+    return [];
+  }
 }
 
 async function getPluginReviews(pluginId: string) {
-  const { data: reviews } = await supabase
-    .from('reviews')
-    .select('*')
-    .eq('plugin_id', pluginId)
-    .order('created_at', { ascending: false })
-    .limit(10);
+  try {
+    const { data: reviews, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .eq('plugin_id', pluginId)
+      .order('created_at', { ascending: false })
+      .limit(10);
 
-  return (reviews || []) as any[];
+    if (error) {
+      console.error('Error fetching plugin reviews:', error);
+      return [];
+    }
+
+    return (reviews || []) as any[];
+  } catch (error) {
+    console.error('Error connecting to database:', error);
+    return [];
+  }
 }
 
 export default async function PluginDetailPage({ params }: { params: { slug: string } }) {
