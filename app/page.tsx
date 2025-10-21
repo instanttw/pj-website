@@ -6,17 +6,27 @@ import { ArrowRight, Download, Star, Users, Package, Zap, RefreshCw, HeadphonesI
 import { supabase } from '@/lib/supabase';
 
 async function getFeaturedPlugins() {
-  const { data: plugins } = await supabase
-    .from('plugins')
-    .select(`
-      *,
-      categories(name, slug)
-    `)
-    .eq('is_featured', true)
-    .eq('is_active', true)
-    .limit(6);
+  try {
+    const { data: plugins, error } = await supabase
+      .from('plugins')
+      .select(`
+        *,
+        categories(name, slug)
+      `)
+      .eq('is_featured', true)
+      .eq('is_active', true)
+      .limit(6);
 
-  return (plugins || []) as any[];
+    if (error) {
+      console.error('Error fetching featured plugins:', error);
+      return [];
+    }
+
+    return (plugins || []) as any[];
+  } catch (error) {
+    console.error('Error connecting to database:', error);
+    return [];
+  }
 }
 
 export default async function Home() {
