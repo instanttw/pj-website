@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { Star, Download, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { fallbackPlugins } from '@/data/fallback-plugins';
 
 async function getPlugins() {
   try {
@@ -48,10 +49,30 @@ async function getCategories() {
 }
 
 export default async function PluginsPage() {
-  const [plugins, categories] = await Promise.all([
+  let [plugins, categories] = await Promise.all([
     getPlugins(),
     getCategories()
   ]);
+
+  // Fallback to curated 8 plugins if DB is empty or unavailable
+  if (!plugins || plugins.length === 0) {
+    plugins = fallbackPlugins as any[];
+  }
+
+  // Derive categories from current plugin list if categories table is empty
+  if (!categories || categories.length === 0) {
+    const uniq = new Map<string, { id: string; name: string; slug: string }>();
+    (plugins as any[]).forEach((p: any) => {
+      if (p.categories && p.categories.slug) {
+        uniq.set(p.categories.slug, {
+          id: p.categories.slug,
+          name: p.categories.name,
+          slug: p.categories.slug,
+        });
+      }
+    });
+    categories = Array.from(uniq.values()) as any[];
+  }
 
   return (
     <div className="container mx-auto px-4 lg:px-8 py-12">
