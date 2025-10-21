@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Download, Star, Users, Package, Zap, RefreshCw, HeadphonesIcon, Code, TrendingUp } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { getFallbackFeaturedPlugins } from '@/data/fallback-plugins';
 
 async function getFeaturedPlugins() {
   try {
@@ -30,7 +31,10 @@ async function getFeaturedPlugins() {
 }
 
 export default async function Home() {
-  const featuredPlugins = await getFeaturedPlugins();
+  let featuredPlugins = await getFeaturedPlugins();
+  if (!featuredPlugins || featuredPlugins.length === 0) {
+    featuredPlugins = getFallbackFeaturedPlugins() as any[];
+  }
 
   const stats = [
     { label: 'Active Installations', value: '500K+', icon: Users },

@@ -25,6 +25,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { getFallbackPluginBySlug, getFallbackRelated, fallbackPlugins } from '@/data/fallback-plugins';
 
 interface PluginPageProps {
   params: {
@@ -46,13 +47,19 @@ async function getPluginBySlug(slug: string) {
 
     if (error) {
       console.error('Error fetching plugin:', error);
-      return null;
     }
 
-    return plugin as any;
+    if (plugin) {
+      return plugin as any;
+    }
+
+    // Fallback to curated data when DB has no record
+    const fallback = getFallbackPluginBySlug(slug);
+    return fallback as any;
   } catch (error) {
     console.error('Error connecting to database:', error);
-    return null;
+    const fallback = getFallbackPluginBySlug(slug);
+    return fallback as any;
   }
 }
 
@@ -71,14 +78,23 @@ async function getRelatedPlugins(categoryId: number, currentPluginId: number) {
 
     if (error) {
       console.error('Error fetching related plugins:', error);
-      return [];
     }
 
-    return (plugins || []) as any[];
+    if (plugins && plugins.length > 0) {
+      return plugins as any[];
+    }
+
+    // Fallback to curated related plugins
+    return getFallbackRelated(categoryId, currentPluginId) as any[];
   } catch (error) {
     console.error('Error connecting to database:', error);
-    return [];
+    return getFallbackRelated(categoryId, currentPluginId) as any[];
   }
+}
+
+export async function generateStaticParams() {
+  // Pre-generate pages for the 8 curated plugins
+  return fallbackPlugins.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PluginPageProps): Promise<Metadata> {
