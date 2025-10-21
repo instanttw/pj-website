@@ -96,7 +96,7 @@ export async function generateMetadata({ params }: PluginPageProps): Promise<Met
     openGraph: {
       title: plugin.name,
       description: plugin.tagline,
-      type: 'product',
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
@@ -325,7 +325,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         </Button>
                       )}
                       {plugin.download_url && (
-                        <Button size="md" variant="ghost" className="w-full text-gray-600">
+                        <Button size="sm" variant="ghost" className="w-full text-gray-600">
                           <Download className="w-4 h-4 mr-2" />
                           Try Free Version
                         </Button>
