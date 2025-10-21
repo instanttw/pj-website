@@ -23,7 +23,7 @@ export function Header() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600">
                 <Package className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-black">PluginHub</span>
+              <span className="text-xl font-bold text-black">PrintJones</span>
             </Link>
 
             <nav className="hidden md:flex items-center gap-6">
@@ -44,7 +44,7 @@ export function Header() {
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <Input
                 type="search"
-                placeholder="Search plugins..."
+                placeholder="Search services..."
                 className="w-full pl-10"
               />
             </div>

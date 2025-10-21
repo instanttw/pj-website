@@ -8,7 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PluginHub - Premium WordPress Plugins',
+  title: 'PrintJones - Premium WordPress Plugins',
   description: 'Premium WordPress plugins for modern websites. Built by developers, for developers.',
 };
 

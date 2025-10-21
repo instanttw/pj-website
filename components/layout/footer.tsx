@@ -37,10 +37,10 @@ export function Footer() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600">
                 <Package className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-black">PluginHub</span>
+              <span className="text-xl font-bold text-black">PrintJones</span>
             </Link>
             <p className="text-sm text-gray-600 mb-6 max-w-xs">
-              Premium WordPress plugins for modern websites. Built by developers, for developers.
+Premium WordPress plugins for modern websites. Built by developers, for developers.
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -60,7 +60,7 @@ export function Footer() {
                 <Github className="h-5 w-5" />
               </a>
               <a
-                href="mailto:support@pluginhub.com"
+                href="mailto:support@printjones.com"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
               >
                 <Mail className="h-5 w-5" />
@@ -135,7 +135,7 @@ export function Footer() {
 
         <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} PluginHub. All rights reserved.
+            © {new Date().getFullYear()} PrintJones. All rights reserved.
           </p>
           <p className="text-sm text-gray-600">
             Trusted by 50,000+ websites worldwide
