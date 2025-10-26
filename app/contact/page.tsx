@@ -12,6 +12,7 @@ import { useState } from 'react';
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<null | { ok: boolean; message: string }>(null);
+  const [category, setCategory] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -77,7 +78,8 @@ export default function ContactPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="category">Category *</Label>
-                    <Select name="category" required>
+                    <input type="hidden" name="category" value={category} />
+                    <Select value={category} onValueChange={setCategory} required>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a category" />
                       </SelectTrigger>

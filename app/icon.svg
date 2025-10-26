@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="white"/>
+  <!-- Stylized PJ mark -->
+  <g fill="#000">
+    <!-- P -->
+    <path d="M120 360V152h120c60 0 108 48 108 108s-48 100-108 100h-60v0h-60zm60-60h60c28 0 48-20 48-40s-20-40-48-40h-60v80z"/>
+    <!-- J -->
+    <path d="M392 152v160c0 66-44 100-108 100h-20v-60h20c34 0 48-16 48-40V152h60z"/>
+  </g>
+</svg>

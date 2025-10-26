@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Package, Twitter, Github, Mail } from 'lucide-react';
+import { Twitter, Github, Mail } from 'lucide-react';
 
 const footerLinks = {
   product: [
@@ -34,9 +34,6 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 lg:gap-12">
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600">
-                <Package className="h-5 w-5 text-white" />
-              </div>
               <span className="text-xl font-bold text-black">PrintJones</span>
             </Link>
             <p className="text-sm text-gray-600 mb-6 max-w-xs">
