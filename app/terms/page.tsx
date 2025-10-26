@@ -9,7 +9,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-black mb-4">1. Acceptance of Terms</h2>
             <p className="text-gray-600 leading-relaxed">
-              By accessing and using PluginHub's products and services, you accept and agree to be bound
+              By accessing and using PrintJones's products and services, you accept and agree to be bound
               by the terms and provision of this agreement. If you do not agree to these terms, please
               do not use our services.
             </p>
@@ -46,7 +46,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-black mb-4">5. Intellectual Property</h2>
             <p className="text-gray-600 leading-relaxed">
-              All plugins, content, and materials provided by PluginHub are protected by copyright and
+              All plugins, content, and materials provided by PrintJones are protected by copyright and
               other intellectual property laws. You acknowledge that we retain all rights, title, and
               interest in our products.
             </p>
@@ -55,7 +55,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-black mb-4">6. Limitation of Liability</h2>
             <p className="text-gray-600 leading-relaxed">
-              PluginHub shall not be liable for any indirect, incidental, special, consequential, or
+              PrintJones shall not be liable for any indirect, incidental, special, consequential, or
               punitive damages resulting from your use or inability to use our products.
             </p>
           </section>
@@ -82,7 +82,7 @@ export default function TermsPage() {
             <p className="text-gray-600 leading-relaxed">
               If you have any questions about these Terms, please contact us at:
               <br />
-              Email: legal@pluginhub.com
+              Email: legal@printjones.com
             </p>
           </section>
         </div>

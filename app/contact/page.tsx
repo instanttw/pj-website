@@ -7,10 +7,39 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, MapPin, Clock } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ContactPage() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<null | { ok: boolean; message: string }>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus(null);
+    setSubmitting(true);
+    try {
+      const form = e.currentTarget;
+      const data = new FormData(form);
+      const payload = {
+        name: String(data.get('name') || ''),
+        email: String(data.get('email') || ''),
+        category: String(data.get('category') || ''),
+        subject: String(data.get('subject') || ''),
+        message: String(data.get('message') || ''),
+      };
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('Failed to submit');
+      setStatus({ ok: true, message: 'Thanks! Your message has been sent.' });
+      form.reset();
+    } catch (err) {
+      setStatus({ ok: false, message: 'Something went wrong. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -37,18 +66,18 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
-                      <Input id="name" required placeholder="John Doe" />
+                      <Input id="name" name="name" required placeholder="John Doe" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="email">Email *</Label>
-                      <Input id="email" type="email" required placeholder="john@example.com" />
+                      <Input id="email" name="email" type="email" required placeholder="john@example.com" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="category">Category *</Label>
-                    <Select required>
+                    <Select name="category" required>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a category" />
                       </SelectTrigger>
@@ -63,13 +92,14 @@ export default function ContactPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject *</Label>
-                    <Input id="subject" required placeholder="What is this about?" />
+                    <Input id="subject" name="subject" required placeholder="What is this about?" />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Message *</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       required
                       rows={6}
                       placeholder="Tell us more..."
@@ -77,9 +107,14 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
-                    Send Message
-                  </Button>
+                  <div className="space-y-3">
+                    <Button type="submit" disabled={submitting} size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
+                      {submitting ? 'Sending…' : 'Send Message'}
+                    </Button>
+                    {status && (
+                      <p className={`text-sm ${status.ok ? 'text-green-600' : 'text-red-600'}`}>{status.message}</p>
+                    )}
+                  </div>
                 </form>
               </CardContent>
             </Card>
@@ -94,7 +129,7 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">support@pluginhub.com</p>
+                <p className="text-gray-600">support@printjones.com</p>
               </CardContent>
             </Card>
 

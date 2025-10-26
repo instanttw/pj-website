@@ -40,7 +40,7 @@ export function Footer() {
               <span className="text-xl font-bold text-black">PrintJones</span>
             </Link>
             <p className="text-sm text-gray-600 mb-6 max-w-xs">
-Premium WordPress plugins for modern websites. Built by developers, for developers.
+Premium WordPress plugins for everyone—site owners and developers alike.
             </p>
             <div className="flex items-center gap-4">
               <a

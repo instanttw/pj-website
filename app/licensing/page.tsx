@@ -190,7 +190,7 @@ export default function LicensingPage() {
               our licensing terms, we're here to help.
             </p>
             <p className="text-gray-600">
-              Contact us at: <a href="mailto:licensing@pluginhub.com" className="text-blue-600 hover:underline">licensing@pluginhub.com</a>
+              Contact us at: <a href="mailto:licensing@printjones.com" className="text-blue-600 hover:underline">licensing@printjones.com</a>
             </p>
           </section>
         </div>

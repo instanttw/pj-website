@@ -21,7 +21,7 @@ export default function RefundPolicyPage() {
               Our refund policy applies to:
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-600">
-              <li>All plugin purchases made directly from PluginHub</li>
+              <li>All plugin purchases made directly from PrintJones</li>
               <li>Annual and lifetime licenses</li>
               <li>Single and multi-site licenses</li>
             </ul>
@@ -42,7 +42,7 @@ export default function RefundPolicyPage() {
               To request a refund, please:
             </p>
             <ol className="list-decimal list-inside space-y-2 text-gray-600">
-              <li>Contact our support team at support@pluginhub.com</li>
+              <li>Contact our support team at support@printjones.com</li>
               <li>Include your order number or license key</li>
               <li>Briefly explain the reason for your refund request (optional but helpful)</li>
             </ol>
@@ -98,7 +98,7 @@ export default function RefundPolicyPage() {
             <p className="text-gray-600 leading-relaxed">
               If you have any questions about our refund policy, please contact us at:
               <br />
-              Email: support@pluginhub.com
+              Email: support@printjones.com
               <br />
               We're here to help and will do our best to ensure you're satisfied with your purchase.
             </p>

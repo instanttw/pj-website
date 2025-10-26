@@ -48,7 +48,7 @@ async function getCategories() {
   }
 }
 
-export default async function PluginsPage() {
+export default async function PluginsPage({ searchParams }: { searchParams?: { search?: string; category?: string } }) {
   let [plugins, categories] = await Promise.all([
     getPlugins(),
     getCategories()
@@ -57,6 +57,30 @@ export default async function PluginsPage() {
   // Fallback to curated 8 plugins if DB is empty or unavailable
   if (!plugins || plugins.length === 0) {
     plugins = fallbackPlugins as any[];
+  }
+
+  // Remove excluded plugins globally
+  const excludedSlugs = new Set([
+    'pj-media-library',
+    'pj-accessibility',
+    'pj-store-finder',
+    'pj-multicurrency',
+    'pj-product-designer',
+  ]);
+  plugins = (plugins as any[]).filter((p: any) => !excludedSlugs.has(p.slug));
+
+  // Apply search/category filters
+  const q = (searchParams?.search || '').toString().trim().toLowerCase();
+  const cat = (searchParams?.category || '').toString().trim().toLowerCase();
+  if (q) {
+    plugins = (plugins as any[]).filter((p: any) =>
+      [p.name, p.slug, p.tagline, p.categories?.name]
+        .filter(Boolean)
+        .some((s: string) => s.toLowerCase().includes(q))
+    );
+  }
+  if (cat) {
+    plugins = (plugins as any[]).filter((p: any) => p.categories?.slug?.toLowerCase() === cat);
   }
 
   // Derive categories from current plugin list if categories table is empty

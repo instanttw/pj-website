@@ -36,11 +36,20 @@ export default async function Home() {
     featuredPlugins = getFallbackFeaturedPlugins() as any[];
   }
 
+  const excludedSlugs = new Set([
+    'pj-media-library',
+    'pj-accessibility',
+    'pj-store-finder',
+    'pj-multicurrency',
+    'pj-product-designer',
+  ]);
+  featuredPlugins = featuredPlugins.filter((p: any) => !excludedSlugs.has(p.slug));
+
   const stats = [
     { label: 'Active Installations', value: '500K+', icon: Users },
     { label: 'Total Downloads', value: '2M+', icon: Download },
     { label: 'Happy Customers', value: '50K+', icon: Star },
-    { label: 'Plugins Available', value: '24', icon: Package },
+    { label: 'Plugins Available', value: '3', icon: Package },
   ];
 
   const features = [
@@ -73,6 +82,57 @@ export default async function Home() {
       icon: Package,
       title: 'Developer Friendly',
       description: 'Extensive hooks, filters, and API documentation',
+    },
+  ];
+
+  const reviews = [
+    {
+      author: 'Emma L.',
+      role: 'Small business owner',
+      title: 'Immediate impact on our site',
+      content:
+        'Setup was straightforward and the improvements were visible the same day. Our team didn\'t need to touch code and everything stayed fast.',
+      rating: 5,
+    },
+    {
+      author: 'David K.',
+      role: 'WordPress developer',
+      title: 'Clean, predictable, and well‑supported',
+      content:
+        'API is thoughtfully designed and the docs are solid. Support replies with practical answers, not copy‑paste. Great DX.',
+      rating: 5,
+    },
+    {
+      author: 'Sarah P.',
+      role: 'Agency PM',
+      title: 'Reliable tools for client work',
+      content:
+        'We use these plugins across multiple client sites. Stable updates and zero surprise regressions have saved us countless hours.',
+      rating: 5,
+    },
+    {
+      author: 'Jonas R.',
+      role: 'E‑commerce lead',
+      title: 'Better conversions with minimal effort',
+      content:
+        'Our store navigation and product discovery improved noticeably. The performance profile remains excellent under load.',
+      rating: 5,
+    },
+    {
+      author: 'Priya C.',
+      role: 'Site owner',
+      title: 'Worth every dollar',
+      content:
+        'Clear onboarding, sensible defaults, and features we actually use. It just works and keeps working.',
+      rating: 5,
+    },
+    {
+      author: 'Alex G.',
+      role: 'Freelance integrator',
+      title: 'Great balance of power and simplicity',
+      content:
+        'Non‑technical clients can manage settings while I keep advanced options for edge cases. Excellent balance.',
+      rating: 5,
     },
   ];
 
@@ -213,6 +273,33 @@ export default async function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-24 bg-white">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">Customer Reviews</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Real feedback from site owners and developers</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {reviews.map((r, i) => (
+              <Card key={i} className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg">{r.title}</CardTitle>
+                  <CardDescription className="text-sm">{r.author} • {r.role}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-1 mb-3">
+                    {Array.from({ length: 5 }).map((_, idx) => (
+                      <Star key={idx} className={`h-4 w-4 ${idx < r.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">{r.content}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

@@ -129,7 +129,19 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
     notFound();
   }
 
-  const relatedPlugins = await getRelatedPlugins(plugin.category_id, plugin.id);
+  const bannedSlugs = new Set([
+    'pj-media-library',
+    'pj-accessibility',
+    'pj-store-finder',
+    'pj-multicurrency',
+    'pj-product-designer',
+  ]);
+  if (bannedSlugs.has(plugin.slug)) {
+    notFound();
+  }
+
+  let relatedPlugins = await getRelatedPlugins(plugin.category_id, plugin.id);
+  relatedPlugins = relatedPlugins.filter((p: any) => !bannedSlugs.has(p.slug));
 
   const benefits = [
     {
@@ -173,6 +185,54 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
     'SEO optimized',
     'Translation ready',
     'Developer friendly',
+  ];
+
+  const sampleReviews = [
+    {
+      author: 'Emily R.',
+      role: 'Site owner',
+      title: 'Easy setup, great results',
+      content:
+        `Installed in minutes and it just worked. The UI is clear and I didn’t need a developer to get value right away.`,
+      rating: 5,
+      date: '2025-09-20',
+    },
+    {
+      author: 'Marco D.',
+      role: 'WordPress developer',
+      title: 'Solid architecture and support',
+      content:
+        `Hooks and filters cover real-world cases. Performance is excellent and support answers with code samples.`,
+      rating: 5,
+      date: '2025-08-12',
+    },
+    {
+      author: 'Nora S.',
+      role: 'Marketing lead',
+      title: 'Meaningful business impact',
+      content:
+        `We saw faster navigation and better engagement after enabling this. Zero conflicts with our theme.`,
+      rating: 5,
+      date: '2025-07-03',
+    },
+    {
+      author: 'Peter H.',
+      role: 'Agency owner',
+      title: 'Reliable across multiple client sites',
+      content:
+        `We’ve standardized on this plugin for client builds. Updates are stable and backward compatible.`,
+      rating: 5,
+      date: '2025-06-18',
+    },
+    {
+      author: 'Lia T.',
+      role: 'Store manager',
+      title: 'Worth it',
+      content:
+        `Clear documentation, quick results, and no hit to Core Web Vitals. Highly recommend.`,
+      rating: 5,
+      date: '2025-05-09',
+    },
   ];
 
   return (
@@ -320,7 +380,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                       </div>
                       <div className="flex items-start gap-2">
                         <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-gray-700">Use on Unlimited Sites</span>
+                        <span className="text-sm text-gray-700">Used on one website</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
@@ -386,6 +446,12 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                   className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
                 >
                   Installation
+                </TabsTrigger>
+                <TabsTrigger
+                  value="reviews"
+                  className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                >
+                  Reviews
                 </TabsTrigger>
                 <TabsTrigger
                   value="faqs"
@@ -511,6 +577,31 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         </p>
                       </CardContent>
                     </Card>
+                  </div>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="reviews" className="py-16" id="reviews">
+                <div className="max-w-4xl mx-auto">
+                  <h2 className="text-4xl font-bold mb-6 text-center">Customer Reviews</h2>
+                  <p className="text-center text-gray-600 mb-12">What users say about {plugin.name}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {sampleReviews.map((r, i) => (
+                      <Card key={i} className="h-full">
+                        <CardHeader>
+                          <CardTitle className="text-lg">{r.title}</CardTitle>
+                          <CardDescription className="text-sm">{r.author} • {r.role}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="flex items-center gap-1 mb-3">
+                            {Array.from({ length: 5 }).map((_, idx) => (
+                              <Star key={idx} className={`h-4 w-4 ${idx < r.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                            ))}
+                          </div>
+                          <p className="text-gray-700 leading-relaxed">{r.content}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
                   </div>
                 </div>
               </TabsContent>

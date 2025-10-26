@@ -108,7 +108,7 @@ export default function PrivacyPage() {
             <p className="text-gray-600 leading-relaxed">
               If you have questions or concerns about our privacy practices, please contact us at:
               <br />
-              Email: privacy@pluginhub.com
+              Email: privacy@printjones.com
             </p>
           </section>
         </div>

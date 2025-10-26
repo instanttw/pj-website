@@ -28,7 +28,7 @@ export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 lg:px-8 py-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-black mb-6">About PluginHub</h1>
+        <h1 className="text-4xl font-bold text-black mb-6">About PrintJones</h1>
 
         <div className="prose prose-gray max-w-none space-y-6 mb-12">
           <p className="text-xl text-gray-600 leading-relaxed">
@@ -37,7 +37,7 @@ export default function AboutPage() {
           </p>
 
           <p className="text-gray-600 leading-relaxed">
-            Founded in 2020, PluginHub started with a simple mission: to provide high-quality,
+            Founded in 2020, PrintJones started with a simple mission: to provide high-quality,
             well-coded WordPress plugins that solve real problems. Today, we're trusted by over
             50,000 websites worldwide and continue to innovate with new features and products.
           </p>
@@ -79,7 +79,7 @@ export default function AboutPage() {
             Have questions or want to learn more? We'd love to hear from you.
           </p>
           <div className="space-y-2 text-gray-600">
-            <p><strong>Email:</strong> support@pluginhub.com</p>
+            <p><strong>Email:</strong> support@printjones.com</p>
             <p><strong>Support:</strong> Available Monday-Friday, 9am-5pm EST</p>
           </div>
         </div>

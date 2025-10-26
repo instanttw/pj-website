@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Package, Menu, Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 
@@ -14,6 +16,8 @@ const navigation = [
 ];
 
 export function Header() {
+  const router = useRouter();
+  const [q, setQ] = useState('');
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto px-4 lg:px-8">
@@ -40,14 +44,23 @@ export function Header() {
           </div>
 
           <div className="hidden lg:flex flex-1 max-w-md mx-8">
-            <div className="relative w-full">
+            <form
+              className="relative w-full"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const query = q.trim();
+                if (query) router.push(`/plugins?search=${encodeURIComponent(query)}`);
+              }}
+            >
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <Input
                 type="search"
-                placeholder="Search services..."
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Search plugins..."
                 className="w-full pl-10"
               />
-            </div>
+            </form>
           </div>
 
           <div className="flex items-center gap-4">
