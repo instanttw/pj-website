@@ -24,7 +24,7 @@ export const fallbackPlugins: FallbackPlugin[] = [
   {
     id: 1,
     slug: 'aioa-elementor',
-    name: 'All-in-One Addons for Elementor',
+    name: 'PJ Essential Addons for Elementor',
     tagline: 'Supercharge Your Elementor Website with 100+ Premium Widgets',
     description:
       'The most comprehensive collection of Elementor widgets and extensions. Build stunning websites faster with our premium addons designed for speed and flexibility.',

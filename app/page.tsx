@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Download, Star, Users, Package, Zap, RefreshCw, HeadphonesIcon, Code, TrendingUp } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { getFallbackFeaturedPlugins } from '@/data/fallback-plugins';
+import { getPluginDisplayName } from '@/lib/utils';
 
 async function getFeaturedPlugins() {
   try {
@@ -44,6 +45,11 @@ export default async function Home() {
     'pj-product-designer',
   ]);
   featuredPlugins = featuredPlugins.filter((p: any) => !excludedSlugs.has(p.slug));
+
+  featuredPlugins = (featuredPlugins as any[]).map((p: any) => ({
+    ...p,
+    name: getPluginDisplayName(p),
+  }));
 
   const stats = [
     { label: 'Active Installations', value: '500K+', icon: Users },

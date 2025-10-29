@@ -25,6 +25,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { getPluginDisplayName } from '@/lib/utils';
 import { getFallbackPluginBySlug, getFallbackRelated, fallbackPlugins } from '@/data/fallback-plugins';
 
 interface PluginPageProps {
@@ -106,28 +107,32 @@ export async function generateMetadata({ params }: PluginPageProps): Promise<Met
     };
   }
 
+  const pluginName = getPluginDisplayName(plugin as any);
+
   return {
-    title: `${plugin.name} - ${plugin.tagline} | PrintJones`,
+    title: `${pluginName} - ${plugin.tagline} | PrintJones`,
     description: plugin.description || plugin.tagline,
     openGraph: {
-      title: plugin.name,
+      title: pluginName,
       description: plugin.tagline,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: plugin.name,
+      title: pluginName,
       description: plugin.tagline,
     },
   };
 }
 
 export default async function PluginDetailPage({ params }: PluginPageProps) {
-  const plugin = await getPluginBySlug(params.slug);
+  let plugin = await getPluginBySlug(params.slug);
 
   if (!plugin) {
     notFound();
   }
+
+  plugin = { ...plugin, name: getPluginDisplayName(plugin) } as any;
 
   const bannedSlugs = new Set([
     'pj-media-library',
@@ -141,7 +146,9 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   }
 
   let relatedPlugins = await getRelatedPlugins(plugin.category_id, plugin.id);
-  relatedPlugins = relatedPlugins.filter((p: any) => !bannedSlugs.has(p.slug));
+  relatedPlugins = relatedPlugins
+    .filter((p: any) => !bannedSlugs.has(p.slug))
+    .map((p: any) => ({ ...p, name: getPluginDisplayName(p) }));
 
   const benefits = [
     {

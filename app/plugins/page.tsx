@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star, Download, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { fallbackPlugins } from '@/data/fallback-plugins';
+import { getPluginDisplayName } from '@/lib/utils';
 
 async function getPlugins() {
   try {
@@ -68,6 +69,9 @@ export default async function PluginsPage({ searchParams }: { searchParams?: { s
     'pj-product-designer',
   ]);
   plugins = (plugins as any[]).filter((p: any) => !excludedSlugs.has(p.slug));
+
+  // Normalize display name overrides
+  plugins = (plugins as any[]).map((p: any) => ({ ...p, name: getPluginDisplayName(p) }));
 
   // Apply search/category filters
   const q = (searchParams?.search || '').toString().trim().toLowerCase();
