@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
+import { CommunityForum } from '@/components/community-forum';
 import {
   Package,
   Palette,
@@ -2513,16 +2514,8 @@ export default function ProductDocPage({ params }: DocPageProps) {
           </TabsContent>
 
           {isWpBakeryDoc && (
-            <TabsContent value="community" className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Community Forum (Preview)</CardTitle>
-                  <CardDescription>Ask questions and share tips with other users</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700">A simple forum experience will appear here. We&apos;ll add topic lists, a new question form, and threaded replies next.</p>
-                </CardContent>
-              </Card>
+            <TabsContent value="community">
+              <CommunityForum />
             </TabsContent>
           )}
         </Tabs>
