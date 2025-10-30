@@ -38,3 +38,21 @@
     @apply font-bold text-black;
   }
 }
+
+/* Site-wide full-width layout adjustments */
+@layer components {
+  /* Ensure Tailwind's container never constrains width */
+  .container {
+    max-width: 100% !important;
+  }
+
+  /* Make immediate children of main span full width */
+  main > * {
+    width: 100%;
+  }
+
+  /* Remove any max-width constraints inside main content */
+  main [class*="max-w-"] {
+    max-width: none !important;
+  }
+}
