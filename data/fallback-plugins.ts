@@ -57,7 +57,7 @@ export const fallbackPlugins: FallbackPlugin[] = [
     category_id: 1,
     version: '25.0.0',
     wordpress_version: '6.4+',
-    demo_url: 'https://printjones.com/demos/eaf-wpbakery',
+    demo_url: 'https://eaw.printjones.com',
     download_url: null,
     categories: { name: 'Page Builders', slug: 'page-builders' },
     features: JSON.stringify([

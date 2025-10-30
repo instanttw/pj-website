@@ -194,6 +194,12 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
     'Developer friendly',
   ];
 
+  // Override demo URLs when needed (ensures correct links even if DB is outdated)
+  const demoUrlOverrides: Record<string, string> = {
+    'eaf-wpbakery': 'https://eaw.printjones.com',
+  };
+  const demoUrl = demoUrlOverrides[plugin.slug] || plugin.demo_url;
+
   const sampleReviews = [
     {
       author: 'Emily R.',
@@ -401,11 +407,13 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         <ShoppingCart className="w-5 h-5 mr-2" />
                         Add to Cart - ${plugin.price}
                       </Button>
-                      {plugin.demo_url && (
-                        <Button size="lg" variant="outline" className="w-full border-2 border-gray-300">
-                          <ExternalLink className="w-5 h-5 mr-2" />
-                          View Live Demo
-                        </Button>
+                      {demoUrl && (
+                        <a href={demoUrl} target="_blank" rel="noopener noreferrer" className="block">
+                          <Button size="lg" variant="outline" className="w-full border-2 border-gray-300">
+                            <ExternalLink className="w-5 h-5 mr-2" />
+                            View Live Demo
+                          </Button>
+                        </a>
                       )}
                       {plugin.download_url && (
                         <Button size="sm" variant="ghost" className="w-full text-gray-600">
@@ -727,11 +735,13 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Buy Now - ${plugin.price}
               </Button>
-              {plugin.demo_url && (
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8">
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  View Live Demo
-                </Button>
+              {demoUrl && (
+                <a href={demoUrl} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8">
+                    <ExternalLink className="w-5 h-5 mr-2" />
+                    View Live Demo
+                  </Button>
+                </a>
               )}
             </div>
             <div className="flex items-center justify-center gap-6 mt-8 text-sm text-blue-100">

@@ -1459,6 +1459,67 @@ export default function ProductDocPage({ params }: DocPageProps) {
     ? (product as any).pluginSlug
     : params.slug;
 
+  const isWpBakeryDoc = params.slug === 'essential-addons-wpbakery';
+
+  const tabTriggers = (
+    <>
+      <TabsTrigger value="overview">
+        <BookOpen className="h-4 w-4 mr-2" />
+        Overview
+      </TabsTrigger>
+      <TabsTrigger value="installation">
+        <Download className="h-4 w-4 mr-2" />
+        Installation
+      </TabsTrigger>
+      <TabsTrigger value="core">
+        <LayoutDashboard className="h-4 w-4 mr-2" />
+        Core
+      </TabsTrigger>
+      <TabsTrigger value="elements">
+        <Puzzle className="h-4 w-4 mr-2" />
+        Elements
+      </TabsTrigger>
+      <TabsTrigger value="configuration">
+        <Settings className="h-4 w-4 mr-2" />
+        Configuration
+      </TabsTrigger>
+      <TabsTrigger value="advanced">
+        <Wrench className="h-4 w-4 mr-2" />
+        Advanced
+      </TabsTrigger>
+      {'developerDocs' in product && (product as any).developerDocs && (
+        <TabsTrigger value="developer">
+          <Code2 className="h-4 w-4 mr-2" />
+          Developer
+        </TabsTrigger>
+      )}
+      <TabsTrigger value="troubleshooting">
+        <AlertCircle className="h-4 w-4 mr-2" />
+        Troubleshooting
+      </TabsTrigger>
+      <TabsTrigger value="faq">
+        <HelpCircle className="h-4 w-4 mr-2" />
+        FAQ
+      </TabsTrigger>
+      <TabsTrigger value="changelog">
+        <FileText className="h-4 w-4 mr-2" />
+        Changelog
+      </TabsTrigger>
+      {(product as any).tutorials && (
+        <TabsTrigger value="tutorials">
+          <PlayCircle className="h-4 w-4 mr-2" />
+          Tutorials
+        </TabsTrigger>
+      )}
+      {(product as any).resources && (
+        <TabsTrigger value="resources">
+          <ExternalLink className="h-4 w-4 mr-2" />
+          Resources
+        </TabsTrigger>
+      )}
+    </>
+  );
+
   return (
     <div className="container mx-auto px-4 lg:px-8 py-12">
       <div className="max-w-5xl mx-auto">
@@ -1492,55 +1553,8 @@ export default function ProductDocPage({ params }: DocPageProps) {
         </div>
 
         <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 lg:grid-cols-12 mb-8">
-            <TabsTrigger value="overview">
-              <BookOpen className="h-4 w-4 mr-2" />
-              Overview
-            </TabsTrigger>
-            <TabsTrigger value="installation">
-              <Download className="h-4 w-4 mr-2" />
-              Installation
-            </TabsTrigger>
-          <TabsTrigger value="core">
-            <LayoutDashboard className="h-4 w-4 mr-2" />
-            Core
-          </TabsTrigger>
-            <TabsTrigger value="elements">
-              <Puzzle className="h-4 w-4 mr-2" />
-              Elements
-            </TabsTrigger>
-            <TabsTrigger value="configuration">
-              <Settings className="h-4 w-4 mr-2" />
-              Configuration
-            </TabsTrigger>
-            <TabsTrigger value="advanced">
-              <Wrench className="h-4 w-4 mr-2" />
-              Advanced
-            </TabsTrigger>
-            <TabsTrigger value="developer">
-              <Code2 className="h-4 w-4 mr-2" />
-              Developer
-            </TabsTrigger>
-            <TabsTrigger value="troubleshooting">
-              <AlertCircle className="h-4 w-4 mr-2" />
-              Troubleshooting
-            </TabsTrigger>
-            <TabsTrigger value="faq">
-              <HelpCircle className="h-4 w-4 mr-2" />
-              FAQ
-            </TabsTrigger>
-            <TabsTrigger value="changelog">
-              <FileText className="h-4 w-4 mr-2" />
-              Changelog
-            </TabsTrigger>
-            <TabsTrigger value="tutorials">
-              <PlayCircle className="h-4 w-4 mr-2" />
-              Tutorials
-            </TabsTrigger>
-            <TabsTrigger value="resources">
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Resources
-            </TabsTrigger>
+          <TabsList className={isWpBakeryDoc ? 'flex flex-col gap-2 mb-8 sticky top-24 p-0 bg-transparent' : 'grid w-full grid-cols-3 lg:grid-cols-12 mb-8'}>
+            {tabTriggers}
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
