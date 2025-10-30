@@ -44,6 +44,7 @@ import {
   Network,
   Code2,
   Wrench,
+  Users,
 } from 'lucide-react';
 
 interface DocPageProps {
@@ -1460,61 +1461,70 @@ export default function ProductDocPage({ params }: DocPageProps) {
     : params.slug;
 
   const isWpBakeryDoc = params.slug === 'essential-addons-wpbakery';
+  const triggerClass = isWpBakeryDoc
+    ? 'justify-start w-full gap-3 rounded-none px-3 py-2 text-left data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 hover:bg-gray-100'
+    : '';
 
   const tabTriggers = (
     <>
-      <TabsTrigger value="overview">
+      <TabsTrigger value="overview" className={triggerClass}>
         <BookOpen className="h-4 w-4 mr-2" />
         Overview
       </TabsTrigger>
-      <TabsTrigger value="installation">
+      <TabsTrigger value="installation" className={triggerClass}>
         <Download className="h-4 w-4 mr-2" />
         Installation
       </TabsTrigger>
-      <TabsTrigger value="core">
+      <TabsTrigger value="core" className={triggerClass}>
         <LayoutDashboard className="h-4 w-4 mr-2" />
         Core
       </TabsTrigger>
-      <TabsTrigger value="elements">
+      <TabsTrigger value="elements" className={triggerClass}>
         <Puzzle className="h-4 w-4 mr-2" />
         Elements
       </TabsTrigger>
-      <TabsTrigger value="configuration">
+      <TabsTrigger value="configuration" className={triggerClass}>
         <Settings className="h-4 w-4 mr-2" />
         Configuration
       </TabsTrigger>
-      <TabsTrigger value="advanced">
+      <TabsTrigger value="advanced" className={triggerClass}>
         <Wrench className="h-4 w-4 mr-2" />
         Advanced
       </TabsTrigger>
       {'developerDocs' in product && (product as any).developerDocs && (
-        <TabsTrigger value="developer">
+        <TabsTrigger value="developer" className={triggerClass}>
           <Code2 className="h-4 w-4 mr-2" />
           Developer
         </TabsTrigger>
       )}
-      <TabsTrigger value="troubleshooting">
+      <TabsTrigger value="troubleshooting" className={triggerClass}>
         <AlertCircle className="h-4 w-4 mr-2" />
         Troubleshooting
       </TabsTrigger>
-      <TabsTrigger value="faq">
+      <TabsTrigger value="faq" className={triggerClass}>
         <HelpCircle className="h-4 w-4 mr-2" />
         FAQ
       </TabsTrigger>
-      <TabsTrigger value="changelog">
+      <TabsTrigger value="changelog" className={triggerClass}>
         <FileText className="h-4 w-4 mr-2" />
         Changelog
       </TabsTrigger>
       {(product as any).tutorials && (
-        <TabsTrigger value="tutorials">
+        <TabsTrigger value="tutorials" className={triggerClass}>
           <PlayCircle className="h-4 w-4 mr-2" />
           Tutorials
         </TabsTrigger>
       )}
       {(product as any).resources && (
-        <TabsTrigger value="resources">
+        <TabsTrigger value="resources" className={triggerClass}>
           <ExternalLink className="h-4 w-4 mr-2" />
           Resources
+        </TabsTrigger>
+      )}
+      {isWpBakeryDoc && (
+        <TabsTrigger value="community" className={triggerClass}>
+          <Users className="h-4 w-4 mr-2" />
+          Community
         </TabsTrigger>
       )}
     </>
@@ -1522,7 +1532,7 @@ export default function ProductDocPage({ params }: DocPageProps) {
 
   return (
     <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className="max-w-5xl mx-auto">
+      <div className={isWpBakeryDoc ? 'w-full lg:pl-64' : 'max-w-5xl mx-auto'}>
         <div className="mb-8">
           <Link
             href="/docs"
@@ -1553,9 +1563,27 @@ export default function ProductDocPage({ params }: DocPageProps) {
         </div>
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className={isWpBakeryDoc ? 'flex flex-col gap-2 mb-8 sticky top-24 p-0 bg-transparent' : 'grid w-full grid-cols-3 lg:grid-cols-12 mb-8'}>
-            {tabTriggers}
-          </TabsList>
+          {isWpBakeryDoc ? (
+            <>
+              <div className="lg:hidden mb-6">
+                <details className="bg-gray-50 border rounded-lg">
+                  <summary className="px-4 py-3 cursor-pointer font-medium">Sections</summary>
+                  <div className="px-2 pb-3">
+                    <TabsList className="flex flex-col gap-1 bg-transparent p-0">{tabTriggers}</TabsList>
+                  </div>
+                </details>
+              </div>
+              <aside className="hidden lg:block">
+                <div className="fixed left-0 top-24 bottom-0 w-64 bg-gray-50 border-r">
+                  <div className="p-2">
+                    <TabsList className="flex flex-col gap-1 bg-transparent p-0">{tabTriggers}</TabsList>
+                  </div>
+                </div>
+              </aside>
+            </>
+          ) : (
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-12 mb-8">{tabTriggers}</TabsList>
+          )}
 
           <TabsContent value="overview" className="space-y-6">
             <Card>
@@ -2483,6 +2511,20 @@ export default function ProductDocPage({ params }: DocPageProps) {
               </Card>
             ))}
           </TabsContent>
+
+          {isWpBakeryDoc && (
+            <TabsContent value="community" className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Community Forum (Preview)</CardTitle>
+                  <CardDescription>Ask questions and share tips with other users</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700">A simple forum experience will appear here. We&apos;ll add topic lists, a new question form, and threaded replies next.</p>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          )}
         </Tabs>
 
         <Card className="mt-8 bg-gradient-to-br from-blue-50 to-white">
