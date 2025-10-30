@@ -1,0 +1,2499 @@
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Separator } from '@/components/ui/separator';
+import {
+  Package,
+  Palette,
+  Download,
+  BookOpen,
+  Settings,
+  HelpCircle,
+  AlertCircle,
+  FileText,
+  ArrowLeft,
+  ExternalLink,
+  CheckCircle2,
+  Zap,
+  TrendingUp,
+  Gauge,
+  Layers,
+  Rocket,
+  Edit,
+  Upload,
+  Server,
+  Terminal,
+  Key,
+  Wand2,
+  LayoutDashboard,
+  ListChecks,
+  Puzzle,
+  BarChart3,
+  SlidersHorizontal,
+  Plug,
+  PlayCircle,
+  Clock,
+  GraduationCap,
+  Shield,
+  Database,
+  Activity,
+  Network,
+  Code2,
+  Wrench,
+} from 'lucide-react';
+
+interface DocPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+const products = {
+  'pj-essential-addons-elementor': {
+    name: 'PJ Essential Addons for Elementor',
+    type: 'plugin',
+    version: '25.0.0',
+    category: 'Page Builder',
+    description: 'Supercharge Your Elementor Website with 100+ Premium Widgets',
+    // Link to matching plugin detail page slug
+    pluginSlug: 'aioa-elementor',
+    overview: `PJ Essential Addons for Elementor is the most comprehensive collection of premium widgets and extensions for Elementor. With over 100 powerful widgets, you can create stunning websites faster than ever before.
+
+This plugin is designed with performance in mind, ensuring your website stays fast while adding incredible functionality. Each widget is carefully crafted to be flexible, customizable, and easy to use.`,
+    features: [
+      '100+ Premium Widgets',
+      'Advanced Form Builder',
+      'WooCommerce Integration',
+      'Dynamic Content Support',
+      'Template Library',
+      'Cross-Domain Copy Paste',
+      'Custom CSS & JavaScript',
+      'RTL Support',
+      'Translation Ready',
+      'Regular Updates',
+      'Premium Support',
+      'Lifetime Updates',
+    ],
+    installation: {
+      steps: [
+        'Download the plugin zip file from your account',
+        'Go to WordPress Admin > Plugins > Add New',
+        'Click "Upload Plugin" and choose the zip file',
+        'Click "Install Now" and then "Activate"',
+        'Navigate to Elementor > PJ Essential Addons',
+        'Enable the widgets you want to use',
+        'Start building amazing pages!',
+      ],
+      requirements: [
+        'WordPress 5.0 or higher',
+        'Elementor 3.0.0 or higher',
+        'PHP 7.4 or higher',
+        'MySQL 5.6 or higher',
+      ],
+    },
+    configuration: `After installation, navigate to Elementor > PJ Essential Addons in your WordPress admin panel. Here you can:
+
+• Enable/Disable specific widgets to optimize performance
+• Configure global settings
+• Set up API keys for third-party integrations
+• Customize widget defaults
+• Manage license activation`,
+    troubleshooting: [
+      {
+        question: 'Widgets not showing in Elementor editor?',
+        answer: 'Make sure the widgets are enabled in the PJ Essential Addons settings panel. Go to Elementor > PJ Essential Addons and enable the widgets you need.',
+      },
+      {
+        question: 'Styles not loading correctly?',
+        answer: 'Clear your browser cache and WordPress cache. Also regenerate CSS from Elementor > Tools > Regenerate CSS.',
+      },
+      {
+        question: 'Plugin conflicts with other Elementor addons?',
+        answer: 'Try disabling other Elementor addons one by one to identify the conflicting plugin. Contact our support team for assistance.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Do I need Elementor Pro?',
+        answer: 'No, PJ Essential Addons works with both free and Pro versions of Elementor. However, some advanced features may require Elementor Pro.',
+      },
+      {
+        question: 'How many sites can I use this on?',
+        answer: 'This depends on your license. Check your purchase confirmation or account dashboard for your specific license details.',
+      },
+      {
+        question: 'Do you offer refunds?',
+        answer: 'Yes, we offer a 30-day money-back guarantee. If you&apos;re not satisfied, contact our support team for a full refund.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.0.0',
+        date: '2025-01-15',
+        changes: [
+          'Added 5 new widgets',
+          'Improved performance and loading speed',
+          'Fixed compatibility issues with Elementor 3.18',
+          'Updated all dependencies',
+          'Enhanced mobile responsiveness',
+        ],
+      },
+      {
+        version: '24.5.0',
+        date: '2024-12-01',
+        changes: [
+          'Added advanced animation options',
+          'New template library with 50+ templates',
+          'Improved WooCommerce integration',
+          'Bug fixes and performance improvements',
+        ],
+      },
+    ],
+  },
+  'essential-addons-wpbakery': {
+    name: 'Essential Addons for WPBakery Page Builder',
+    type: 'plugin',
+    version: '25.0.0',
+    category: 'Page Builder',
+    description: 'Supercharge WPBakery with 538+ Premium Elements, 15 Extensions & 60 Pro Templates',
+    // Link to matching plugin detail page slug
+    pluginSlug: 'eaf-wpbakery',
+    overview: `Transform your WPBakery layouts into stunning, high-converting pages with Essential Addons for WPBakery Page Builder — the most comprehensive collection of professional elements, extensions, and templates for WPBakery across **17 categories**. **No coding required.**
+
+**Build Faster. Design Smarter. Convert Better.**
+
+With 538+ professionally designed elements, 15 powerful extensions, and 60 ready-to-use templates, you'll have everything you need to create professional websites that stand out. Whether you're building business websites, e-commerce stores, portfolios, or landing pages, Essential Addons gives you the tools to bring your vision to life.
+
+**What Makes Essential Addons Different:**
+
+• **Massive Element Library:** 538+ elements covering every design need — from basic text and buttons to advanced pricing tables, data tables, testimonials, countdowns, and more
+• **WooCommerce Powerhouse:** 90+ specialized WooCommerce builder elements for creating custom product pages, shop layouts, and checkout flows
+• **Marketing & Conversion Tools:** Built-in popup builder, exit intent triggers, countdown timers, sticky bars, and social proof alerts to boost engagement and sales
+• **Dynamic Content Integration:** Display ACF, Toolset, JetEngine, Pods, and MetaBox custom fields beautifully with full layout and styling control
+• **60 Ready-Made Templates:** Import complete page templates for business, e-commerce, portfolios, blogs, and more
+• **Built-in Extensions:** Wrapper Link, Sticky Element, Reveal Effects, Parallax, Custom CSS (and more)
+• **Performance Optimized:** Conditional asset loading ensures only used elements load, resulting in 40-60% faster page loads and perfect Google PageSpeed scores
+• **Seamless Compatibility:** Works with WPBakery (Frontend + Backend editors), WooCommerce, Contact Form 7, Gravity Forms, WPForms, Ninja Forms, WPML, Polylang, and any WPBakery-compatible theme
+
+Built with performance and flexibility in mind, each element is meticulously crafted to be fast, customizable, and easy to use. Simply drag, drop, and launch — no technical skills required.`,
+    features: [
+      '538+ Premium Elements - Complete design toolkit',
+      '90+ WooCommerce Elements - Custom shop builders',
+      '60 Pro Templates - Ready-to-use page designs',
+      'Extensions - Wrapper Link, Sticky, Parallax, Reveals, Custom CSS',
+      'Popup Builder - Advanced with exit intent',
+      'Dynamic Content - ACF, JetEngine, Toolset, Pods, MetaBox',
+      'Marketing Tools - Countdown, Sticky Bars, Social Proof',
+      'Conditional Asset Loading - 40-60% faster loads',
+      'Analytics & Insights - Usage stats, performance metrics',
+      'Performance Monitor - Query Monitor integration',
+      'Multisite Compatible - Network activation & per-site control',
+      'Form Integration - CF7, Gravity, WPForms, Ninja',
+      'Translation Ready (i18n) - WPML, Polylang, TranslatePress, Weglot',
+      'Visual Dashboard - One-click element management',
+      'Import/Export Settings - Migrate configuration easily',
+      'Custom Capabilities - Role-based access and controls',
+      'Template Import/Export - Share designs easily',
+      'Custom CSS & Typography - Full design control',
+      'Responsive Controls - Perfect on all devices',
+      'Regular Updates - New features monthly',
+    ],
+    installation: {
+      steps: [
+        'Download the Essential Addons for WPBakery zip file from your purchase confirmation or account',
+        'Log in to WordPress Admin Dashboard',
+        'Navigate to Plugins > Add New',
+        'Click "Upload Plugin" button at the top',
+        'Choose the downloaded zip file and click "Install Now"',
+        'Once installed, click "Activate Plugin"',
+        'Go to WPBakery Addons from the admin menu to configure',
+        'Enable the elements you want to use (all enabled by default)',
+        'Open WPBakery page editor - all elements will appear in the "Add Element" panel',
+        'Start building amazing pages!',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher (Tested up to 6.8)',
+        'WPBakery Page Builder 6.x or higher (tested up to 7.9)',
+        'PHP 7.4 or higher (8.0+ recommended)',
+        'Modern web browser (Chrome, Firefox, Safari, Edge)',
+      ],
+    },
+    installationMethods: [
+      {
+        name: 'Automatic: Search & Install from Dashboard',
+        icon: 'download',
+        steps: [
+          'Go to Plugins > Add New and search “Essential Addons for WPBakery Page Builder”',
+          'Click Install Now, then Activate',
+          'Open EA WPBakery dashboard to configure',
+        ],
+      },
+      {
+        name: 'Method 1: Upload ZIP via WordPress Admin',
+        icon: 'upload',
+        steps: [
+          'Go to Plugins > Add New > Upload Plugin',
+          'Select the downloaded ZIP file and click Install Now',
+          'Click Activate to enable the plugin',
+        ],
+      },
+      {
+        name: 'Method 2: Install via FTP/SFTP',
+        icon: 'server',
+        steps: [
+          'Extract the ZIP locally to a folder',
+          'Upload the folder to /wp-content/plugins/ via FTP/SFTP',
+          'Activate from Plugins in WordPress Admin',
+        ],
+      },
+      {
+        name: 'Method 3: WP-CLI (Advanced)',
+        icon: 'terminal',
+        steps: [
+          'SSH into your server',
+          'Run: wp plugin install /path/to/essential-addons-wpbakery.zip --activate',
+          'Verify: wp plugin status essential-addons-wpbakery',
+        ],
+      },
+    ],
+    license: {
+      title: 'License Activation',
+      steps: [
+        'Go to WPBakery Addons > License in your WordPress Admin',
+        'Paste your purchase code from CodeCanyon (or your PrintJones account)',
+        'Click Activate License and wait for confirmation',
+        'If migrating domains, first Deactivate on old site, then activate on new site',
+      ],
+    },
+    setupWizard: {
+      title: 'First-time Setup Wizard',
+      steps: [
+        'Welcome: Overview of features and recommended settings',
+        'Elements: Enable/disable element groups to optimize performance',
+        'Performance: Turn on conditional asset loading and optimization',
+        'Integrations: Connect WooCommerce, CF7/Gravity Forms, ACF/JetEngine',
+        'Finish: Helpful links to docs, templates, and support',
+      ],
+    },
+    core: {
+      dashboard: {
+        title: 'Dashboard Overview',
+        subtitle: 'Manage elements, view performance, and access key tools in one place',
+        features: [
+          {
+            icon: 'dashboard',
+            title: 'Visual Overview',
+            description: 'See enabled elements, active extensions, and template counts at a glance.',
+          },
+          {
+            icon: 'list-checks',
+            title: 'Element Manager',
+            description: 'Enable/disable any of the 538+ elements to optimize performance quickly.',
+          },
+          {
+            icon: 'bar-chart-3',
+            title: 'Performance & Analytics',
+            description: 'Track most‑used elements and asset loading to keep pages fast.',
+          },
+          {
+            icon: 'layers',
+            title: 'Templates Library',
+            description: 'Import 60+ ready‑made templates by category to jumpstart pages.',
+          },
+          {
+            icon: 'puzzle',
+            title: 'Extensions Control',
+            description: 'Toggle 15 extensions like Wrapper Link, Sticky, Parallax, and Reveals.',
+          },
+          {
+            icon: 'gauge',
+            title: 'Performance Monitor',
+            description: 'Real‑time monitoring and Query Monitor integration for debugging.',
+          },
+          {
+            icon: 'layers',
+            title: 'Background Tasks',
+            description: 'Non‑blocking analytics and maintenance tasks for smooth admin.',
+          },
+        ],
+      },
+      editor: {
+        title: 'WPBakery Editor Guide',
+        steps: [
+          {
+            title: 'Add Element Panel',
+            description: 'Open “Add Element” and browse AIOA categories. Drag elements into rows/columns.',
+          },
+          {
+            title: 'Element Settings',
+            description: 'Use tabs like Content, Style, Advanced. Supports color pickers, icon pickers, repeaters, and responsive controls.',
+          },
+          {
+            title: 'Design Options (CSS Editor)',
+            description: 'Adjust margin, padding, borders, and custom CSS; changes reflect immediately.',
+          },
+          {
+            title: 'Responsive Controls',
+            description: 'Device‑specific parameters for typography, spacing, and visibility (desktop/tablet/mobile).',
+          },
+          {
+            title: 'Frontend & Backend Editors',
+            description: 'Works in both editors with preview support and optimized asset loading.',
+          },
+        ],
+      },
+      templates: {
+        title: 'Templates & Import/Export',
+        bullets: [
+          'Browse 60+ categorized templates (Business, E‑commerce, Portfolio, Blog).',
+          'One‑click import; templates are fully editable in WPBakery.',
+          'Export your layouts to reuse across sites.',
+        ],
+      },
+      analytics: {
+        title: 'Analytics & Performance',
+        bullets: [
+          'Element usage statistics (top elements, per‑page usage).',
+          'Conditional asset loading status and reduction metrics.',
+          'Insights to disable unused elements for faster load times.',
+        ],
+      },
+    },
+    settingsSections: [
+      {
+        key: 'global',
+        icon: 'sliders',
+        title: 'Global Settings',
+        items: [
+          'Brand colors and typography defaults',
+          'Container widths, spacing, and breakpoints',
+          'RTL, translation, and accessibility options',
+          'Custom CSS and code snippets',
+        ],
+      },
+      {
+        key: 'elements',
+        icon: 'list-checks',
+        title: 'Elements Manager',
+        items: [
+          'Enable/disable individual elements or entire categories',
+          'Search and filter by status, category, or keyword',
+          'Restore defaults and export element states',
+        ],
+      },
+      {
+        key: 'extensions',
+        icon: 'puzzle',
+        title: 'Extensions',
+        items: [
+          'Wrapper Link, Sticky Element, Reveal Effects',
+          'Parallax, Shape Dividers, Gradient Backgrounds',
+          'Advanced Typography and Visibility Controls',
+        ],
+      },
+      {
+        key: 'performance',
+        icon: 'gauge',
+        title: 'Performance',
+        items: [
+          'Conditional asset loading (load only used assets)',
+          'Inline critical CSS and defer non‑critical scripts',
+          'Dequeue unused assets; monitor payload reductions',
+        ],
+      },
+      {
+        key: 'templates',
+        icon: 'layers',
+        title: 'Templates',
+        items: [
+          'Browse and import 60+ templates by category',
+          'Export/import layouts to reuse across projects',
+          'Favorites and recently used templates',
+        ],
+      },
+      {
+        key: 'integrations',
+        icon: 'plug',
+        title: 'Integrations',
+        items: [
+          'WooCommerce elements and builders',
+          'CF7, Gravity Forms, WPForms, Ninja Forms stylers',
+          'ACF, JetEngine, Toolset, Pods, MetaBox dynamic fields',
+          'WPML, Polylang translation support',
+        ],
+      },
+    ],
+    elementsMeta: {
+      total: 538,
+      wooCommerce: 90,
+      extensions: 15,
+      templates: 60,
+    },
+    elementCategories: [
+      {
+        name: 'Content',
+        count: 60,
+        description: 'Headings, text, lists, buttons, tabs, accordions, pricing tables, testimonials, callouts.',
+        examples: [
+          { name: 'Advanced Heading', description: 'Highly customizable headings with highlights and styles.' },
+          { name: 'Pricing Table', description: 'Feature comparison tables with CTAs and badges.' },
+          { name: 'Accordion / Tabs', description: 'Organize content with collapsible sections and tabs.' },
+        ],
+      },
+      {
+        name: 'WooCommerce',
+        count: 90,
+        description: 'Product grids, carousels, single product builder, carts, checkout components.',
+        examples: [
+          { name: 'Product Grid', description: 'Responsive product listings with filters and quick view.' },
+          { name: 'Product Carousel', description: 'Scrollable product showcase with ratings and prices.' },
+          { name: 'Category Grid', description: 'Showcase product categories with counts and images.' },
+        ],
+      },
+      {
+        name: 'Marketing',
+        count: 50,
+        description: 'Popups, countdowns, sticky bars, CTA sections, social proof alerts.',
+        examples: [
+          { name: 'Popup Builder', description: 'Exit intent, time delay, and on‑click triggers with templates.' },
+          { name: 'Countdown Timer', description: 'Multiple styles with real‑time updates and expiry states.' },
+          { name: 'Sticky Bar', description: 'Persistent announcement and promo bars with CTA.' },
+        ],
+      },
+      {
+        name: 'Media',
+        count: 45,
+        description: 'Galleries, lightboxes, sliders, video embeds, image hotspots.',
+        examples: [
+          { name: 'Image Gallery', description: 'Filterable grid with lightbox and keyboard navigation.' },
+          { name: 'Hero Slider', description: 'Fullscreen slides with animations and autoplay.' },
+          { name: 'Video Popup', description: 'Open videos in a modal with overlay and controls.' },
+        ],
+      },
+      {
+        name: 'Dynamic',
+        count: 40,
+        description: 'ACF, Toolset, JetEngine, Pods, MetaBox field renderers with loops and templates.',
+        examples: [
+          { name: 'ACF Repeater Grid', description: 'Render repeater rows as cards with full styling.' },
+          { name: 'Custom Field Badge', description: 'Show field values as labels, chips, or badges.' },
+        ],
+      },
+      {
+        name: 'Navigation',
+        count: 28,
+        description: 'Menus, breadcrumbs, pagination, table of contents, anchors.',
+        examples: [
+          { name: 'Breadcrumbs', description: 'SEO‑friendly navigation trail with schema support.' },
+          { name: 'Table of Contents', description: 'Auto‑generated ToC with smooth scrolling anchors.' },
+        ],
+      },
+      {
+        name: 'Forms',
+        count: 35,
+        description: 'Contact Form 7, Gravity Forms, WPForms, Ninja Forms styling and integrations.',
+        examples: [
+          { name: 'CF7 Styler', description: 'Style Contact Form 7 forms to match your brand.' },
+          { name: 'Gravity Forms Styler', description: 'Enhance Gravity Forms layouts and components.' },
+        ],
+      },
+      {
+        name: 'Post',
+        count: 50,
+        description: 'Blog/post grids, carousels, author boxes, related posts, featured posts, query loops.',
+        examples: [
+          { name: 'Post Grid', description: 'Display posts with categories, meta, and pagination.' },
+          { name: 'Post Carousel', description: 'Scrollable featured posts with responsive cards.' },
+        ],
+      },
+      {
+        name: 'Data Display',
+        count: 40,
+        description: 'Tables, charts, counters, timelines, logo grids, maps.',
+        examples: [
+          { name: 'Data Table', description: 'Sortable, paginated tables with responsive design.' },
+          { name: 'Charts', description: 'Bar, line, pie charts powered by Chart.js.' },
+        ],
+      },
+      {
+        name: 'Sliders',
+        count: 20,
+        description: 'Hero sliders, carousels, logo sliders, post sliders, 3D sliders.',
+        examples: [
+          { name: 'Hero Slider', description: 'Fullscreen hero with autoplay and progress.' },
+          { name: 'Logo Slider', description: 'Showcase brand logos with smooth animations.' },
+        ],
+      },
+      {
+        name: 'Utility',
+        count: 30,
+        description: 'Code blocks, visibility controls, cookie notices, scroll progress, shortcodes.',
+        examples: [
+          { name: 'Code Highlight', description: 'Display code with syntax highlighting.' },
+          { name: 'Conditional Display', description: 'Show/hide content based on conditions.' },
+        ],
+      },
+      {
+        name: 'Events',
+        count: 20,
+        description: 'Calendars, schedules, RSVPs, speakers, event locations.',
+        examples: [
+          { name: 'Event Calendar', description: 'Monthly/weekly calendars with events.' },
+          { name: 'Schedule List', description: 'Agenda lists with times and speakers.' },
+        ],
+      },
+      {
+        name: 'Email',
+        count: 12,
+        description: 'Email template builder, workflows, automations, analytics.',
+        examples: [
+          { name: 'Email Template Builder', description: 'Design transactional emails visually.' },
+          { name: 'Newsletter Signup', description: 'Collect subscribers with styled forms.' },
+        ],
+      },
+      {
+        name: 'Auth',
+        count: 10,
+        description: 'Login, registration, two-factor, email verification, social login.',
+        examples: [
+          { name: 'Advanced Login Form', description: 'Customizable login with extra fields.' },
+          { name: 'Two‑Factor Auth', description: 'Add an extra security layer to logins.' },
+        ],
+      },
+      {
+        name: 'Payment',
+        count: 12,
+        description: 'Payment calculators, gateways, invoices, trust seals.',
+        examples: [
+          { name: 'Payment Method Icons', description: 'Display supported payment brands.' },
+          { name: 'Tax Calculator', description: 'Inline calculators for checkout flows.' },
+        ],
+      },
+      {
+        name: 'Sales & Promotions',
+        count: 20,
+        description: 'Flash sales, badges, timers, deal banners, bundles.',
+        examples: [
+          { name: 'Flash Sale Grid', description: 'Highlight limited‑time offers with urgency.' },
+          { name: 'Sale Badges', description: 'Dynamic badges with rules (low stock, new).'},
+        ],
+      },
+      {
+        name: 'Header & Footer',
+        count: 12,
+        description: 'Custom headers/footers, sticky header, menus, search, 404 builder.',
+        examples: [
+          { name: 'Header Builder', description: 'Compose header layouts with menus and search.' },
+          { name: 'Footer Builder', description: 'Design footers with widgets and credits.' },
+        ],
+      },
+    ],
+    tutorials: {
+      useCases: [
+        {
+          title: 'Business Landing Page',
+          summary: 'Hero, features, social proof, pricing, and CTA for conversions.',
+          elements: ['Hero Slider', 'Advanced Heading', 'Testimonials', 'Pricing Table', 'CTA'],
+        },
+        {
+          title: 'E‑commerce Homepage',
+          summary: 'Category highlights, product grids, promos, and newsletter capture.',
+          elements: ['Category Grid', 'Product Grid', 'Countdown Timer', 'Popup Builder'],
+        },
+        {
+          title: 'Portfolio Gallery',
+          summary: 'Filterable image grid with lightbox and case study links.',
+          elements: ['Image Gallery', 'Advanced Heading', 'Buttons'],
+        },
+        {
+          title: 'SaaS Features Page',
+          summary: 'Explain features, comparisons, and plans; prompt signups.',
+          elements: ['Advanced Heading', 'Tabs', 'Pricing Table', 'CTA'],
+        },
+      ],
+      guides: [
+        {
+          title: 'Create a Product Grid with Filters and Quick View',
+          level: 'Beginner',
+          duration: '15 min',
+          steps: [
+            'Edit your homepage with WPBakery and add a Row → Column.',
+            'Open Add Element → search “Product Grid” and insert.',
+            'In Query, choose Recent or filter by category; enable badges and ratings.',
+            'Enable Filters (All/Featured/Sale) and Quick View modal.',
+            'Save changes and preview — confirm filters and modal function.',
+          ],
+        },
+        {
+          title: 'Design a Hero Section with Animated Heading',
+          level: 'Beginner',
+          duration: '10 min',
+          steps: [
+            'Add “Hero Slider” or a full‑width Row with background image.',
+            'Insert “Advanced Heading” and set eyebrow, title, and highlighted keyword.',
+            'Configure alignment, gradient text, and reveal animation.',
+            'Add two Buttons (Primary/Outline) and adjust spacing in Design Options.',
+          ],
+        },
+        {
+          title: 'Build a Newsletter Popup with Exit Intent',
+          level: 'Intermediate',
+          duration: '15 min',
+          steps: [
+            'Go to WPBakery Addons → Extensions and enable Popup Builder.',
+            'Create a popup: select template (Newsletter) and set content and image.',
+            'Set Trigger → Exit Intent (and optionally time delay).',
+            'Publish and visit the page — move cursor out to trigger the popup.',
+          ],
+        },
+        {
+          title: 'Create an Image Gallery with Lightbox',
+          level: 'Beginner',
+          duration: '12 min',
+          steps: [
+            'Add Element → “Image Gallery” and select images.',
+            'Enable categories (Nature/Architecture/People) for filtering.',
+            'Turn on Lightbox with keyboard navigation and captions.',
+            'Adjust columns per device and hover zoom style.',
+          ],
+        },
+        {
+          title: 'Build a Pricing Section with Billing Toggle',
+          level: 'Intermediate',
+          duration: '20 min',
+          steps: [
+            'Insert “Pricing Table” and add three plans (Basic/Pro/Enterprise).',
+            'Mark Pro as Featured and add a savings badge.',
+            'Enable Monthly/Yearly toggle with animated switch.',
+            'Add feature lists, CTAs, and responsive spacing.',
+          ],
+        },
+        {
+          title: 'Add a Countdown Timer for a Flash Sale',
+          level: 'Beginner',
+          duration: '8 min',
+          steps: [
+            'Insert “Countdown Timer” and choose a style (Blocks/Circular/Flip).',
+            'Set end date/time and expired behavior (message/CTA).',
+            'Enable progress rings (Circular) and gradient numbers.',
+          ],
+        },
+        {
+          title: 'Compose a WooCommerce Homepage',
+          level: 'Advanced',
+          duration: '30 min',
+          steps: [
+            'Add hero with “Advanced Heading” and CTA buttons.',
+            'Place “Category Grid” followed by “Product Grid” (new/featured).',
+            'Add “Countdown Timer” for promotions and a “Popup Builder” capture.',
+            'Finish with testimonials and a “Pricing Table”/shipping info section.',
+          ],
+        },
+      ],
+    },
+    advanced: {
+      performance: {
+        title: 'Performance Optimization',
+        bullets: [
+          'Conditional asset loading ensures only used element assets are loaded.',
+          'Disable unused elements in EA WPBakery > Elements to reduce payload.',
+          'Inline critical CSS and defer non‑critical scripts where possible.',
+          'Use caching and CDN; verify with Performance Monitor and PageSpeed.',
+        ],
+      },
+      analytics: {
+        title: 'Analytics Architecture',
+        bullets: [
+          'Custom analytics database table for scalable usage tracking (25.0.1+).',
+          'Migration utility and data retention/cleanup routines.',
+          'Metrics: element usage, per‑page usage; no personal data collected.',
+          'Real‑time monitoring via Query Monitor integration (25.0.2).',
+        ],
+      },
+      backgroundTasks: {
+        title: 'Background Tasks',
+        bullets: [
+          'Non‑blocking tasks for analytics processing and maintenance.',
+          'Pause/resume controls; safe to run on production.',
+          'Task logging and error handling for reliability.',
+        ],
+      },
+      multisite: {
+        title: 'Multisite & Network Activation',
+        bullets: [
+          'Network activation support; per‑site vs network‑wide settings.',
+          'Automatic activation on new sites (wpmu_new_blog hook).',
+          'Clean uninstall with namespaced options and cache flush.',
+        ],
+      },
+      developer: {
+        title: 'Developer Hooks & Extensibility',
+        bullets: [
+          'WPBakery API: vc_map(), vc_add_params(), vc_map_get_attributes().',
+          'Custom param types and autocomplete callbacks.',
+          'Action hooks: vc_before_init (register elements/extensions).',
+          'Filters: deactivation reasons, shortcode output modifiers.',
+        ],
+      },
+      security: {
+        title: 'Security & Standards',
+        bullets: [
+          'WordPress Coding Standards (PHPCS) compliance.',
+          'Strict sanitization and escaping for all user input/output.',
+          'No external tracking; local analytics stored in your DB only.',
+        ],
+      },
+    },
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Guides, FAQs, and contact options.' },
+        { title: 'Submit a Ticket', href: '/support/submit-ticket', description: 'Get help from our support team.' },
+        { title: 'Contact', href: '/contact', description: 'General inquiries and pre‑sales questions.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/eaf-wpbakery', description: 'Features, pricing, and purchase options.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Check and validate your license status.' },
+      ],
+      learning: [
+        { title: 'WPBakery Knowledge Base', href: 'https://kb.wpbakery.com/', description: 'Official builder docs and best practices.' },
+        { title: 'WordPress Plugin Developer Handbook', href: 'https://developer.wordpress.org/plugins/', description: 'Standards, APIs, and tutorials.' },
+      ],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License types and usage terms.' },
+        { title: 'Privacy Policy', href: '/privacy', description: 'How we handle your data.' },
+        { title: 'Refund Policy', href: '/refund-policy', description: 'Money‑back guarantee terms.' },
+        { title: 'Terms of Service', href: '/terms', description: 'Legal agreement and acceptable use.' },
+      ],
+    },
+    developerDocs: {
+      constants: [
+        { name: 'AIOA_WPB_VERSION', description: 'Plugin version constant used for cache-busting assets.' },
+        { name: 'AIOA_WPB_ASSETS_URL', description: 'Base URL for plugin CSS/JS/icons.' },
+        { name: 'AIOA_WPB_ELEMENTS_PATH', description: 'Filesystem path to element definitions and templates.' },
+      ],
+      actions: [
+        'vc_before_init — Register elements/extensions and custom params',
+        'vc_frontend_editor_enqueue_scripts — Enqueue frontend editor assets',
+        'wp_enqueue_scripts — Enqueue frontend assets for public pages',
+        'admin_enqueue_scripts — Enqueue admin/assets for settings and builder',
+        'wpmu_new_blog — Auto-activate on new sites (Multisite)',
+        'aioa_wpb_cleanup_old_data — Scheduled cleanup (analytics, caches)'
+      ],
+      ajax: [
+        'wp_ajax_aioa_wpb_toggle_element',
+        'wp_ajax_aioa_wpb_bulk_toggle',
+        'wp_ajax_aioa_wpb_export_settings',
+        'wp_ajax_aioa_wpb_import_settings',
+        'wp_ajax_aioa_wpb_clear_cache'
+      ],
+      storage: {
+        options: [
+          'aioa_wpb_options',
+          'aioa_wpb_disabled_elements',
+          'aioa_wpb_enabled_extensions',
+          'aioa_wpb_integrations',
+          'aioa_wpb_version',
+          'aioa_wpb_element_usage (legacy)',
+        ],
+        transients: [
+          'aioa_wpb_discovered_elements',
+          'aioa_wpb_elements_cache',
+        ],
+        database: [
+          'Table: wp_aioa_wpb_analytics (uses $wpdb->prefix; Multisite-aware)',
+          'Version option: aioa_wpb_analytics_db_version',
+          'Helper: AIOA_WPB_Analytics_Database::table_name()'
+        ],
+      },
+      examples: [
+        {
+          title: 'Register an element (vc_map) and enqueue assets in shortcode class',
+          code: `add_action( 'vc_before_init', function() {
+    vc_map( array(
+        'name'        => __( 'Advanced Heading', 'essential-addons-for-wpbakery' ),
+        'base'        => 'aioa_advanced_heading',
+        'category'    => __( 'AIOA Content', 'essential-addons-for-wpbakery' ),
+        'icon'        => AIOA_WPB_ASSETS_URL . 'icons/advanced-heading.svg',
+        'params'      => array( /* ... */ ),
+    ) );
+} );
+
+class WPBakeryShortCode_AIOA_Advanced_Heading extends WPBakeryShortCode {
+    protected static $assets_enqueued = false;
+    protected function enqueue_assets() {
+        if ( self::$assets_enqueued ) return;
+        $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+        wp_enqueue_style( 'aioa-advanced-heading', AIOA_WPB_ASSETS_URL . 'css/elements/advanced-heading' . $suffix . '.css', array(), AIOA_WPB_VERSION );
+        wp_enqueue_script( 'aioa-advanced-heading', AIOA_WPB_ASSETS_URL . 'js/elements/advanced-heading' . $suffix . '.js', array( 'jquery' ), AIOA_WPB_VERSION, true );
+        self::$assets_enqueued = true;
+    }
+    protected function content( $atts, $content = null ) {
+        $this->enqueue_assets();
+        // Render template...
+    }
+}`,
+        },
+        {
+          title: 'Frontend editor assets',
+          code: `add_action( 'vc_frontend_editor_enqueue_scripts', function () {
+    wp_enqueue_style( 'aioa-all-elements', AIOA_WPB_ASSETS_URL . 'css/all-elements.css', array(), AIOA_WPB_VERSION );
+    wp_enqueue_script( 'aioa-frontend-editor', AIOA_WPB_ASSETS_URL . 'js/frontend-editor.js', array( 'jquery' ), AIOA_WPB_VERSION, true );
+} );`,
+        },
+        {
+          title: 'Custom param type (icon picker)',
+          code: `add_action( 'vc_before_init', function () {
+    vc_add_shortcode_param( 'aioa_icon', 'aioa_wpb_icon_picker_field', AIOA_WPB_ASSETS_URL . 'js/params/icon-picker.js' );
+} );`,
+        },
+        {
+          title: 'Autocomplete param callbacks',
+          code: `// In vc_map(): 'type' => 'autocomplete', 'param_name' => 'post_ids', 'settings' => array( 'multiple' => true )
+add_filter( 'vc_autocomplete_aioa_advanced_heading_post_ids_callback', 'my_aioa_posts_suggest', 10, 1 );
+add_filter( 'vc_autocomplete_aioa_advanced_heading_post_ids_render',   'my_aioa_posts_render', 10, 1 );
+
+function my_aioa_posts_suggest( $query ) {
+    $results = array();
+    $posts = get_posts( array( 's' => $query, 'post_type' => 'post', 'posts_per_page' => 20 ) );
+    foreach ( $posts as $p ) {
+        $results[] = array( 'value' => $p->ID, 'label' => $p->post_title );
+    }
+    return $results;
+}
+function my_aioa_posts_render( $term ) {
+    $p = get_post( (int) $term['value'] );
+    return array( 'value' => $p->ID, 'label' => $p->post_title );
+}`,
+        },
+        {
+          title: 'Cleanup on uninstall (flush VC cache & plugin cleanup)',
+          code: `if ( function_exists( 'vc_flush_template_cache' ) ) {
+    vc_flush_template_cache();
+}
+if ( class_exists( 'AIOA_WPB_WPBakery_Integration' ) ) {
+    AIOA_WPB_WPBakery_Integration::cleanup_on_uninstall();
+}`,
+        },
+      ],
+    },
+    quickStart: {
+      title: 'Quick Start Guide',
+      subtitle: 'Get up and running in 5 minutes',
+      steps: [
+        {
+          title: '1. Install & Activate',
+          description: 'Install and activate the plugin (via search or ZIP upload) from WordPress Admin > Plugins.',
+          icon: 'download',
+        },
+        {
+          title: '2. Configure Elements',
+          description: 'Go to EA WPBakery in the admin menu. Enable/disable elements as needed (all enabled by default).',
+          icon: 'settings',
+        },
+        {
+          title: '3. Open WPBakery Editor',
+          description: 'Edit any page with WPBakery. Click "Add Element" to see all 538+ elements organized by category.',
+          icon: 'edit',
+        },
+        {
+          title: '4. Build Your Page',
+          description: 'Drag elements to your page, customize with live preview, and publish. Import templates for faster start.',
+          icon: 'rocket',
+        },
+      ],
+    },
+    keyBenefits: [
+      {
+        title: 'Build Faster',
+        description: '60 ready-made templates and 538+ elements mean you can create professional pages in minutes, not hours.',
+        icon: 'zap',
+      },
+      {
+        title: 'Convert Better',
+        description: 'Built-in popup builder, exit intent, countdown timers, and social proof tools boost conversions by up to 40%.',
+        icon: 'trending-up',
+      },
+      {
+        title: 'Load Faster',
+        description: 'Conditional asset loading ensures only used elements load, resulting in 40-60% faster page loads and perfect PageSpeed scores.',
+        icon: 'gauge',
+      },
+      {
+        title: 'Design Anything',
+        description: 'From simple landing pages to complex e-commerce sites, 538+ elements cover every design scenario.',
+        icon: 'layers',
+      },
+    ],
+    configuration: `After installation, configure Essential Addons from **WordPress Admin > WPBakery Addons**:
+
+**Dashboard:** View plugin statistics, enabled elements count, active templates, and quick links to documentation.
+
+**Elements:** Enable/disable any of the 538+ elements with a single click. Disable unused elements to optimize performance.
+
+**Extensions:** Toggle 15 extensions including Wrapper Link, Sticky Element, Parallax, Reveal Effects, Shape Dividers, and more.
+
+**Templates:** Browse and import 60+ professional templates organized by category (Business, E-commerce, Portfolio, Blog).
+
+**Performance:** Monitor performance metrics, most-used elements, and asset loading statistics. Export data for analysis.
+
+**Settings:** Configure global settings, API keys for third-party integrations, custom CSS, and advanced options.
+
+**Analytics:** Track element usage, page load times, template imports, and user interactions to optimize your workflow.
+
+All settings auto-save and apply instantly. Changes reflect immediately in the WPBakery editor.`,
+    troubleshooting: [
+      {
+        question: 'Elements not visible in WPBakery editor?',
+        answer: 'Ensure WPBakery Page Builder is installed, activated, and up to date (v6.0+). Go to WPBakery Addons > Elements and verify elements are enabled. Clear browser and WordPress cache, then refresh the page editor. If still not visible, check for JavaScript errors in browser console.',
+      },
+      {
+        question: 'Elements appear but styles not loading?',
+        answer: 'Go to WPBakery Addons > Performance and ensure conditional asset loading is working. Clear all caches (browser, WordPress, CDN). Regenerate CSS from WPBakery Tools > Regenerate CSS. Check file permissions in /wp-content/uploads/ directory.',
+      },
+      {
+        question: 'Slow page load times?',
+        answer: 'Disable unused elements in WPBakery Addons > Elements to reduce asset loading. Enable conditional loading in Performance settings. Minify and combine CSS/JS files. Use a caching plugin like WP Rocket or W3 Total Cache. Consider upgrading hosting for better PHP performance.',
+      },
+      {
+        question: 'Template import fails?',
+        answer: 'Increase PHP max_execution_time to 300 seconds and upload_max_filesize to 64MB in php.ini. Check WordPress memory limit (should be 256MB+). Disable conflicting plugins temporarily during import. Try importing smaller templates first to test.',
+      },
+      {
+        question: 'Dynamic content not displaying?',
+        answer: 'Ensure required plugins are installed: ACF Pro, JetEngine, Toolset, Pods, or MetaBox depending on your field source. Verify custom fields are configured correctly and have data. Check field type compatibility with the element. Clear object cache if using Redis/Memcached.',
+      },
+      {
+        question: 'Conflicts with other plugins?',
+        answer: 'Deactivate other plugins one by one to identify the conflict. Common conflicts occur with other WPBakery addon plugins, caching plugins with aggressive settings, and security plugins blocking AJAX. Contact support with error logs for specific conflict resolution.',
+      },
+      {
+        question: 'Popup builder not working?',
+        answer: 'Ensure popups are enabled in WPBakery Addons > Extensions. Check popup trigger settings (on load, on exit, on click). Clear JavaScript cache. Verify no JavaScript errors in browser console. Test with default WordPress theme to rule out theme conflicts.',
+      },
+      {
+        question: 'WooCommerce elements not appearing?',
+        answer: 'Ensure WooCommerce plugin is installed and activated (v4.0+). Go to WPBakery Addons > Elements and verify WooCommerce elements are enabled. WooCommerce elements only appear when editing WooCommerce-related pages (Shop, Product, Cart, Checkout).',
+      },
+      {
+        question: 'Seeing notice: “Requires WPBakery Page Builder” or elements missing entirely?',
+        answer: 'Activate and update WPBakery Page Builder. The plugin shows an admin notice when WPBakery is not detected (Vc_Manager). After activation, reload the editor and verify elements under EA WPBakery > Elements.',
+      },
+      {
+        question: 'Minimum PHP version warning?',
+        answer: 'Essential Addons requires PHP 7.4+. Upgrade PHP in your hosting control panel or contact your host. After upgrading, clear all caches and reload WP admin.',
+      },
+      {
+        question: 'Elements not registering (vc_before_init not firing)?',
+        answer: 'Update WPBakery to latest, temporarily disable other addon plugins, and check debug.log for fatal errors. Registration hooks run on vc_before_init; conflicts can prevent element maps from loading.',
+      },
+      {
+        question: 'Frontend editor assets missing or 404s?',
+        answer: 'Open DevTools Network tab and look for 404s. Disable optimization plugins combining/minifying VC assets. Clear CDN cache. The plugin enqueues frontend/editor assets via vc_frontend_editor_enqueue_scripts and admin enqueue hooks.',
+      },
+      {
+        question: 'Wrapper Link not working on click?',
+        answer: 'Enable “Wrapper Link” in element params and set a valid Link. Ensure no inner anchor overlays the wrapper, and verify JS console has no errors. Click area excludes direct anchor clicks by design.',
+      },
+      {
+        question: 'Sticky Element not sticking?',
+        answer: 'The Sticky extension uses CSS position: sticky. Ensure the parent container does not have overflow hidden and set a Top Offset. Sticky behavior is scoped to the nearest scroll container.',
+      },
+      {
+        question: 'Analytics not recording / migration issues?',
+        answer: 'Enable analytics in EA WPBakery settings and use the custom analytics table (25.0.1+). Run the migration utility if prompted, verify DB privileges, and check debug.log for SQL errors. Clear caches and retry.',
+      },
+      {
+        question: 'Elements list looks incomplete after updates?',
+        answer: 'Rebuild the discovery cache by deactivating/reactivating the plugin, or programmatically delete the transient aioa_wpb_discovered_elements. Then reload EA WPBakery > Elements.',
+      },
+      {
+        question: 'Multisite: new sites missing activation?',
+        answer: 'Network‑activate the plugin. The plugin hooks into wpmu_new_blog to auto‑activate per new site. If disabled, activate per‑site from Network Admin > Sites > Edit > Plugins.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Do I need WPBakery Pro to use this plugin?',
+        answer: 'Yes, Essential Addons requires the premium version of WPBakery Page Builder (v6.0 or higher). It does not work with the free/bundled versions. WPBakery Pro can be purchased from CodeCanyon or comes bundled with many premium themes.',
+      },
+      {
+        question: 'Will this slow down my website?',
+        answer: 'No! Essential Addons uses conditional asset loading, meaning only the CSS and JavaScript for elements you actually use on a page will load. This results in 40-60% faster page loads compared to loading all assets. Many users see improved PageSpeed scores after installation.',
+      },
+      {
+        question: 'Can I use this with Elementor?',
+        answer: 'No, Essential Addons for WPBakery is specifically designed for WPBakery Page Builder. For Elementor, check out our PJ Essential Addons for Elementor plugin which offers similar functionality.',
+      },
+      {
+        question: 'Does this work with any WordPress theme?',
+        answer: 'Yes! Essential Addons works with any WordPress theme that is compatible with WPBakery Page Builder. Most modern premium themes include WPBakery compatibility.',
+      },
+      {
+        question: 'Can I create custom templates and share them?',
+        answer: 'Absolutely! Build your page, then export it from WPBakery Addons > Templates. Share the exported template file with others who can import it on their sites. Great for agencies managing multiple client sites.',
+      },
+      {
+        question: 'Is this translation ready?',
+        answer: 'Yes, Essential Addons is fully translation-ready with complete .pot file included. It works with WPML, Polylang, TranslatePress, and Weglot. All strings are properly internationalized for easy translation.',
+      },
+      {
+        question: 'Do I get updates and support?',
+        answer: 'Yes! Your purchase includes lifetime updates and 6 months of premium support (extendable to 12 months). Updates are released monthly with new features, elements, and bug fixes. Support is provided via email and support ticket system.',
+      },
+      {
+        question: 'Can I use this on multiple sites?',
+        answer: 'License terms depend on your purchase. Regular License allows use on 1 site. Extended License allows use on unlimited sites. Check your purchase confirmation or CodeCanyon account for specific license details.',
+      },
+      {
+        question: 'How is this different from other WPBakery addons?',
+        answer: 'Essential Addons offers 538+ elements (most competitors offer 80-150), includes 90+ WooCommerce elements (vs 20-30), comes with 60 templates (vs 10-15), has 15 extensions (vs 3-5), and uses conditional loading for better performance. It&apos;s the most comprehensive WPBakery addon available.',
+      },
+      {
+        question: 'Do you offer refunds?',
+        answer: 'Yes, we offer a 30-day money-back guarantee. If Essential Addons doesn&apos;t meet your needs, contact our support team within 30 days of purchase for a full refund, no questions asked.',
+      },
+      {
+        question: 'Does the plugin collect personal data?',
+        answer: 'No. Analytics track element usage only and are stored locally in your WordPress database. No external tracking or third‑party data transfer.',
+      },
+      {
+        question: 'Can I disable analytics or switch storage mode?',
+        answer: 'Yes. Use EA WPBakery settings to disable analytics or enable the custom analytics table (25.0.1+). Migration utilities guide you through switching modes.',
+      },
+      {
+        question: 'Can I keep data on uninstall?',
+        answer: 'Use the “Keep Data on Uninstall” setting (when available) before uninstalling. Otherwise, uninstall removes namespaced options, caches, and analytics data.',
+      },
+      {
+        question: 'Which WPBakery versions are supported?',
+        answer: 'Tested with WPBakery 6.x and 7.9. Always keep WPBakery up to date for best compatibility.',
+      },
+      {
+        question: 'How do I refresh the element discovery cache?',
+        answer: 'Deactivate/activate the plugin or programmatically delete the transient aioa_wpb_discovered_elements, then revisit EA WPBakery > Elements.',
+      },
+      {
+        question: 'Is Multisite supported?',
+        answer: 'Yes. Network‑activate the plugin for all sites or activate per‑site. New blogs can auto‑activate via wpmu_new_blog hook.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.0.0',
+        date: '2025-10-29',
+        changes: [
+          'Major release with production-ready optimizations',
+          'Fixed Analytics page Chart.js enqueue and variable naming issues',
+          'Fixed Quick Export toggle state persistence',
+          'Fixed Background Tasks pause/resume functionality',
+          'Updated admin.js nonce handling for security',
+          'Improved performance monitoring and metrics',
+          'Enhanced error handling across all admin pages',
+          'Optimized database queries with proper caching',
+          'Added comprehensive security audit compliance',
+          'Updated WordPress Coding Standards compliance',
+          'Code quality improvements across all modules',
+          'Enhanced AJAX handlers with proper validation',
+        ],
+      },
+      {
+        version: '24.5.0',
+        date: '2024-12-15',
+        changes: [
+          'Added 25 new elements across various categories',
+          'Introduced Popup Builder with exit intent triggers',
+          'Added sticky element extension',
+          'Performance improvements: 40-60% faster page loads',
+          'New template library with 15 additional templates',
+          'Enhanced WooCommerce integration with 10 new elements',
+          'Improved dynamic content handling for ACF and JetEngine',
+          'Added visual dashboard with analytics',
+          'Bug fixes and stability improvements',
+        ],
+      },
+    ],
+  },
+  'pj-product-filter': {
+    name: 'PJ Product Filter',
+    type: 'plugin',
+    version: '3.2.0',
+    category: 'E-commerce',
+    description: 'Intelligent Filters. Maximum Conversions. Zero Compromise.',
+    overview: `PJ Product Filter is the most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.
+
+Transform your product catalog into a conversion machine with smart filtering that helps customers find exactly what they need.`,
+    features: [
+      'AI-Powered Recommendations',
+      'Advanced AJAX Filtering',
+      'Visual Search',
+      'Price Range Slider',
+      'Color & Image Swatches',
+      'Multi-Select Filters',
+      'Search Auto-complete',
+      'Mobile Optimized',
+      'SEO Friendly URLs',
+      'Analytics Dashboard',
+    ],
+    installation: {
+      steps: [
+        'Download the plugin',
+        'Install via WordPress Admin > Plugins',
+        'Activate the plugin',
+        'Go to WooCommerce > Product Filters',
+        'Create your first filter',
+        'Add to shop page via shortcode or widget',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'WooCommerce 7.0 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Access settings from WooCommerce > Product Filters. Configure filter types, styling, and behavior options.`,
+    troubleshooting: [
+      {
+        question: 'Filters not working on shop page?',
+        answer: 'Check that WooCommerce is properly installed and your theme supports standard WooCommerce templates.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Does it work with variable products?',
+        answer: 'Yes, PJ Product Filter fully supports WooCommerce variable products and variations.',
+      },
+    ],
+    changelog: [
+      {
+        version: '3.2.0',
+        date: '2025-01-10',
+        changes: [
+          'Added AI recommendations',
+          'Improved mobile experience',
+          'Performance optimizations',
+        ],
+      },
+    ],
+  },
+  'pj-media-library': {
+    name: 'PJ Media Library',
+    type: 'plugin',
+    version: '1.0.0',
+    category: 'Media',
+    description: 'Advanced media management and organization for WordPress',
+    overview: `PJ Media Library transforms the default WordPress media library into a powerful media management system. Organize, search, and manage your media files with ease using folders, tags, and advanced filtering.`,
+    features: [
+      'Folder Organization',
+      'Advanced Search & Filters',
+      'Bulk Operations',
+      'Media Tags',
+      'Image Optimization',
+      'CDN Integration',
+      'File Type Restrictions',
+      'User Permissions',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Media > PJ Media Library',
+        'Start organizing your media',
+      ],
+      requirements: [
+        'WordPress 5.0 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Settings > Media Library. Set up folders, tags, and permissions.`,
+    troubleshooting: [
+      {
+        question: 'Media not showing in folders?',
+        answer: 'Refresh the media library page and ensure JavaScript is enabled in your browser.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I move existing media into folders?',
+        answer: 'Yes, use the bulk operations feature to organize existing media files.',
+      },
+    ],
+    changelog: [
+      {
+        version: '1.0.0',
+        date: '2025-01-01',
+        changes: [
+          'Initial release',
+          'Folder management',
+          'Advanced search',
+        ],
+      },
+    ],
+  },
+  'pj-site-kite': {
+    name: 'PJ Site Kite',
+    type: 'plugin',
+    version: '1.0.0',
+    category: 'Utilities',
+    description: 'Complete site management and optimization toolkit',
+    overview: `PJ Site Kite is your all-in-one WordPress site management and optimization toolkit. Monitor performance, manage backups, optimize databases, and enhance security—all from a single dashboard.`,
+    features: [
+      'Performance Monitoring',
+      'Automated Backups',
+      'Database Optimization',
+      'Security Scanner',
+      'Uptime Monitoring',
+      'SEO Tools',
+      'Cache Management',
+      'Plugin Manager',
+    ],
+    installation: {
+      steps: [
+        'Install and activate the plugin',
+        'Navigate to Dashboard > Site Kite',
+        'Run initial site scan',
+        'Configure optimization settings',
+      ],
+      requirements: [
+        'WordPress 5.5 or higher',
+        'PHP 7.4 or higher',
+        'MySQL 5.6 or higher',
+      ],
+    },
+    configuration: `Access from Dashboard > Site Kite. Configure monitoring intervals, backup schedules, and optimization rules.`,
+    troubleshooting: [
+      {
+        question: 'Backup not working?',
+        answer: 'Check your server has write permissions to the backup directory and sufficient disk space.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Where are backups stored?',
+        answer: 'Backups are stored in your WordPress uploads directory by default, with options for remote storage.',
+      },
+    ],
+    changelog: [
+      {
+        version: '1.0.0',
+        date: '2025-01-05',
+        changes: [
+          'Initial release',
+          'Performance monitoring',
+          'Backup system',
+        ],
+      },
+    ],
+  },
+  'pj-store-kite': {
+    name: 'PJ Store Kite',
+    type: 'plugin',
+    version: '1.0.0',
+    category: 'E-commerce',
+    description: 'Advanced WooCommerce store management and optimization',
+    overview: `PJ Store Kite is the ultimate WooCommerce store management plugin. Optimize your store performance, manage inventory, analyze sales, and automate tasks to boost your e-commerce success.`,
+    features: [
+      'Sales Analytics Dashboard',
+      'Inventory Management',
+      'Order Automation',
+      'Customer Insights',
+      'Email Marketing',
+      'Product Recommendations',
+      'Performance Optimization',
+      'Multi-currency Support',
+    ],
+    installation: {
+      steps: [
+        'Install the plugin',
+        'Activate from Plugins page',
+        'Go to WooCommerce > Store Kite',
+        'Complete initial setup wizard',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'WooCommerce 7.0 or higher',
+        'PHP 8.0 or higher',
+      ],
+    },
+    configuration: `Configure from WooCommerce > Store Kite. Set up analytics, automation rules, and integrations.`,
+    troubleshooting: [
+      {
+        question: 'Analytics not showing data?',
+        answer: 'Ensure WooCommerce is recording sales data and wait 24 hours for initial data collection.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Does it work with WooCommerce subscriptions?',
+        answer: 'Yes, PJ Store Kite fully supports WooCommerce Subscriptions and other popular extensions.',
+      },
+    ],
+    changelog: [
+      {
+        version: '1.0.0',
+        date: '2025-01-08',
+        changes: [
+          'Initial release',
+          'Analytics dashboard',
+          'Automation features',
+        ],
+      },
+    ],
+  },
+  'axiom': {
+    name: 'Axiom',
+    type: 'theme',
+    version: '1.0.0',
+    category: 'Theme',
+    description: 'Premium multipurpose WordPress theme with unlimited possibilities',
+    overview: `Axiom is a premium multipurpose WordPress theme that combines stunning design with powerful functionality. Built with modern web standards and optimized for performance, Axiom gives you unlimited possibilities to create any type of website.
+
+Perfect for agencies, businesses, portfolios, blogs, and e-commerce stores.`,
+    features: [
+      'One-Click Demo Import',
+      '50+ Pre-built Demos',
+      'Drag & Drop Page Builder',
+      'WooCommerce Ready',
+      'Mega Menu',
+      'Header & Footer Builder',
+      'Custom Widgets',
+      'Theme Options Panel',
+      'SEO Optimized',
+      'Speed Optimized',
+      'Translation Ready',
+      'Premium Support',
+    ],
+    installation: {
+      steps: [
+        'Download the theme zip file',
+        'Go to Appearance > Themes > Add New',
+        'Click "Upload Theme" and select the zip',
+        'Click "Install Now" and "Activate"',
+        'Install required plugins when prompted',
+        'Import demo content (optional)',
+        'Customize via Appearance > Customize',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'PHP 7.4 or higher',
+        'MySQL 5.6 or higher',
+        'Recommended: 512MB+ PHP memory',
+      ],
+    },
+    configuration: `Customize your theme from Appearance > Customize. Access theme options, layout settings, typography, colors, and more. Use the Header & Footer builder to create custom layouts.`,
+    troubleshooting: [
+      {
+        question: 'Demo content not importing?',
+        answer: 'Ensure all required plugins are installed and activated. Check your PHP memory limit is at least 256MB.',
+      },
+      {
+        question: 'Page builder not loading?',
+        answer: 'Clear your browser cache and WordPress cache. Ensure JavaScript is enabled.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I use this with Elementor?',
+        answer: 'Yes, Axiom is fully compatible with Elementor, WPBakery, and the WordPress block editor.',
+      },
+      {
+        question: 'Is it compatible with WooCommerce?',
+        answer: 'Absolutely! Axiom includes full WooCommerce integration with custom shop layouts.',
+      },
+      {
+        question: 'Do you provide child theme?',
+        answer: 'Yes, a child theme is included in the download package for safe customizations.',
+      },
+    ],
+    changelog: [
+      {
+        version: '1.0.0',
+        date: '2025-01-20',
+        changes: [
+          'Initial release',
+          '50+ demo layouts',
+          'Header & Footer builder',
+          'WooCommerce integration',
+          'Performance optimizations',
+        ],
+      },
+    ],
+  },
+};
+
+export async function generateStaticParams() {
+  return Object.keys(products).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
+  const product = products[params.slug as keyof typeof products];
+
+  if (!product) {
+    return {
+      title: 'Documentation Not Found',
+    };
+  }
+
+  return {
+    title: `${product.name} - Documentation | PrintJones`,
+    description: product.description,
+  };
+}
+
+export default function ProductDocPage({ params }: DocPageProps) {
+  const product = products[params.slug as keyof typeof products];
+
+  if (!product) {
+    notFound();
+  }
+
+  const Icon = product.type === 'theme' ? Palette : Package;
+  const iconColor = product.type === 'theme' ? 'text-purple-600' : 'text-blue-600';
+  const iconBgColor = product.type === 'theme' ? 'bg-purple-100' : 'bg-blue-100';
+
+  const pluginDetailSlug = (product && 'pluginSlug' in product && (product as any).pluginSlug)
+    ? (product as any).pluginSlug
+    : params.slug;
+
+  return (
+    <div className="container mx-auto px-4 lg:px-8 py-12">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-8">
+          <Link
+            href="/docs"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 mb-6"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Documentation
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-start gap-6 mb-6">
+            <div className={`h-16 w-16 rounded-xl ${iconBgColor} flex items-center justify-center flex-shrink-0`}>
+              <Icon className={`h-8 w-8 ${iconColor}`} />
+            </div>
+            <div className="flex-1">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <h1 className="text-3xl lg:text-4xl font-bold text-black">{product.name}</h1>
+                <Badge variant="outline">v{product.version}</Badge>
+              </div>
+              <p className="text-lg text-gray-600 mb-4">{product.description}</p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary">{product.category}</Badge>
+                <Badge variant="secondary" className={product.type === 'theme' ? 'bg-purple-100 text-purple-700' : ''}>
+                  {product.type === 'theme' ? 'WordPress Theme' : 'WordPress Plugin'}
+                </Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Tabs defaultValue="overview" className="w-full">
+        <TabsList className="grid w-full grid-cols-3 lg:grid-cols-12 mb-8">
+            <TabsTrigger value="overview">
+              <BookOpen className="h-4 w-4 mr-2" />
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="installation">
+              <Download className="h-4 w-4 mr-2" />
+              Installation
+            </TabsTrigger>
+          <TabsTrigger value="core">
+            <LayoutDashboard className="h-4 w-4 mr-2" />
+            Core
+          </TabsTrigger>
+            <TabsTrigger value="elements">
+              <Puzzle className="h-4 w-4 mr-2" />
+              Elements
+            </TabsTrigger>
+            <TabsTrigger value="configuration">
+              <Settings className="h-4 w-4 mr-2" />
+              Configuration
+            </TabsTrigger>
+            <TabsTrigger value="advanced">
+              <Wrench className="h-4 w-4 mr-2" />
+              Advanced
+            </TabsTrigger>
+            <TabsTrigger value="developer">
+              <Code2 className="h-4 w-4 mr-2" />
+              Developer
+            </TabsTrigger>
+            <TabsTrigger value="troubleshooting">
+              <AlertCircle className="h-4 w-4 mr-2" />
+              Troubleshooting
+            </TabsTrigger>
+            <TabsTrigger value="faq">
+              <HelpCircle className="h-4 w-4 mr-2" />
+              FAQ
+            </TabsTrigger>
+            <TabsTrigger value="changelog">
+              <FileText className="h-4 w-4 mr-2" />
+              Changelog
+            </TabsTrigger>
+            <TabsTrigger value="tutorials">
+              <PlayCircle className="h-4 w-4 mr-2" />
+              Tutorials
+            </TabsTrigger>
+            <TabsTrigger value="resources">
+              <ExternalLink className="h-4 w-4 mr-2" />
+              Resources
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Overview</CardTitle>
+              </CardHeader>
+              <CardContent className="prose max-w-none">
+                <p className="text-gray-700 whitespace-pre-line leading-relaxed">{product.overview}</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Key Features</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {product.features.map((feature, index) => (
+                    <div key={index} className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {'quickStart' in product && product.quickStart && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{product.quickStart.title}</CardTitle>
+                  <CardDescription>{product.quickStart.subtitle}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {product.quickStart.steps.map((step: any, index: number) => {
+                      const iconMap: { [key: string]: any } = {
+                        download: Download,
+                        settings: Settings,
+                        edit: Edit,
+                        rocket: Rocket,
+                      };
+                      const IconComponent = iconMap[step.icon] || Download;
+                      return (
+                        <div key={index} className="flex gap-4">
+                          <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                            <IconComponent className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-gray-900 mb-1">{step.title}</h3>
+                            <p className="text-sm text-gray-600">{step.description}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {'keyBenefits' in product && product.keyBenefits && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Why Choose {product.name}?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {product.keyBenefits.map((benefit: any, index: number) => {
+                      const iconMap: { [key: string]: any } = {
+                        zap: Zap,
+                        'trending-up': TrendingUp,
+                        gauge: Gauge,
+                        layers: Layers,
+                      };
+                      const IconComponent = iconMap[benefit.icon] || Zap;
+                      return (
+                        <div key={index} className="flex gap-4">
+                          <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center">
+                            <IconComponent className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-gray-900 mb-1">{benefit.title}</h3>
+                            <p className="text-sm text-gray-600">{benefit.description}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
+          <TabsContent value="resources" className="space-y-6">
+            {'resources' in product && (product as any).resources && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Support & Contact</CardTitle>
+                    <CardDescription>Get help fast from our team</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {(product as any).resources.support.map((r: any, i: number) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <HelpCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+                          <div>
+                            <Link href={r.href} className="text-blue-700 hover:underline inline-flex items-center gap-1">
+                              {r.title}
+                              <ExternalLink className="h-4 w-4" />
+                            </Link>
+                            <div className="text-sm text-gray-600">{r.description}</div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Product & Tools</CardTitle>
+                    <CardDescription>Useful links for your workflow</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {[(product as any).resources.product[0], ...(product as any).resources.tools].map((r: any, i: number) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <Package className="h-5 w-5 text-emerald-600 mt-0.5" />
+                          <div>
+                            <Link href={r.href} className="text-blue-700 hover:underline inline-flex items-center gap-1">
+                              {r.title}
+                              <ExternalLink className="h-4 w-4" />
+                            </Link>
+                            <div className="text-sm text-gray-600">{r.description}</div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Learning</CardTitle>
+                    <CardDescription>Guides for WPBakery and WordPress development</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {(product as any).resources.learning.map((r: any, i: number) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <BookOpen className="h-5 w-5 text-purple-600 mt-0.5" />
+                          <div>
+                            <a href={r.href} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline inline-flex items-center gap-1">
+                              {r.title}
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                            <div className="text-sm text-gray-600">{r.description}</div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Policies</CardTitle>
+                    <CardDescription>Important terms and legal information</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {(product as any).resources.policies.map((r: any, i: number) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <FileText className="h-5 w-5 text-gray-800 mt-0.5" />
+                          <div>
+                            <Link href={r.href} className="text-blue-700 hover:underline inline-flex items-center gap-1">
+                              {r.title}
+                              <ExternalLink className="h-4 w-4" />
+                            </Link>
+                            <div className="text-sm text-gray-600">{r.description}</div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="tutorials" className="space-y-6">
+            {'tutorials' in product && (product as any).tutorials?.useCases && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Popular Use Cases</CardTitle>
+                  <CardDescription>Battle‑tested patterns to build faster</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {(product as any).tutorials.useCases.map((uc: any, idx: number) => (
+                      <div key={idx} className="p-5 border rounded-lg bg-white">
+                        <h3 className="font-semibold text-gray-900 mb-1">{uc.title}</h3>
+                        <p className="text-sm text-gray-600 mb-3">{uc.summary}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {uc.elements.map((el: string, i: number) => (
+                            <Badge key={i} variant="secondary" className="text-xs">{el}</Badge>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {'tutorials' in product && (product as any).tutorials?.guides && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Step‑by‑Step Tutorials</CardTitle>
+                  <CardDescription>Learn by building real sections</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    {(product as any).tutorials.guides.map((g: any, idx: number) => (
+                      <div key={idx} className="p-5 border rounded-lg bg-white">
+                        <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-gray-600">
+                          <h3 className="font-semibold text-gray-900 mr-2">{g.title}</h3>
+                          <div className="flex items-center gap-1">
+                            <GraduationCap className="h-4 w-4" />
+                            <span>{g.level}</span>
+                          </div>
+                          <span>•</span>
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-4 w-4" />
+                            <span>{g.duration}</span>
+                          </div>
+                        </div>
+                        <ol className="space-y-3">
+                          {g.steps.map((s: string, i: number) => (
+                            <li key={i} className="flex gap-4">
+                              <div className="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold">
+                                {i + 1}
+                              </div>
+                              <p className="text-gray-700 pt-1">{s}</p>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
+          <TabsContent value="installation" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Installation Steps</CardTitle>
+                <CardDescription>Follow these steps to install {product.name}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ol className="space-y-4">
+                  {product.installation.steps.map((step, index) => (
+                    <li key={index} className="flex gap-4">
+                      <div className="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold">
+                        {index + 1}
+                      </div>
+                      <p className="text-gray-700 pt-1">{step}</p>
+                    </li>
+                  ))}
+                </ol>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>System Requirements</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {product.installation.requirements.map((req, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{req}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {'installationMethods' in product && product.installationMethods && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Installation Methods</CardTitle>
+                  <CardDescription>Choose the method that fits your workflow</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {product.installationMethods.map((method: any, index: number) => {
+                      const iconMap: { [key: string]: any } = {
+                        upload: Upload,
+                        server: Server,
+                        terminal: Terminal,
+                      };
+                      const IconComponent = iconMap[method.icon] || Upload;
+                      return (
+                        <div key={index} className="p-5 border rounded-lg bg-white">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="h-10 w-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                              <IconComponent className="h-5 w-5" />
+                            </div>
+                            <h3 className="font-semibold text-gray-900">{method.name}</h3>
+                          </div>
+                          <ul className="space-y-2 list-disc list-inside text-gray-700">
+                            {method.steps.map((s: string, i: number) => (
+                              <li key={i}>{s}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {'license' in product && product.license && (
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                      <Key className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <CardTitle>{product.license.title}</CardTitle>
+                      <CardDescription>Activate your license to receive updates and support</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ol className="space-y-4">
+                    {product.license.steps.map((step: string, index: number) => (
+                      <li key={index} className="flex gap-4">
+                        <div className="flex-shrink-0 h-8 w-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-semibold">
+                          {index + 1}
+                        </div>
+                        <p className="text-gray-700 pt-1">{step}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </CardContent>
+              </Card>
+            )}
+
+            {'setupWizard' in product && product.setupWizard && (
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center">
+                      <Wand2 className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <CardTitle>{product.setupWizard.title}</CardTitle>
+                      <CardDescription>We’ll guide you through recommended configuration</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {product.setupWizard.steps.map((s: string, i: number) => (
+                      <div key={i} className="flex gap-4 p-4 border rounded-lg bg-white">
+                        <div className="flex-shrink-0 h-8 w-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-semibold">
+                          {i + 1}
+                        </div>
+                        <p className="text-gray-700 pt-1">{s}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
+          <TabsContent value="core" className="space-y-6">
+            {'core' in product && (product as any).core?.dashboard && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{(product as any).core.dashboard.title}</CardTitle>
+                  <CardDescription>{(product as any).core.dashboard.subtitle}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {(product as any).core.dashboard.features.map((feat: any, idx: number) => {
+                      const iconMap: { [key: string]: any } = {
+                        dashboard: LayoutDashboard,
+                        'list-checks': ListChecks,
+                        'bar-chart-3': BarChart3,
+                        layers: Layers,
+                        puzzle: Puzzle,
+                      };
+                      const IconComponent = iconMap[feat.icon] || LayoutDashboard;
+                      return (
+                        <div key={idx} className="p-5 border rounded-lg bg-white flex gap-4">
+                          <div className="h-10 w-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
+                            <IconComponent className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-gray-900 mb-1">{feat.title}</h3>
+                            <p className="text-sm text-gray-600">{feat.description}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {'core' in product && (product as any).core?.editor && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{(product as any).core.editor.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ol className="space-y-4">
+                    {(product as any).core.editor.steps.map((s: any, i: number) => (
+                      <li key={i} className="flex gap-4">
+                        <div className="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-semibold">
+                          {i + 1}
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-1">{s.title}</h4>
+                          <p className="text-sm text-gray-600">{s.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </CardContent>
+              </Card>
+            )}
+
+            {'core' in product && (product as any).core?.templates && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{(product as any).core.templates.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {(product as any).core.templates.bullets.map((b: string, i: number) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+
+            {'core' in product && (product as any).core?.analytics && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{(product as any).core.analytics.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {(product as any).core.analytics.bullets.map((b: string, i: number) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
+          <TabsContent value="elements" className="space-y-6">
+            {'elementsMeta' in product && (product as any).elementsMeta && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Element Library Overview</CardTitle>
+                  <CardDescription>Comprehensive collection of professionally designed elements</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="p-4 border rounded-lg bg-white text-center">
+                      <div className="text-3xl font-bold text-black">{(product as any).elementsMeta.total}+</div>
+                      <div className="text-gray-600">Total Elements</div>
+                    </div>
+                    <div className="p-4 border rounded-lg bg-white text-center">
+                      <div className="text-3xl font-bold text-black">{(product as any).elementsMeta.wooCommerce}+</div>
+                      <div className="text-gray-600">WooCommerce</div>
+                    </div>
+                    <div className="p-4 border rounded-lg bg-white text-center">
+                      <div className="text-3xl font-bold text-black">{(product as any).elementsMeta.extensions}</div>
+                      <div className="text-gray-600">Extensions</div>
+                    </div>
+                    <div className="p-4 border rounded-lg bg-white text-center">
+                      <div className="text-3xl font-bold text-black">{(product as any).elementsMeta.templates}+</div>
+                      <div className="text-gray-600">Templates</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {'elementCategories' in product && (product as any).elementCategories && (
+              <div className="space-y-6">
+                {(product as any).elementCategories.map((cat: any, idx: number) => (
+                  <Card key={idx}>
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <CardTitle>{cat.name}</CardTitle>
+                          <CardDescription>{cat.description}</CardDescription>
+                        </div>
+                        {typeof cat.count === 'number' && (
+                          <Badge variant="secondary">{cat.count}+ elements</Badge>
+                        )}
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {cat.examples.map((ex: any, i: number) => (
+                          <div key={i} className="p-4 border rounded-lg bg-white">
+                            <h4 className="font-semibold text-gray-900 mb-1">{ex.name}</h4>
+                            <p className="text-sm text-gray-600">{ex.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="configuration" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Configuration Guide</CardTitle>
+                <CardDescription>How to configure {product.name}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="prose max-w-none">
+                  <p className="text-gray-700 whitespace-pre-line leading-relaxed">{product.configuration}</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-blue-50 border-blue-200">
+              <CardContent className="pt-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                      <BookOpen className="h-5 w-5 text-blue-600" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-black mb-2">Need More Help?</h3>
+                    <p className="text-gray-700 mb-3">
+                      Check out our video tutorials and detailed guides for step-by-step configuration instructions.
+                    </p>
+                    <Link href="/support">
+                      <Button variant="outline" size="sm">
+                        Contact Support
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {'settingsSections' in product && (product as any).settingsSections && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Settings Overview</CardTitle>
+                  <CardDescription>Key areas you can configure</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {(product as any).settingsSections.map((sec: any, idx: number) => {
+                      const iconMap: { [key: string]: any } = {
+                        sliders: SlidersHorizontal,
+                        'list-checks': ListChecks,
+                        puzzle: Puzzle,
+                        gauge: Gauge,
+                        layers: Layers,
+                        plug: Plug,
+                      };
+                      const IconComponent = iconMap[sec.icon] || SlidersHorizontal;
+                      return (
+                        <div key={idx} className="p-5 border rounded-lg bg-white">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="h-10 w-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                              <IconComponent className="h-5 w-5" />
+                            </div>
+                            <h3 className="font-semibold text-gray-900">{sec.title}</h3>
+                          </div>
+                          <ul className="space-y-2 list-disc list-inside text-gray-700">
+                            {sec.items.map((it: string, i: number) => (
+                              <li key={i}>{it}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
+          <TabsContent value="advanced" className="space-y-6">
+            {'advanced' in product && (product as any).advanced && (
+              <>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Performance Optimization</CardTitle>
+                    <CardDescription>Keep pages fast with smart loading and tuning</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {(product as any).advanced.performance.bullets.map((b: string, i: number) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <Gauge className="h-5 w-5 text-blue-600 mt-0.5" />
+                          <span className="text-gray-700">{b}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Analytics Architecture</CardTitle>
+                    <CardDescription>Scalable usage tracking — stored locally in your database</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {(product as any).advanced.analytics.bullets.map((b: string, i: number) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <Database className="h-5 w-5 text-green-600 mt-0.5" />
+                          <span className="text-gray-700">{b}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Background Tasks</CardTitle>
+                    <CardDescription>Non‑blocking processing for a smooth admin experience</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {(product as any).advanced.backgroundTasks.bullets.map((b: string, i: number) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Activity className="h-5 w-5 text-purple-600 mt-0.5" />
+                          <span className="text-gray-700">{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Multisite & Network Activation</CardTitle>
+                    <CardDescription>Works across networks with clean activation and uninstall</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {(product as any).advanced.multisite.bullets.map((b: string, i: number) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Network className="h-5 w-5 text-amber-600 mt-0.5" />
+                          <span className="text-gray-700">{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Developer Hooks & Extensibility</CardTitle>
+                    <CardDescription>Integrate with WPBakery API and extend elements</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {(product as any).advanced.developer.bullets.map((b: string, i: number) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Code2 className="h-5 w-5 text-gray-800 mt-0.5" />
+                          <span className="text-gray-700">{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Security & Standards</CardTitle>
+                    <CardDescription>Built to WordPress Coding Standards with privacy by design</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {(product as any).advanced.security.bullets.map((b: string, i: number) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Shield className="h-5 w-5 text-emerald-600 mt-0.5" />
+                          <span className="text-gray-700">{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </>
+            )}
+          </TabsContent>
+
+          <TabsContent value="developer" className="space-y-6">
+            {'developerDocs' in product && (product as any).developerDocs && (
+              <>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Constants & Paths</CardTitle>
+                    <CardDescription>Essential constants to use when extending the plugin</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {(product as any).developerDocs.constants.map((c: any, i: number) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Code2 className="h-5 w-5 text-gray-800 mt-0.5" />
+                          <span className="text-gray-700"><span className="font-mono font-semibold">{c.name}</span> — {c.description}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Actions & AJAX</CardTitle>
+                    <CardDescription>Hooks you can use to integrate and automate</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-semibold mb-2">Actions</h4>
+                        <ul className="space-y-2">
+                          {(product as any).developerDocs.actions.map((a: string, i: number) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <Activity className="h-5 w-5 text-blue-600 mt-0.5" />
+                              <span className="text-gray-700">{a}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">AJAX</h4>
+                        <ul className="space-y-2">
+                          {(product as any).developerDocs.ajax.map((aj: string, i: number) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <Activity className="h-5 w-5 text-green-600 mt-0.5" />
+                              <span className="text-gray-700">{aj}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Options, Transients & Database</CardTitle>
+                    <CardDescription>Storage schema for settings, caches, and analytics</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div>
+                        <h4 className="font-semibold mb-2">Options</h4>
+                        <ul className="space-y-2">
+                          {(product as any).developerDocs.storage.options.map((o: string, i: number) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <Database className="h-5 w-5 text-emerald-600 mt-0.5" />
+                              <span className="text-gray-700">{o}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Transients</h4>
+                        <ul className="space-y-2">
+                          {(product as any).developerDocs.storage.transients.map((t: string, i: number) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <Database className="h-5 w-5 text-amber-600 mt-0.5" />
+                              <span className="text-gray-700">{t}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Database</h4>
+                        <ul className="space-y-2">
+                          {(product as any).developerDocs.storage.database.map((d: string, i: number) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <Database className="h-5 w-5 text-purple-600 mt-0.5" />
+                              <span className="text-gray-700">{d}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Code Examples</CardTitle>
+                    <CardDescription>Copy‑paste snippets for common integrations</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-6">
+                      {(product as any).developerDocs.examples.map((ex: any, i: number) => (
+                        <div key={i} className="p-4 border rounded-lg bg-white">
+                          <h4 className="font-semibold text-gray-900 mb-2">{ex.title}</h4>
+                          <pre className="overflow-auto text-xs bg-gray-50 p-3 rounded"><code>{ex.code}</code></pre>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </>
+            )}
+          </TabsContent>
+
+          <TabsContent value="troubleshooting" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Common Issues & Solutions</CardTitle>
+                <CardDescription>Quick fixes for common problems</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {product.troubleshooting.map((item, index) => (
+                  <div key={index}>
+                    {index > 0 && <Separator className="my-6" />}
+                    <div>
+                      <h3 className="font-semibold text-black mb-2 flex items-start gap-2">
+                        <AlertCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                        {item.question}
+                      </h3>
+                      <p className="text-gray-700 ml-7">{item.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className="bg-yellow-50 border-yellow-200">
+              <CardContent className="pt-6">
+                <div className="flex gap-4">
+                  <AlertCircle className="h-6 w-6 text-yellow-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-black mb-2">Still Having Issues?</h3>
+                    <p className="text-gray-700 mb-3">
+                      If you&apos;re still experiencing problems, our support team is here to help. We typically respond within 24 hours.
+                    </p>
+                    <Link href="/support">
+                      <Button size="sm">Get Support</Button>
+                    </Link>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="faq" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Frequently Asked Questions</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {product.faq.map((item, index) => (
+                  <div key={index}>
+                    {index > 0 && <Separator className="my-6" />}
+                    <div>
+                      <h3 className="font-semibold text-black mb-2 flex items-start gap-2">
+                        <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                        {item.question}
+                      </h3>
+                      <p className="text-gray-700 ml-7">{item.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="changelog" className="space-y-6">
+            {product.changelog.map((version, index) => (
+              <Card key={index}>
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle>Version {version.version}</CardTitle>
+                    <Badge variant="outline">{version.date}</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {version.changes.map((change, changeIndex) => (
+                      <li key={changeIndex} className="flex items-start gap-2">
+                        <span className="text-gray-400 mt-1">•</span>
+                        <span className="text-gray-700">{change}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </TabsContent>
+        </Tabs>
+
+        <Card className="mt-8 bg-gradient-to-br from-blue-50 to-white">
+          <CardContent className="pt-6">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-black mb-3">Ready to Get Started?</h3>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                Download {product.name} and start building amazing websites today. Need help? Our support team is always ready to assist you.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href={`/plugins/${pluginDetailSlug}`}>
+                  <Button size="lg">
+                    View Plugin Details
+                  </Button>
+                </Link>
+                <Link href="/support">
+                  <Button size="lg" variant="outline">
+                    Contact Support
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
