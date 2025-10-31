@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Download, Star, Users, Package, Zap, RefreshCw, HeadphonesIcon, Code, TrendingUp } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { getFallbackFeaturedPlugins } from '@/data/fallback-plugins';
-import { getPluginDisplayName, getPluginDisplaySlug } from '@/lib/utils';
+import { getPluginDisplayName, getPluginDisplaySlug, getPluginDisplayPrice } from '@/lib/utils';
 
 async function getFeaturedPlugins() {
   try {
@@ -208,10 +208,10 @@ export default async function Home() {
                       <div className="h-12 w-12 rounded-lg bg-blue-100 flex items-center justify-center">
                         <Package className="h-6 w-6 text-blue-600" />
                       </div>
-                      {plugin.price === 0 ? (
+                      {getPluginDisplayPrice(plugin) === 0 ? (
                         <Badge variant="secondary">Free</Badge>
                       ) : (
-                        <Badge>${plugin.price}</Badge>
+                        <Badge>${getPluginDisplayPrice(plugin)}</Badge>
                       )}
                     </div>
                     <CardTitle className="text-xl">{plugin.name}</CardTitle>

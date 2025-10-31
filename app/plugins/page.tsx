@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star, Download, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { fallbackPlugins } from '@/data/fallback-plugins';
-import { getPluginDisplayName, getPluginDisplaySlug } from '@/lib/utils';
+import { getPluginDisplayName, getPluginDisplaySlug, getPluginDisplayPrice } from '@/lib/utils';
 
 async function getPlugins() {
   try {
@@ -141,10 +141,10 @@ export default async function PluginsPage({ searchParams }: { searchParams?: { s
                   <div className="h-12 w-12 rounded-lg bg-blue-100 flex items-center justify-center">
                     <Package className="h-6 w-6 text-blue-600" />
                   </div>
-                  {plugin.price === 0 ? (
+                  {getPluginDisplayPrice(plugin) === 0 ? (
                     <Badge variant="secondary">Free</Badge>
                   ) : (
-                    <Badge className="bg-blue-600">${plugin.price}</Badge>
+                    <Badge className="bg-blue-600">${getPluginDisplayPrice(plugin)}</Badge>
                   )}
                 </div>
                 <CardTitle className="text-xl line-clamp-1">{plugin.name}</CardTitle>

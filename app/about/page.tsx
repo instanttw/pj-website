@@ -26,8 +26,8 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className="max-w-4xl mx-auto">
+    <div className="px-4 lg:px-8 py-12">
+      <div>
         <h1 className="text-4xl font-bold text-black mb-6">About PrintJones</h1>
 
         <div className="prose prose-gray max-w-none space-y-6 mb-12">

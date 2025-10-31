@@ -25,7 +25,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
-import { getPluginDisplayName, getPluginDisplaySlug } from '@/lib/utils';
+import { getPluginDisplayName, getPluginDisplaySlug, getPluginDisplayPrice } from '@/lib/utils';
 import { getFallbackPluginBySlug, getFallbackRelated, fallbackPlugins } from '@/data/fallback-plugins';
 
 interface PluginPageProps {
@@ -133,6 +133,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   }
 
   plugin = { ...plugin, name: getPluginDisplayName(plugin) } as any;
+  const displayPrice = getPluginDisplayPrice(plugin as any);
 
   const bannedSlugs = new Set([
     'pj-media-library',
@@ -373,7 +374,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               <div className="lg:col-span-1">
                 <Card className="border-2 border-gray-200 shadow-xl sticky top-24">
                   <CardHeader className="text-center">
-                    <div className="text-5xl font-bold text-black mb-2">${plugin.price}</div>
+                    <div className="text-5xl font-bold text-black mb-2">${displayPrice}</div>
                     <div className="text-lg text-gray-600">/lifetime</div>
                   </CardHeader>
                   <CardContent className="space-y-6">
@@ -405,7 +406,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                     <div className="space-y-3">
                       <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg">
                         <ShoppingCart className="w-5 h-5 mr-2" />
-                        Add to Cart - ${plugin.price}
+                        Add to Cart - ${displayPrice}
                       </Button>
                       {demoUrl && (
                         <a href={demoUrl} target="_blank" rel="noopener noreferrer" className="block">
@@ -692,7 +693,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         <div className="h-12 w-12 rounded-lg bg-blue-100 flex items-center justify-center">
                           <Package className="h-6 w-6 text-blue-600" />
                         </div>
-                        <Badge className="bg-blue-600">${relatedPlugin.price}</Badge>
+                        <Badge className="bg-blue-600">${getPluginDisplayPrice(relatedPlugin)}</Badge>
                       </div>
                       <CardTitle className="text-xl">{relatedPlugin.name}</CardTitle>
                       <CardDescription className="line-clamp-2">{relatedPlugin.tagline}</CardDescription>
@@ -733,7 +734,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-lg px-8">
                 <ShoppingCart className="w-5 h-5 mr-2" />
-                Buy Now - ${plugin.price}
+                Buy Now - ${displayPrice}
               </Button>
               {demoUrl && (
                 <a href={demoUrl} target="_blank" rel="noopener noreferrer">

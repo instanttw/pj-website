@@ -101,7 +101,7 @@ INSERT INTO plugins (
   'pj-filter',
   'Intelligent Filters. Maximum Conversions. Zero Compromise.',
   'The most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.',
-  79.00,
+  57.00,
   4.9,
   2847,
   127000,

@@ -57,15 +57,15 @@ const faqs = [
 
 export default function SupportPage() {
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className="max-w-4xl mx-auto">
+    <div className="px-4 lg:px-8 py-12">
+      <div>
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-black mb-4">How can we help you?</h1>
           <p className="text-xl text-gray-600 mb-8">
             Search for answers or contact our support team
           </p>
 
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative">
             <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
             <Input
               type="search"

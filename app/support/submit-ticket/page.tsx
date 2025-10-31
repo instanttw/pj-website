@@ -21,8 +21,8 @@ export default function SubmitTicketPage() {
 
   if (submitted) {
     return (
-      <div className="container mx-auto px-4 lg:px-8 py-12">
-        <div className="max-w-2xl mx-auto">
+      <div className="px-4 lg:px-8 py-12">
+        <div>
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl text-center">Ticket Submitted Successfully!</CardTitle>
@@ -65,8 +65,8 @@ export default function SubmitTicketPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className="max-w-4xl mx-auto">
+    <div className="px-4 lg:px-8 py-12">
+      <div>
         <div className="mb-6 text-sm text-gray-600">
           <Link href="/" className="hover:text-black">Home</Link>
           {' / '}

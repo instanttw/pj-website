@@ -112,7 +112,7 @@ export const fallbackPlugins: FallbackPlugin[] = [
     tagline: 'Intelligent Filters. Maximum Conversions. Zero Compromise.',
     description:
       'The most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.',
-    price: 79,
+    price: 57,
     rating: 4.9,
     review_count: 2847,
     download_count: 127000,

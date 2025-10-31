@@ -41,8 +41,8 @@ export default function VerifyLicensePage() {
   };
 
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className="max-w-3xl mx-auto">
+    <div className="px-4 lg:px-8 py-12">
+      <div>
         <div className="mb-6 text-sm text-gray-600">
           <Link href="/" className="hover:text-black">Home</Link>
           {' / '}

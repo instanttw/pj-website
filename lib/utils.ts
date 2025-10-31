@@ -15,3 +15,10 @@ export function getPluginDisplaySlug(p: { slug: string }) {
   if (p.slug === 'pj-product-filter') return 'pj-filter';
   return p.slug;
 }
+
+export function getPluginDisplayPrice(p: { slug?: string; price: number }) {
+  if (!p) return 0;
+  const slug = p.slug || '';
+  if (slug === 'pj-filter' || slug === 'pj-product-filter') return 57;
+  return p.price;
+}
