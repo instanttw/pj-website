@@ -199,6 +199,8 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   // Override demo URLs when needed (ensures correct links even if DB is outdated)
   const demoUrlOverrides: Record<string, string> = {
     'eaf-wpbakery': 'https://eaw.printjones.com',
+    'pj-filter': 'https://filter.printjones.com',
+    'pj-product-filter': 'https://filter.printjones.com',
   };
   const demoUrl = demoUrlOverrides[plugin.slug] || plugin.demo_url;
 

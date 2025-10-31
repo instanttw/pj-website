@@ -112,7 +112,7 @@ INSERT INTO plugins (
   '6.0+',
   NOW(),
   '["AI-Powered Filtering", "Advanced Analytics", "Visual Search", "Voice Search", "SEO Optimized", "AJAX Filtering", "Unlimited Filters", "Mobile Responsive", "Translation Ready", "Developer Friendly"]'::jsonb,
-  'https://printjones.com/demos/pj-filter'
+  'https://filter.printjones.com'
 );
 
 -- 4. PJ Media Library

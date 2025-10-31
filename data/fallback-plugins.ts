@@ -121,7 +121,7 @@ export const fallbackPlugins: FallbackPlugin[] = [
     category_id: 2,
     version: '3.2.0',
     wordpress_version: '6.0+',
-    demo_url: 'https://printjones.com/demos/pj-filter',
+    demo_url: 'https://filter.printjones.com',
     download_url: null,
     categories: { name: 'E-commerce', slug: 'ecommerce' },
   },
