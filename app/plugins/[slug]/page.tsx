@@ -27,6 +27,7 @@ import {
 import { supabase } from '@/lib/supabase';
 import { getPluginDisplayName, getPluginDisplaySlug, getPluginDisplayPrice } from '@/lib/utils';
 import { getFallbackPluginBySlug, getFallbackRelated, fallbackPlugins } from '@/data/fallback-plugins';
+import { PJFilterOverview, PJFilterIntegrations, PJFilterFeatures, PJFilterFAQs, PJFilterROI, PJFilterTestimonials } from '@/components/pj-filter-content';
 
 interface PluginPageProps {
   params: {
@@ -479,63 +480,81 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
               {/* Tab Content */}
               <TabsContent value="overview" className="py-16">
-                <div>
-                  <div className="prose prose-lg max-w-none mb-16">
-                    <h2 className="text-3xl font-bold mb-6">What is {plugin.name}?</h2>
-                    <p className="text-lg leading-relaxed text-gray-700">
-                      {plugin.description || plugin.tagline}
-                    </p>
-                  </div>
-
-                  {/* Key Benefits */}
-                  <div className="mb-16">
-                    <h2 className="text-3xl font-bold mb-12 text-center">Why Choose {plugin.name}?</h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {benefits.map((benefit, index) => {
-                        const Icon = benefit.icon;
-                        return (
-                          <Card
-                            key={index}
-                            className="hover:shadow-lg transition-all hover:-translate-y-1"
-                          >
-                            <CardHeader>
-                              <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                                <Icon className="h-6 w-6 text-blue-600" />
-                              </div>
-                              <CardTitle className="text-xl">{benefit.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                              <CardDescription className="text-gray-600 leading-relaxed">
-                                {benefit.description}
-                              </CardDescription>
-                            </CardContent>
-                          </Card>
-                        );
-                      })}
+                {plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
+                  <div className="space-y-16">
+                    <PJFilterOverview />
+                    <PJFilterROI />
+                    <div>
+                      <h2 className="text-3xl font-bold mb-8 text-center">What Beta Testers Say</h2>
+                      <PJFilterTestimonials />
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <div className="prose prose-lg max-w-none mb-16">
+                      <h2 className="text-3xl font-bold mb-6">What is {plugin.name}?</h2>
+                      <p className="text-lg leading-relaxed text-gray-700">
+                        {plugin.description || plugin.tagline}
+                      </p>
+                    </div>
+
+                    {/* Key Benefits */}
+                    <div className="mb-16">
+                      <h2 className="text-3xl font-bold mb-12 text-center">Why Choose {plugin.name}?</h2>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {benefits.map((benefit, index) => {
+                          const Icon = benefit.icon;
+                          return (
+                            <Card
+                              key={index}
+                              className="hover:shadow-lg transition-all hover:-translate-y-1"
+                            >
+                              <CardHeader>
+                                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+                                  <Icon className="h-6 w-6 text-blue-600" />
+                                </div>
+                                <CardTitle className="text-xl">{benefit.title}</CardTitle>
+                              </CardHeader>
+                              <CardContent>
+                                <CardDescription className="text-gray-600 leading-relaxed">
+                                  {benefit.description}
+                                </CardDescription>
+                              </CardContent>
+                            </Card>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </TabsContent>
 
               <TabsContent value="features" className="py-16">
-                <div>
-                  <h2 className="text-4xl font-bold mb-6 text-center">Complete Feature List</h2>
-                  <p className="text-xl text-gray-600 mb-16 text-center">
-                    Everything you need to enhance your WordPress site
-                  </p>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {features.map((feature: string, index: number) => (
-                      <div
-                        key={index}
-                        className="flex items-start gap-3 p-6 bg-white rounded-lg border hover:shadow-md transition-shadow"
-                      >
-                        <Check className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-base text-gray-700">{feature}</span>
-                      </div>
-                    ))}
+                {plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
+                  <div className="space-y-16">
+                    <PJFilterFeatures />
+                    <PJFilterIntegrations />
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <h2 className="text-4xl font-bold mb-6 text-center">Complete Feature List</h2>
+                    <p className="text-xl text-gray-600 mb-16 text-center">
+                      Everything you need to enhance your WordPress site
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {features.map((feature: string, index: number) => (
+                        <div
+                          key={index}
+                          className="flex items-start gap-3 p-6 bg-white rounded-lg border hover:shadow-md transition-shadow"
+                        >
+                          <Check className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-base text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </TabsContent>
 
               <TabsContent value="installation" className="py-16">
@@ -623,58 +642,68 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               </TabsContent>
 
               <TabsContent value="faqs" className="py-16">
-                <div>
-                  <h2 className="text-4xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
-                  <p className="text-xl text-gray-600 mb-16 text-center">
-                    Find answers to common questions about {plugin.name}
-                  </p>
-
-                  <div className="space-y-4">
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="text-xl">Is this compatible with my theme?</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 leading-relaxed">
-                          Yes, {plugin.name} is designed to work with any properly coded WordPress theme. It follows WordPress coding standards and best practices.
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="text-xl">Do I get updates and support?</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 leading-relaxed">
-                          Yes! You get lifetime updates and 1 year of premium support. Extended support is available for purchase.
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="text-xl">Can I use this on multiple sites?</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 leading-relaxed">
-                          Yes, our license allows you to use {plugin.name} on unlimited sites that you own or manage.
-                        </p>
-                      </CardContent>
-                    </Card>
-
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="text-xl">What if I'm not satisfied?</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700 leading-relaxed">
-                          We offer a 30-day money-back guarantee. If you're not completely satisfied, contact us for a full refund.
-                        </p>
-                      </CardContent>
-                    </Card>
+                {plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
+                  <div>
+                    <h2 className="text-4xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+                    <p className="text-xl text-gray-600 mb-16 text-center">
+                      Find answers to common questions about {plugin.name}
+                    </p>
+                    <PJFilterFAQs />
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <h2 className="text-4xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+                    <p className="text-xl text-gray-600 mb-16 text-center">
+                      Find answers to common questions about {plugin.name}
+                    </p>
+
+                    <div className="space-y-4">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-xl">Is this compatible with my theme?</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-gray-700 leading-relaxed">
+                            Yes, {plugin.name} is designed to work with any properly coded WordPress theme. It follows WordPress coding standards and best practices.
+                          </p>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-xl">Do I get updates and support?</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-gray-700 leading-relaxed">
+                            Yes! You get lifetime updates and 1 year of premium support. Extended support is available for purchase.
+                          </p>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-xl">Can I use this on multiple sites?</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-gray-700 leading-relaxed">
+                            Yes, our license allows you to use {plugin.name} on unlimited sites that you own or manage.
+                          </p>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-xl">What if I'm not satisfied?</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-gray-700 leading-relaxed">
+                            We offer a 30-day money-back guarantee. If you're not completely satisfied, contact us for a full refund.
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                )}
               </TabsContent>
             </Tabs>
           </div>
