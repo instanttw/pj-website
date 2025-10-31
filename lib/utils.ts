@@ -9,3 +9,9 @@ export function getPluginDisplayName(p: { slug?: string; name: string }) {
   if (p?.slug === 'aioa-elementor') return 'PJ Essential Addons for Elementor';
   return p?.name;
 }
+
+export function getPluginDisplaySlug(p: { slug: string }) {
+  if (!p?.slug) return p?.slug as any;
+  if (p.slug === 'pj-product-filter') return 'pj-filter';
+  return p.slug;
+}

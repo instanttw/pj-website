@@ -1121,13 +1121,13 @@ All settings auto-save and apply instantly. Changes reflect immediately in the W
       },
     ],
   },
-  'pj-product-filter': {
-    name: 'PJ Product Filter',
+  'pj-filter': {
+    name: 'PJ Filter',
     type: 'plugin',
     version: '3.2.0',
     category: 'E-commerce',
     description: 'Intelligent Filters. Maximum Conversions. Zero Compromise.',
-    overview: `PJ Product Filter is the most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.
+    overview: `PJ Filter is the most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.
 
 Transform your product catalog into a conversion machine with smart filtering that helps customers find exactly what they need.`,
     features: [
@@ -1167,7 +1167,7 @@ Transform your product catalog into a conversion machine with smart filtering th
     faq: [
       {
         question: 'Does it work with variable products?',
-        answer: 'Yes, PJ Product Filter fully supports WooCommerce variable products and variations.',
+        answer: 'Yes, PJ Filter fully supports WooCommerce variable products and variations.',
       },
     ],
     changelog: [
@@ -1532,8 +1532,8 @@ export default function ProductDocPage({ params }: DocPageProps) {
   );
 
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className={isWpBakeryDoc ? 'w-full lg:pl-64' : 'max-w-5xl mx-auto'}>
+    <div className="px-4 lg:px-8 py-12">
+      <div className={isWpBakeryDoc ? 'w-full lg:pl-64' : 'w-full'}>
         <div className="mb-8">
           <Link
             href="/docs"
@@ -2524,7 +2524,7 @@ export default function ProductDocPage({ params }: DocPageProps) {
           <CardContent className="pt-6">
             <div className="text-center">
               <h3 className="text-xl font-semibold text-black mb-3">Ready to Get Started?</h3>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              <p className="text-gray-600 mb-6">
                 Download {product.name} and start building amazing websites today. Need help? Our support team is always ready to assist you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

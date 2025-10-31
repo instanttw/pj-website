@@ -78,7 +78,7 @@ INSERT INTO plugins (
   'https://printjones.com/demos/eaf-wpbakery'
 );
 
--- 3. PJ Product Filter
+-- 3. PJ Filter
 INSERT INTO plugins (
   name, 
   slug, 
@@ -97,8 +97,8 @@ INSERT INTO plugins (
   features,
   demo_url
 ) VALUES (
-  'PJ Product Filter',
-  'pj-product-filter',
+  'PJ Filter',
+  'pj-filter',
   'Intelligent Filters. Maximum Conversions. Zero Compromise.',
   'The most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.',
   79.00,
@@ -112,7 +112,7 @@ INSERT INTO plugins (
   '6.0+',
   NOW(),
   '["AI-Powered Filtering", "Advanced Analytics", "Visual Search", "Voice Search", "SEO Optimized", "AJAX Filtering", "Unlimited Filters", "Mobile Responsive", "Translation Ready", "Developer Friendly"]'::jsonb,
-  'https://printjones.com/demos/pj-product-filter'
+  'https://printjones.com/demos/pj-filter'
 );
 
 -- 4. PJ Media Library

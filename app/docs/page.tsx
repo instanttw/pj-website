@@ -20,8 +20,8 @@ const plugins = [
     category: 'Page Builder',
   },
   {
-    name: 'PJ Product Filter',
-    slug: 'pj-product-filter',
+    name: 'PJ Filter',
+    slug: 'pj-filter',
     description: 'Intelligent Filters. Maximum Conversions. Zero Compromise.',
     version: '3.2.0',
     category: 'E-commerce',
@@ -61,15 +61,15 @@ const themes = [
 
 export default function DocsPage() {
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
-      <div className="max-w-6xl mx-auto">
+    <div className="px-4 lg:px-8 py-12">
+      <div>
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-black mb-4">Documentation</h1>
           <p className="text-xl text-gray-600 mb-8">
             Comprehensive guides and documentation for all our products
           </p>
 
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative">
             <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
             <Input
               type="search"

@@ -25,7 +25,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
-import { getPluginDisplayName } from '@/lib/utils';
+import { getPluginDisplayName, getPluginDisplaySlug } from '@/lib/utils';
 import { getFallbackPluginBySlug, getFallbackRelated, fallbackPlugins } from '@/data/fallback-plugins';
 
 interface PluginPageProps {
@@ -278,7 +278,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
       <div className="min-h-screen bg-gray-50">
         {/* Header Section */}
         <section className="bg-white border-b border-gray-200">
-          <div className="container mx-auto px-4 py-12 lg:py-16 max-w-7xl">
+          <div className="px-4 lg:px-8 py-12 lg:py-16">
             <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Left Column - 2/3 width */}
               <div className="lg:col-span-2">
@@ -441,7 +441,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
         {/* Tab Navigation */}
         <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-          <div className="container mx-auto px-4 max-w-7xl">
+          <div className="px-4 lg:px-8">
             <Tabs defaultValue="overview" className="w-full">
               <TabsList className="w-full justify-start overflow-x-auto border-0 bg-transparent h-auto p-0">
                 <TabsTrigger
@@ -478,7 +478,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
               {/* Tab Content */}
               <TabsContent value="overview" className="py-16">
-                <div className="max-w-4xl mx-auto">
+                <div>
                   <div className="prose prose-lg max-w-none mb-16">
                     <h2 className="text-3xl font-bold mb-6">What is {plugin.name}?</h2>
                     <p className="text-lg leading-relaxed text-gray-700">
@@ -517,7 +517,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               </TabsContent>
 
               <TabsContent value="features" className="py-16">
-                <div className="max-w-4xl mx-auto">
+                <div>
                   <h2 className="text-4xl font-bold mb-6 text-center">Complete Feature List</h2>
                   <p className="text-xl text-gray-600 mb-16 text-center">
                     Everything you need to enhance your WordPress site
@@ -538,7 +538,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               </TabsContent>
 
               <TabsContent value="installation" className="py-16">
-                <div className="max-w-4xl mx-auto">
+                <div>
                   <h2 className="text-4xl font-bold mb-6 text-center">Installation Guide</h2>
                   <p className="text-xl text-gray-600 mb-16 text-center">
                     Get started in minutes with our simple installation process
@@ -597,7 +597,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               </TabsContent>
 
               <TabsContent value="reviews" className="py-16" id="reviews">
-                <div className="max-w-4xl mx-auto">
+                <div>
                   <h2 className="text-4xl font-bold mb-6 text-center">Customer Reviews</h2>
                   <p className="text-center text-gray-600 mb-12">What users say about {plugin.name}</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -622,7 +622,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               </TabsContent>
 
               <TabsContent value="faqs" className="py-16">
-                <div className="max-w-4xl mx-auto">
+                <div>
                   <h2 className="text-4xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
                   <p className="text-xl text-gray-600 mb-16 text-center">
                     Find answers to common questions about {plugin.name}
@@ -682,7 +682,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
         {/* Related Plugins */}
         {relatedPlugins.length > 0 && (
           <section className="py-16 bg-white border-t-2 border-gray-200">
-            <div className="container mx-auto px-4 max-w-7xl">
+            <div className="px-4 lg:px-8">
               <h2 className="text-3xl font-bold mb-12 text-center">You Might Also Like</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedPlugins.map((relatedPlugin) => (
@@ -710,7 +710,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <Link href={`/plugins/${relatedPlugin.slug}`} className="w-full">
+                      <Link href={`/plugins/${getPluginDisplaySlug(relatedPlugin)}`} className="w-full">
                         <Button variant="outline" className="w-full">
                           Learn More
                         </Button>
@@ -725,7 +725,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
         {/* Final CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-          <div className="container mx-auto px-4 text-center max-w-4xl">
+          <div className="px-4 lg:px-8 text-center">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to Get Started?</h2>
             <p className="text-xl lg:text-2xl mb-8 text-blue-100">
               Join {plugin.download_count.toLocaleString()}+ users and enhance your WordPress site today

@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Download, Star, Users, Package, Zap, RefreshCw, HeadphonesIcon, Code, TrendingUp } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { getFallbackFeaturedPlugins } from '@/data/fallback-plugins';
-import { getPluginDisplayName } from '@/lib/utils';
+import { getPluginDisplayName, getPluginDisplaySlug } from '@/lib/utils';
 
 async function getFeaturedPlugins() {
   try {
@@ -191,7 +191,7 @@ export default async function Home() {
       </section>
 
       <section className="py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">Featured Plugins</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -230,7 +230,7 @@ export default async function Home() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Link href={`/plugins/${plugin.slug}`} className="w-full">
+                    <Link href={`/plugins/${getPluginDisplaySlug(plugin)}`} className="w-full">
                       <Button variant="outline" className="w-full">
                         Learn More
                       </Button>
@@ -284,7 +284,7 @@ export default async function Home() {
       </section>
 
       <section className="py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">Customer Reviews</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">Real feedback from site owners and developers</p>

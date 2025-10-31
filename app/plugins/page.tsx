@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star, Download, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { fallbackPlugins } from '@/data/fallback-plugins';
-import { getPluginDisplayName } from '@/lib/utils';
+import { getPluginDisplayName, getPluginDisplaySlug } from '@/lib/utils';
 
 async function getPlugins() {
   try {
@@ -103,7 +103,7 @@ export default async function PluginsPage({ searchParams }: { searchParams?: { s
   }
 
   return (
-    <div className="container mx-auto px-4 lg:px-8 py-12">
+    <div className="px-4 lg:px-8 py-12">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-black mb-4">All Plugins</h1>
         <p className="text-lg text-gray-600">
@@ -173,7 +173,7 @@ export default async function PluginsPage({ searchParams }: { searchParams?: { s
                 )}
               </CardContent>
               <CardFooter className="flex gap-2">
-                <Link href={`/plugins/${plugin.slug}`} className="flex-1">
+                <Link href={`/plugins/${getPluginDisplaySlug(plugin)}`} className="flex-1">
                   <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700">
                     View Details
                   </Button>

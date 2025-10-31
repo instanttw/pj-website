@@ -107,8 +107,8 @@ export const fallbackPlugins: FallbackPlugin[] = [
   },
   {
     id: 3,
-    slug: 'pj-product-filter',
-    name: 'PJ Product Filter',
+    slug: 'pj-filter',
+    name: 'PJ Filter',
     tagline: 'Intelligent Filters. Maximum Conversions. Zero Compromise.',
     description:
       'The most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.',
@@ -121,7 +121,7 @@ export const fallbackPlugins: FallbackPlugin[] = [
     category_id: 2,
     version: '3.2.0',
     wordpress_version: '6.0+',
-    demo_url: 'https://printjones.com/demos/pj-product-filter',
+    demo_url: 'https://printjones.com/demos/pj-filter',
     download_url: null,
     categories: { name: 'E-commerce', slug: 'ecommerce' },
   },
