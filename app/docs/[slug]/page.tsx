@@ -1470,8 +1470,26 @@ Built with performance and conversions in mind, PJ Filter helps you create a fil
           'GDPR-compliant: no external tracking, all data stored locally',
         ],
       },
-      api: {
-        title: 'Developer APIs',
+      backgroundTasks: {
+        title: 'Background Processing',
+        bullets: [
+          'Non-blocking analytics processing',
+          'Scheduled data cleanup and optimization',
+          'Async filter cache generation',
+          'Safe to run on production sites',
+        ],
+      },
+      multisite: {
+        title: 'Multisite Support',
+        bullets: [
+          'Network activation support',
+          'Per-site filter configuration',
+          'Shared filter templates across sites',
+          'Network-wide analytics aggregation',
+        ],
+      },
+      developer: {
+        title: 'Developer Hooks & APIs',
         bullets: [
           'REST API: GET /wp-json/pj-filter/v1/filters',
           'GraphQL API for modern app development',
