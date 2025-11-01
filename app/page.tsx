@@ -53,7 +53,7 @@ export default async function Home() {
     { label: 'Active Installations', value: '500K+', icon: Users },
     { label: 'Total Downloads', value: '2M+', icon: Download },
     { label: 'Happy Customers', value: '50K+', icon: Star },
-    { label: 'Plugins Available', value: '3', icon: Package },
+    { label: 'Plugins Available', value: '21', icon: Package },
   ];
 
   const features = [
@@ -146,7 +146,7 @@ export default async function Home() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <Badge variant="secondary" className="mb-4">
-              Trusted by 50,000+ websites
+              Trusted by 571,300+ websites
             </Badge>
             <h1 className="text-4xl font-extrabold tracking-tight text-black sm:text-5xl lg:text-6xl mb-6">
               Premium WordPress Plugins for Modern Websites
