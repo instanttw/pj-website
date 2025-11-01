@@ -1127,60 +1127,532 @@ All settings auto-save and apply instantly. Changes reflect immediately in the W
     version: '3.2.0',
     category: 'E-commerce',
     description: 'Intelligent Filters. Maximum Conversions. Zero Compromise.',
-    overview: `PJ Filter is the most intelligent and comprehensive filtering solution for WordPress and WooCommerce. Features AI-powered recommendations, advanced analytics, visual search, and SEO optimization.
+    // Link to matching plugin detail page slug
+    pluginSlug: 'pj-filter',
+    overview: `Transform your WooCommerce store with PJ Filter — the most intelligent and comprehensive filtering solution that helps customers find exactly what they need, faster. **No coding required.**
 
-Transform your product catalog into a conversion machine with smart filtering that helps customers find exactly what they need.`,
+**Not just filtering. Intelligence.**
+
+With AI-powered recommendations, advanced analytics, and smart insights, PJ Filter is designed to boost your conversions and revenue. Whether you're running a fashion store, electronics shop, or any e-commerce business, PJ Filter adapts to your needs with industry-specific presets and customizable options.
+
+**What Makes PJ Filter Different:**
+
+• **AI-Powered Smart Dashboard** - Know which filters make money with real-time performance scores and actionable recommendations
+• **Built-in Analytics Engine** - Track views, clicks, conversions, and revenue per filter with comprehensive metrics
+• **5-Minute Setup** - Industry presets reduce configuration from 2+ hours to just 5 minutes
+• **A/B Testing Engine** - Auto-optimize conversions by testing filter variations automatically
+• **Customer Journey Mapping** - Understand buying patterns with Sankey diagram visualizations
+• **10 Filter Types & 8 View Styles** - Complete flexibility from checkboxes to color swatches
+• **AJAX Filtering** - Real-time product updates without page reload
+• **SEO Optimized** - Clean URLs with schema markup for better search visibility
+• **Mobile First** - Touch-optimized with 40% less abandoned filters on mobile
+• **40+ Integrations** - Works with Elementor, ACF, WPML, WP Rocket, Yoast SEO, and more
+
+Built with performance and conversions in mind, PJ Filter helps you create a filtering experience that actually drives sales. Simply install, choose a preset, and watch your metrics improve.`,
     features: [
-      'AI-Powered Recommendations',
-      'Advanced AJAX Filtering',
-      'Visual Search',
-      'Price Range Slider',
-      'Color & Image Swatches',
-      'Multi-Select Filters',
-      'Search Auto-complete',
-      'Mobile Optimized',
-      'SEO Friendly URLs',
-      'Analytics Dashboard',
+      'AI-Powered Smart Dashboard - Performance scoring',
+      '10 Filter Types - Taxonomy, attributes, price, rating, stock, sale, ACF, meta, date, search',
+      '8 View Styles - Checkboxes, radio, dropdown, sliders, color swatches, date picker, toggle, stars',
+      'AJAX Filtering - Instant results without page reload',
+      'Filter Presets - 6 industry-specific templates',
+      'Analytics Engine - Track views, clicks, conversions, revenue',
+      'A/B Testing - Auto-optimize filter performance',
+      'Customer Journey Maps - Sankey diagram visualizations',
+      'Visual & Voice Search - AI-powered product discovery',
+      'Smart Search - Select2 integration for 500+ items',
+      'SEO Friendly URLs - Clean URLs with schema markup',
+      'Mobile Optimized - Touch-friendly responsive design',
+      'Performance Analytics - Per-filter metrics and insights',
+      'Onboarding Wizard - 5-step guided setup',
+      'Dynamic Content - ACF, JetEngine, Toolset, Pods, MetaBox',
+      'Multi-Vendor Support - Dokan, WCFM, WC Vendors',
+      'Multi-language - WPML, Polylang, TranslatePress',
+      'GDPR/CCPA Compliant - Enterprise security',
+      'REST API & GraphQL - Developer-friendly',
+      'WP-CLI Commands - Automation support',
     ],
     installation: {
       steps: [
-        'Download the plugin',
-        'Install via WordPress Admin > Plugins',
-        'Activate the plugin',
-        'Go to WooCommerce > Product Filters',
-        'Create your first filter',
-        'Add to shop page via shortcode or widget',
+        'Download pj-product-filter.zip from your CodeCanyon account',
+        'Go to WordPress Admin > Plugins > Add New',
+        'Click "Upload Plugin" and choose the zip file',
+        'Click "Install Now" and then "Activate"',
+        'Follow the 5-step onboarding wizard that appears',
+        'Choose your store type (Fashion, Electronics, etc.)',
+        'Select a filter preset or create custom filters',
+        'Filters automatically appear on your shop page',
       ],
       requirements: [
-        'WordPress 6.0 or higher',
-        'WooCommerce 7.0 or higher',
-        'PHP 7.4 or higher',
+        'WordPress 5.8 or higher (tested up to 6.8)',
+        'WooCommerce 6.0 or higher (tested up to 9.4)',
+        'PHP 7.4 or higher (PHP 8.0+ recommended)',
+        'MySQL 5.6 or higher',
       ],
     },
-    configuration: `Access settings from WooCommerce > Product Filters. Configure filter types, styling, and behavior options.`,
+    installationMethods: [
+      {
+        name: 'Method 1: Upload via WordPress Admin (Recommended)',
+        icon: 'upload',
+        steps: [
+          'Login to WordPress Admin Dashboard',
+          'Navigate to Plugins > Add New',
+          'Click "Upload Plugin" button at the top',
+          'Choose the downloaded pj-product-filter.zip file',
+          'Click "Install Now" and wait for completion',
+          'Click "Activate Plugin"',
+          'The onboarding wizard will start automatically',
+        ],
+      },
+      {
+        name: 'Method 2: Install via FTP/SFTP',
+        icon: 'server',
+        steps: [
+          'Extract the ZIP file on your computer',
+          'Connect to your server via FTP (FileZilla, Cyberduck, etc.)',
+          'Navigate to /wp-content/plugins/ directory',
+          'Upload the extracted pj-product-filter folder',
+          'Go to WordPress Admin > Plugins',
+          'Find "PJ Filter" and click "Activate"',
+          'Complete the onboarding wizard',
+        ],
+      },
+      {
+        name: 'Method 3: WP-CLI (Advanced)',
+        icon: 'terminal',
+        steps: [
+          'SSH into your server',
+          'Run: wp plugin install /path/to/pj-product-filter.zip --activate',
+          'Run: wp pj-filter config set ajax_enabled true',
+          'Verify: wp pj-filter status',
+        ],
+      },
+    ],
+    setupWizard: {
+      title: 'First-time Setup: Onboarding Wizard',
+      steps: [
+        'Step 1: Welcome - Introduction to PJ Filter features and overview',
+        'Step 2: Store Type - Choose your store category (Fashion, Electronics, Food & Beverage, Home & Furniture, Health & Beauty, Sports & Outdoors)',
+        'Step 3: Filter Preset - Review and apply pre-configured filters optimized for your industry',
+        'Step 4: Customize - Enable/disable specific filters, reorder positions, configure settings',
+        'Step 5: Complete - Review configuration and finish setup',
+      ],
+    },
+    quickStart: {
+      title: 'Quick Start Guide',
+      subtitle: 'Get up and running in 5 minutes',
+      steps: [
+        {
+          title: '1. Install & Activate',
+          description: 'Install and activate the plugin from WordPress Admin > Plugins. The onboarding wizard appears automatically.',
+          icon: 'download',
+        },
+        {
+          title: '2. Choose Store Type',
+          description: 'Select your store category to load appropriate filter presets (Fashion, Electronics, Food, etc.).',
+          icon: 'settings',
+        },
+        {
+          title: '3. Apply Preset',
+          description: 'Review recommended filters and click "Apply This Preset" to configure filters in one click.',
+          icon: 'wand2',
+        },
+        {
+          title: '4. Customize & Publish',
+          description: 'Adjust filters as needed and click "Finish Setup". Filters are now live on your shop page.',
+          icon: 'rocket',
+        },
+      ],
+    },
+    core: {
+      dashboard: {
+        title: 'Smart Dashboard Overview',
+        subtitle: 'AI-powered insights to optimize filter performance',
+        features: [
+          {
+            icon: 'gauge',
+            title: 'Performance Score (0-100)',
+            description: 'Overall filter performance based on usage rate, conversion rate, and revenue impact. Color-coded for quick insights.',
+          },
+          {
+            icon: 'zap',
+            title: 'Quick Wins',
+            description: 'AI-identified opportunities for immediate improvements, like repositioning high-performing filters or adding trending filters.',
+          },
+          {
+            icon: 'bar-chart-3',
+            title: 'Filter Performance Breakdown',
+            description: 'Detailed metrics for each filter: views, clicks, usage rate, conversions, conversion rate, and revenue generated.',
+          },
+          {
+            icon: 'trending-up',
+            title: 'Actionable Recommendations',
+            description: 'Smart suggestions like "Move Color filter to top - it\'s your most-used filter" or "Add Brand filter - 73% of similar stores use this".',
+          },
+        ],
+      },
+      filterTypes: {
+        title: '10 Filter Types Available',
+        types: [
+          { name: 'Taxonomy Filter', description: 'Categories, tags, and custom taxonomies' },
+          { name: 'Attribute Filter', description: 'WooCommerce product attributes (color, size, material, etc.)' },
+          { name: 'Price Range', description: 'Min/max price slider with customizable ranges' },
+          { name: 'Rating Filter', description: 'Product star ratings (1-5 stars)' },
+          { name: 'Stock Status', description: 'In stock, out of stock, on backorder' },
+          { name: 'Sale Status', description: 'On sale vs regular price products' },
+          { name: 'ACF Fields', description: 'Advanced Custom Fields integration' },
+          { name: 'Meta Fields', description: 'Custom post meta data fields' },
+          { name: 'Date Filter', description: 'Product publish date or custom date fields' },
+          { name: 'Search Filter', description: 'Keyword search with auto-complete' },
+        ],
+      },
+      viewStyles: {
+        title: '8 View Styles Available',
+        styles: [
+          { name: 'Checkboxes', description: 'Multiple selections with product counts' },
+          { name: 'Radio Buttons', description: 'Single selection only' },
+          { name: 'Dropdown Select', description: 'Space-saving select menu (single)' },
+          { name: 'Multi-Select Dropdown', description: 'Select menu with multiple selections' },
+          { name: 'Range Slider', description: 'For price and numeric ranges' },
+          { name: 'Color Swatches', description: 'Visual color picker' },
+          { name: 'Toggle Switch', description: 'On/off toggle buttons' },
+          { name: 'Rating Stars', description: 'Visual star rating display' },
+        ],
+      },
+    },
+    filterPresets: [
+      {
+        name: 'Fashion Store Essentials',
+        filters: ['Size', 'Color', 'Brand', 'Price Range', 'Category', 'Sale Status'],
+        bestFor: 'Clothing, shoes, accessories stores',
+      },
+      {
+        name: 'Electronics Standard',
+        filters: ['Brand', 'Price Range', 'Features/Specs', 'Rating', 'Stock Status'],
+        bestFor: 'Electronics, gadgets, tech stores',
+      },
+      {
+        name: 'Food & Beverage',
+        filters: ['Category', 'Brand', 'Dietary Info (Vegan, Gluten-free)', 'Price Range', 'Rating'],
+        bestFor: 'Food delivery, grocery, beverage stores',
+      },
+      {
+        name: 'Home & Furniture',
+        filters: ['Category', 'Color', 'Material', 'Price Range', 'Room Type'],
+        bestFor: 'Furniture, home decor, interior stores',
+      },
+      {
+        name: 'Health & Beauty',
+        filters: ['Brand', 'Product Type', 'Skin Type', 'Ingredients', 'Price Range'],
+        bestFor: 'Beauty, skincare, cosmetics stores',
+      },
+      {
+        name: 'Sports & Outdoors',
+        filters: ['Category', 'Brand', 'Size', 'Activity Type', 'Price Range'],
+        bestFor: 'Sports equipment, outdoor gear, fitness stores',
+      },
+    ],
+    keyBenefits: [
+      {
+        title: '5-Minute Setup',
+        description: '60 ready-made templates and 6 industry presets mean you can configure filters in 5 minutes instead of 2+ hours.',
+        icon: 'clock',
+      },
+      {
+        title: 'Know What Works',
+        description: 'AI Dashboard tells you exactly which filters drive sales with performance scores and revenue metrics.',
+        icon: 'bar-chart-3',
+      },
+      {
+        title: 'Optimize Automatically',
+        description: 'A/B Testing Engine finds winning filter configurations automatically, boosting conversions by up to 40%.',
+        icon: 'trending-up',
+      },
+      {
+        title: 'Perfect for Mobile',
+        description: 'Touch-optimized design with 40% less abandoned filters on mobile devices compared to desktop.',
+        icon: 'gauge',
+      },
+    ],
+    settingsSections: [
+      {
+        key: 'general',
+        icon: 'sliders',
+        title: 'General Settings',
+        items: [
+          'Enable/disable AJAX filtering',
+          'Update on change vs on button click',
+          'Show result count and loading animation',
+          'Enable SEO-friendly URL parameters',
+          'Show "Clear All" button',
+        ],
+      },
+      {
+        key: 'display',
+        icon: 'layout-dashboard',
+        title: 'Display Settings',
+        items: [
+          'Filter position (sidebar, above products, custom)',
+          'Filter layout (vertical, horizontal, grid)',
+          'Mobile behavior (collapsible, drawer, modal)',
+          'Show/hide elements and custom CSS',
+        ],
+      },
+      {
+        key: 'performance',
+        icon: 'gauge',
+        title: 'Performance Settings',
+        items: [
+          'Enable caching and set cache duration',
+          'Query optimization and lazy loading',
+          'Preload filter data for faster interactions',
+        ],
+      },
+      {
+        key: 'analytics',
+        icon: 'bar-chart-3',
+        title: 'Analytics Settings',
+        items: [
+          'Enable/disable analytics tracking',
+          'Attribution model selection (last click, first click, linear)',
+          'Data retention period configuration',
+          'GDPR privacy settings and data export',
+        ],
+      },
+    ],
+    integrations: {
+      total: 40,
+      categories: [
+        {
+          name: 'Page Builders',
+          count: 4,
+          items: ['Elementor & Elementor Pro', 'WPBakery', 'Divi Builder', 'Beaver Builder'],
+        },
+        {
+          name: 'Multilingual',
+          count: 3,
+          items: ['WPML', 'Polylang & Pro', 'TranslatePress'],
+        },
+        {
+          name: 'Custom Fields',
+          count: 3,
+          items: ['ACF & ACF PRO', 'Pods Framework', 'Meta Box'],
+        },
+        {
+          name: 'Caching & Performance',
+          count: 5,
+          items: ['WP Rocket', 'W3 Total Cache', 'WP Super Cache', 'LiteSpeed Cache', 'Autoptimize'],
+        },
+        {
+          name: 'SEO',
+          count: 3,
+          items: ['Yoast SEO', 'Rank Math', 'All in One SEO'],
+        },
+        {
+          name: 'Multi-Vendor',
+          count: 3,
+          items: ['Dokan Multivendor', 'WCFM Marketplace', 'WC Vendors'],
+        },
+        {
+          name: 'Popular Themes',
+          count: 5,
+          items: ['Astra & Astra Pro', 'OceanWP', 'GeneratePress', 'Flatsome', 'Storefront'],
+        },
+      ],
+    },
+    advanced: {
+      analytics: {
+        title: 'Analytics & Performance Tracking',
+        bullets: [
+          'Track filter views, clicks, and conversions in real-time',
+          'Per-filter revenue and average order value metrics',
+          'Customer journey mapping with Sankey diagrams',
+          'Export data to CSV for external analysis',
+          'GDPR-compliant: no external tracking, all data stored locally',
+        ],
+      },
+      api: {
+        title: 'Developer APIs',
+        bullets: [
+          'REST API: GET /wp-json/pj-filter/v1/filters',
+          'GraphQL API for modern app development',
+          'Webhooks for filter change events',
+          'WP-CLI commands: wp pj-filter generate, analytics, cache',
+          '200+ hooks and filters for customization',
+        ],
+      },
+      performance: {
+        title: 'Performance Optimization',
+        bullets: [
+          'Object caching (Redis, Memcached)',
+          'Transient caching for filter queries',
+          'Lazy loading and progressive enhancement',
+          'CDN-friendly asset delivery',
+          'Average response time: <100ms with caching',
+        ],
+      },
+      security: {
+        title: 'Security & Compliance',
+        bullets: [
+          'All inputs sanitized and validated',
+          'SQL injection and XSS protection',
+          'GDPR & CCPA compliant',
+          'Two-factor authentication support',
+          'Security audit passed',
+        ],
+      },
+    },
+    configuration: `After installation, configure PJ Filter from **WordPress Admin > PJ Filter**:
+
+**Dashboard:** View AI-powered insights, performance scores, and quick wins. Track which filters drive the most revenue.
+
+**Filters:** Create new filters, edit existing ones, or apply industry presets. Drag and drop to reorder filter positions.
+
+**Analytics:** Access detailed reports on filter usage, conversions, and revenue. View customer journey maps and top performers.
+
+**Settings:** Configure general behavior, display options, performance settings, and analytics tracking. Import/export configurations.
+
+All settings auto-save and changes reflect immediately on your shop page. The Smart Dashboard provides real-time recommendations to optimize your filter performance.`,
     troubleshooting: [
       {
-        question: 'Filters not working on shop page?',
-        answer: 'Check that WooCommerce is properly installed and your theme supports standard WooCommerce templates.',
+        question: 'Filters not showing on shop page?',
+        answer: 'Check that WooCommerce is installed and active. Go to PJ Filter > Settings > Display and verify the correct position is selected. Ensure filters are published and assigned to a filter set. Try clearing cache and testing with a default theme.',
+      },
+      {
+        question: 'AJAX filtering not working?',
+        answer: 'Enable AJAX in PJ Filter > Settings > General. Check browser console for JavaScript errors. Clear all caches (WordPress, browser, CDN). Temporarily disable other plugins to check for conflicts. Ensure jQuery is loaded correctly.',
+      },
+      {
+        question: 'No products showing after filtering?',
+        answer: 'Verify that products have the attributes/categories you\'re filtering by. Check filter logic and conditions. Clear all caches. Test with WooCommerce default products. Check for theme conflicts by switching to Storefront.',
+      },
+      {
+        question: 'Analytics not tracking data?',
+        answer: 'Enable analytics in PJ Filter > Settings > Analytics. Wait 24-48 hours for initial data collection. Check that WordPress cron is working (use WP Crontrol plugin). Exclude tracking scripts from cache plugins. Verify database table was created during installation.',
+      },
+      {
+        question: 'Slow performance / filtering takes too long?',
+        answer: 'Enable caching in PJ Filter > Settings > Performance. Reduce number of filter options or enable search for long lists. Optimize database tables. Consider upgrading hosting if you have 1000+ products. Use object caching (Redis/Memcached) for best performance.',
+      },
+      {
+        question: 'Filters not working with variable products?',
+        answer: 'PJ Filter fully supports variable products. Ensure variations have attributes assigned in WooCommerce. Check that attribute taxonomy is created properly (Product > Attributes). Test with default WooCommerce variable products first.',
+      },
+      {
+        question: 'Mobile filters not responsive?',
+        answer: 'Check PJ Filter > Settings > Display > Mobile Behavior. Try different mobile layouts (collapsible, drawer, modal). Clear browser cache on mobile device. Test with mobile emulator in Chrome DevTools. Ensure theme is mobile-responsive.',
+      },
+      {
+        question: 'Conflicts with other filter plugins?',
+        answer: 'Deactivate other filter plugins (WOOF, YITH, Filter Everything). Clear all caches. If you need to migrate, use PJ Filter > Settings > Migration to import settings from other plugins. Only one filter plugin should be active at a time.',
       },
     ],
     faq: [
       {
+        question: 'Is PJ Filter worth $57 vs $40 competitors?',
+        answer: 'Absolutely. For just $17 more you get AI Dashboard (competitors don\'t have), Analytics Engine (they don\'t have), A/B Testing (they don\'t have), 5-minute setup vs 2+ hours, 40+ tested integrations, Customer Journey Maps, GraphQL API, and GDPR/CCPA tools. Value: 3x more features for 30% more money.',
+      },
+      {
+        question: 'Will this work with my theme?',
+        answer: 'Yes. PJ Filter works with ALL WordPress themes. Tested with 50+ popular themes including Storefront, Astra, OceanWP, Flatsome, Divi, GeneratePress, Kadence, and custom themes. If you have issues, our support team will help fix them (included support).',
+      },
+      {
+        question: 'Does it slow down my site?',
+        answer: 'No. PJ Filter is optimized for speed with object caching (Redis, Memcached), transient caching, lazy loading, and CDN-friendly assets. Average response time: <100ms with caching enabled. Many stores see improved performance due to AJAX reducing page loads.',
+      },
+      {
+        question: 'Can I migrate from other filter plugins?',
+        answer: 'Yes. Built-in Migration Wizard imports from Filter Everything (10 min), YITH WooCommerce (15 min), and WOOF Products Filter (12 min). All settings imported automatically. Go to PJ Filter > Settings > Migration to start.',
+      },
+      {
+        question: 'Do I need coding skills?',
+        answer: 'No. PJ Filter is designed for non-technical users. The 5-step onboarding wizard, industry presets, and visual filter builder make setup easy. No coding required for 99% of use cases. Developers have access to hooks, filters, and APIs for advanced customization.',
+      },
+      {
         question: 'Does it work with variable products?',
-        answer: 'Yes, PJ Filter fully supports WooCommerce variable products and variations.',
+        answer: 'Yes. PJ Filter fully supports WooCommerce variable products and variations. You can filter by variation attributes (color, size, etc.) and the plugin handles stock status for each variation correctly.',
+      },
+      {
+        question: 'How do I get support?',
+        answer: 'Email: support@printjones.com (24-48h response). Documentation: Comprehensive guides and video tutorials. Community Forum: Connect with other users. Included: 6 months premium support with every purchase.',
+      },
+      {
+        question: 'What about updates?',
+        answer: 'Lifetime FREE updates included: new features, security patches, compatibility updates. No recurring fees. Updates are released monthly with new features and improvements.',
+      },
+      {
+        question: 'Is it GDPR compliant?',
+        answer: 'Yes. PJ Filter is fully GDPR and CCPA compliant. All analytics data is stored locally in your WordPress database. No external tracking or third-party data transfer. Built-in tools for data export, deletion, and user consent management.',
+      },
+      {
+        question: 'Can I use it on multiple sites?',
+        answer: 'Regular License: 1 site. Extended License: unlimited client sites. Multi-site: Contact for bulk pricing. Check your purchase confirmation for specific license details.',
       },
     ],
     changelog: [
       {
         version: '3.2.0',
-        date: '2025-01-10',
+        date: '2025-10-31',
         changes: [
-          'Added AI recommendations',
-          'Improved mobile experience',
-          'Performance optimizations',
+          'NEW: Smart Filter Dashboard with AI-powered insights',
+          'NEW: Filter Presets System with 6 industry-specific templates',
+          'NEW: Onboarding Wizard for first-time users',
+          'NEW: Filter Performance Report with detailed analytics',
+          'NEW: Filter Search & Organization with Select2 integration',
+          'IMPROVED: All features now use real WordPress data (no dummy content)',
+          'IMPROVED: Enhanced mobile responsiveness and touch optimization',
+          'IMPROVED: Better WordPress coding standards compliance (7,554 errors fixed)',
+          'IMPROVED: Full internationalization support',
+          'FIXED: Plugin header format for WordPress.org',
+          'FIXED: Text domain configuration',
+          'FIXED: Unordered placeholders in translations',
+        ],
+      },
+      {
+        version: '3.1.0',
+        date: '2025-10-25',
+        changes: [
+          'NEW: Advanced analytics and tracking',
+          'NEW: REST API, GraphQL, and Webhooks',
+          'NEW: HPOS (High-Performance Order Storage) compatibility',
+          'IMPROVED: Admin interface consolidation (34 → 12 pages)',
+          'IMPROVED: Enhanced security with SQL injection prevention',
+          'IMPROVED: Better multisite support',
+          'IMPROVED: GDPR/CCPA compliance tools',
+        ],
+      },
+      {
+        version: '3.0.0',
+        date: '2025-10-20',
+        changes: [
+          'MAJOR: Complete architecture overhaul',
+          'NEW: AI/ML features for smart recommendations',
+          'NEW: Visual search and voice search',
+          'NEW: A/B testing engine',
+          'NEW: Customer journey mapping',
+          'NEW: Social proof and gamification features',
         ],
       },
     ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Guides, FAQs, and contact options.' },
+        { title: 'Submit a Ticket', href: '/support/submit-ticket', description: 'Get help from our support team.' },
+        { title: 'Contact', href: '/contact', description: 'General inquiries and pre‑sales questions.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-filter', description: 'Features, pricing, and purchase options.' },
+        { title: 'Live Demo', href: 'https://filter.printjones.com', description: 'Try PJ Filter with 280+ sample products.' },
+      ],
+      learning: [
+        { title: 'Video Tutorials', href: 'https://printjones.com/tutorials/pj-filter', description: '20+ step-by-step video guides.' },
+        { title: 'Knowledge Base', href: 'https://printjones.com/kb/pj-filter', description: 'Articles and how-to guides.' },
+      ],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License types and usage terms.' },
+        { title: 'Privacy Policy', href: '/privacy', description: 'How we handle your data.' },
+        { title: 'Refund Policy', href: '/refund-policy', description: '30-day money-back guarantee terms.' },
+      ],
+    },
   },
   'pj-media-library': {
     name: 'PJ Media Library',
