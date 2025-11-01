@@ -1643,6 +1643,9 @@ All settings auto-save and changes reflect immediately on your shop page. The Sm
         { title: 'Plugin Details', href: '/plugins/pj-filter', description: 'Features, pricing, and purchase options.' },
         { title: 'Live Demo', href: 'https://filter.printjones.com', description: 'Try PJ Filter with 280+ sample products.' },
       ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Check and validate your license status.' },
+      ],
       learning: [
         { title: 'Video Tutorials', href: 'https://printjones.com/tutorials/pj-filter', description: '20+ step-by-step video guides.' },
         { title: 'Knowledge Base', href: 'https://printjones.com/kb/pj-filter', description: 'Articles and how-to guides.' },
