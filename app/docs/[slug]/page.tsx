@@ -2070,6 +2070,361 @@ All settings auto-save and changes reflect immediately on your shop page. The Sm
       ],
     },
   },
+  'pj-event-calendar': {
+    name: 'PJ Event Calendar',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Events',
+    description: 'Event management and calendar system',
+    pluginSlug: 'pj-event-calendar',
+    overview: `PJ Event Calendar provides a complete event management solution for WordPress. Create, manage, and display events with a beautiful calendar interface.`,
+    features: [
+      'Event Management',
+      'Calendar Views',
+      'Ticket Sales',
+      'Recurring Events',
+      'Event Categories',
+      'Location Management',
+      'Email Reminders',
+      'iCal Export',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Events > Add New',
+        'Create your first event',
+        'Add calendar to page',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Events > Settings. Set up calendar views and email templates.`,
+    troubleshooting: [
+      {
+        question: 'Events not showing in calendar?',
+        answer: 'Check event status and date range settings.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I sell tickets?',
+        answer: 'Yes, includes ticket sales with WooCommerce integration.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New calendar views',
+          'Enhanced ticket system',
+          'Improved recurring events',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Docs.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-event-calendar', description: 'Features.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'License.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Info.' },
+      ],
+    },
+  },
+  'pj-forms': {
+    name: 'PJ Forms',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Forms',
+    description: 'Advanced form builder with conditional logic',
+    pluginSlug: 'pj-forms',
+    overview: `PJ Forms is a powerful form builder for WordPress. Create beautiful, functional forms with drag-and-drop ease. Features conditional logic, multi-page forms, and extensive integrations.`,
+    features: [
+      'Drag & Drop Builder',
+      'Conditional Logic',
+      'Multi-Page Forms',
+      'File Uploads',
+      'Payment Integration',
+      'Email Notifications',
+      'Form Analytics',
+      'Spam Protection',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Forms > Add New',
+        'Build your form',
+        'Add form to page',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Forms > Settings. Set up email notifications and integrations.`,
+    troubleshooting: [
+      {
+        question: 'Form not submitting?',
+        answer: 'Check email settings and spam protection configuration.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I accept payments?',
+        answer: 'Yes, integrates with PayPal, Stripe, and other payment gateways.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New field types',
+          'Enhanced conditional logic',
+          'Improved analytics',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Support.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-forms', description: 'Details.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Verify.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
+  'pj-email-templates': {
+    name: 'PJ Email Templates',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Marketing',
+    description: 'Beautiful email template designer for WordPress',
+    pluginSlug: 'pj-email-templates',
+    overview: `PJ Email Templates provides a visual email template designer for WordPress. Create professional, responsive email templates for WooCommerce, Contact Forms, and more.`,
+    features: [
+      'Visual Email Builder',
+      'Pre-Built Templates',
+      'Responsive Design',
+      'WooCommerce Integration',
+      'Merge Tags',
+      'Email Testing',
+      'Template Library',
+      'Custom CSS',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Email Templates > Add New',
+        'Design your template',
+        'Assign to email type',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Email Templates > Settings. Customize templates and assign to email types.`,
+    troubleshooting: [
+      {
+        question: 'Templates not applying?',
+        answer: 'Check template assignment and clear email cache.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Does it work with WooCommerce?',
+        answer: 'Yes, fully compatible with all WooCommerce email types.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New template designs',
+          'Enhanced builder',
+          'Improved compatibility',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Help.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-email-templates', description: 'Info.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'License.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
+  'pj-popup-master': {
+    name: 'PJ Popup Master',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Marketing',
+    description: 'Advanced popup builder with targeting options',
+    pluginSlug: 'pj-popup-master',
+    overview: `PJ Popup Master helps you create high-converting popups for WordPress. Features advanced targeting, exit intent, A/B testing, and extensive design options.`,
+    features: [
+      'Visual Popup Builder',
+      'Exit Intent',
+      'Advanced Targeting',
+      'A/B Testing',
+      'Animation Effects',
+      'Mobile Responsive',
+      'Analytics Integration',
+      'Email Integration',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Popups > Add New',
+        'Design your popup',
+        'Set display rules',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Popups > Settings. Create popups and set targeting rules.`,
+    troubleshooting: [
+      {
+        question: 'Popup not displaying?',
+        answer: 'Check display rules and ensure popup is published.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I test different designs?',
+        answer: 'Yes, includes A/B testing to find the best performing popups.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New targeting options',
+          'Enhanced A/B testing',
+          'Improved animations',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Support.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-popup-master', description: 'Features.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Check.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License.' },
+      ],
+    },
+  },
+  'pj-slider': {
+    name: 'PJ Slider',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Media',
+    description: 'Responsive slider and carousel builder',
+    pluginSlug: 'pj-slider',
+    overview: `PJ Slider provides a powerful yet easy-to-use slider and carousel builder for WordPress. Create beautiful, responsive sliders with touch support and extensive customization options.`,
+    features: [
+      'Visual Slider Builder',
+      'Multiple Layouts',
+      'Touch & Swipe Support',
+      'Responsive Design',
+      'Animation Effects',
+      'Video Support',
+      'Lazy Loading',
+      'SEO Optimized',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Sliders > Add New',
+        'Add slides',
+        'Add slider to page',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Sliders > Settings. Customize appearance and behavior.`,
+    troubleshooting: [
+      {
+        question: 'Slider not displaying?',
+        answer: 'Check shortcode placement and ensure JavaScript is loaded.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I add videos to slides?',
+        answer: 'Yes, supports YouTube, Vimeo, and self-hosted videos.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New slider layouts',
+          'Enhanced touch support',
+          'Improved performance',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Docs.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-slider', description: 'Details.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Verify.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
   'axiom': {
     name: 'Axiom',
     type: 'theme',
