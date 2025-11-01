@@ -135,7 +135,7 @@ Premium WordPress plugins for everyone—site owners and developers alike.
             © {new Date().getFullYear()} PrintJones. All rights reserved.
           </p>
           <p className="text-sm text-gray-600">
-            Trusted by 50,000+ websites worldwide
+            Trusted by 571,300+ websites worldwide
           </p>
         </div>
       </div>
