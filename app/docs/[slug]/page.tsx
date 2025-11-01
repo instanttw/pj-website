@@ -2661,14 +2661,14 @@ export default function ProductDocPage({ params }: DocPageProps) {
                 <details className="bg-gray-50 border rounded-lg">
                   <summary className="px-4 py-3 cursor-pointer font-medium">Sections</summary>
                   <div className="px-2 pb-3">
-                    <TabsList className="flex flex-col gap-1 bg-transparent p-0">{tabTriggers}</TabsList>
+                    <TabsList className="flex flex-col gap-1 bg-transparent p-0 h-auto items-stretch justify-start">{tabTriggers}</TabsList>
                   </div>
                 </details>
               </div>
               <aside className="hidden lg:block">
                 <div className="fixed left-0 top-16 z-30 w-64 h-[calc(100vh-4rem)] bg-gray-50 border-r overflow-y-auto overscroll-contain">
                   <div className="p-4">
-                    <TabsList className="flex flex-col gap-1 bg-transparent p-0">{tabTriggers}</TabsList>
+                    <TabsList className="flex flex-col gap-1 bg-transparent p-0 h-auto items-stretch justify-start">{tabTriggers}</TabsList>
                   </div>
                 </div>
               </aside>
