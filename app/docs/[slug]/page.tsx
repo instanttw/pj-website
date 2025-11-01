@@ -2667,7 +2667,7 @@ export default function ProductDocPage({ params }: DocPageProps) {
               </div>
               <aside className="hidden lg:block">
                 <div className="fixed left-0 top-16 z-30 w-64 h-[calc(100vh-4rem)] bg-gray-50 border-r overflow-y-auto overscroll-contain">
-                  <div className="p-4 pt-6">
+                  <div className="p-4">
                     <TabsList className="flex flex-col gap-1 bg-transparent p-0">{tabTriggers}</TabsList>
                   </div>
                 </div>
