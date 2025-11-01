@@ -2546,24 +2546,35 @@ export default function ProductDocPage({ params }: DocPageProps) {
     ? 'justify-start w-full gap-3 rounded-none px-3 py-2 text-left data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 hover:bg-gray-100'
     : '';
 
+  // Check if product has special tabs (Installation, Core, Elements) - only for certain products
+  const hasInstallationTab = params.slug === 'essential-addons-for-wpbakery';
+  const hasCoreTab = params.slug === 'essential-addons-for-wpbakery';
+  const hasElementsTab = params.slug === 'essential-addons-for-wpbakery';
+
   const tabTriggers = (
     <>
       <TabsTrigger value="overview" className={triggerClass}>
         <BookOpen className="h-4 w-4 mr-2" />
         Overview
       </TabsTrigger>
-      <TabsTrigger value="installation" className={triggerClass}>
-        <Download className="h-4 w-4 mr-2" />
-        Installation
-      </TabsTrigger>
-      <TabsTrigger value="core" className={triggerClass}>
-        <LayoutDashboard className="h-4 w-4 mr-2" />
-        Core
-      </TabsTrigger>
-      <TabsTrigger value="elements" className={triggerClass}>
-        <Puzzle className="h-4 w-4 mr-2" />
-        Elements
-      </TabsTrigger>
+      {hasInstallationTab && (
+        <TabsTrigger value="installation" className={triggerClass}>
+          <Download className="h-4 w-4 mr-2" />
+          Installation
+        </TabsTrigger>
+      )}
+      {hasCoreTab && (
+        <TabsTrigger value="core" className={triggerClass}>
+          <LayoutDashboard className="h-4 w-4 mr-2" />
+          Core
+        </TabsTrigger>
+      )}
+      {hasElementsTab && (
+        <TabsTrigger value="elements" className={triggerClass}>
+          <Puzzle className="h-4 w-4 mr-2" />
+          Elements
+        </TabsTrigger>
+      )}
       <TabsTrigger value="configuration" className={triggerClass}>
         <Settings className="h-4 w-4 mr-2" />
         Configuration
@@ -2572,12 +2583,6 @@ export default function ProductDocPage({ params }: DocPageProps) {
         <Wrench className="h-4 w-4 mr-2" />
         Advanced
       </TabsTrigger>
-      {'developerDocs' in product && (product as any).developerDocs && (
-        <TabsTrigger value="developer" className={triggerClass}>
-          <Code2 className="h-4 w-4 mr-2" />
-          Developer
-        </TabsTrigger>
-      )}
       <TabsTrigger value="troubleshooting" className={triggerClass}>
         <AlertCircle className="h-4 w-4 mr-2" />
         Troubleshooting
@@ -2594,6 +2599,12 @@ export default function ProductDocPage({ params }: DocPageProps) {
         <TabsTrigger value="tutorials" className={triggerClass}>
           <PlayCircle className="h-4 w-4 mr-2" />
           Tutorials
+        </TabsTrigger>
+      )}
+      {'developerDocs' in product && (product as any).developerDocs && (
+        <TabsTrigger value="developer" className={triggerClass}>
+          <Code2 className="h-4 w-4 mr-2" />
+          Developer
         </TabsTrigger>
       )}
       {(product as any).resources && (
@@ -2655,8 +2666,8 @@ export default function ProductDocPage({ params }: DocPageProps) {
                 </details>
               </div>
               <aside className="hidden lg:block">
-                <div className="fixed left-0 top-16 z-40 w-64 h-[calc(100vh-4rem)] bg-gray-50 border-r overflow-y-auto overscroll-contain">
-                  <div className="p-4">
+                <div className="fixed left-0 top-16 z-30 w-64 h-[calc(100vh-4rem)] bg-gray-50 border-r overflow-y-auto overscroll-contain">
+                  <div className="p-4 pt-6">
                     <TabsList className="flex flex-col gap-1 bg-transparent p-0">{tabTriggers}</TabsList>
                   </div>
                 </div>
@@ -2666,7 +2677,8 @@ export default function ProductDocPage({ params }: DocPageProps) {
             <TabsList className="grid w-full grid-cols-3 lg:grid-cols-12 mb-8">{tabTriggers}</TabsList>
           )}
 
-          <TabsContent value="overview" className="space-y-6">
+          <div className={isWpBakeryDoc ? "lg:ml-64" : ""}>
+            <TabsContent value="overview" className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
@@ -3598,6 +3610,7 @@ export default function ProductDocPage({ params }: DocPageProps) {
               <CommunityForum />
             </TabsContent>
           )}
+          </div>
         </Tabs>
 
         <Card className="mt-8 bg-gradient-to-br from-blue-50 to-white">
