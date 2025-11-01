@@ -156,7 +156,7 @@ export const fallbackPlugins: FallbackPlugin[] = [
     rating: 4.6,
     review_count: 2215,
     download_count: 286400,
-    is_featured: false,
+    is_featured: true,
     is_active: true,
     category_id: 2,
     version: '3.0.0',
