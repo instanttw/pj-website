@@ -136,6 +136,16 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   plugin = { ...plugin, name: getPluginDisplayName(plugin) } as any;
   const displayPrice = getPluginDisplayPrice(plugin as any);
 
+  // Enforce specific Active Installations on detail pages for key plugins
+  const downloadOverrides: Record<string, number> = {
+    'pj-filter': 650780,
+    'aioa-elementor': 1200500,
+    'eaf-wpbakery': 990340,
+  };
+  if (downloadOverrides[plugin.slug]) {
+    plugin = { ...plugin, download_count: downloadOverrides[plugin.slug] };
+  }
+
   const bannedSlugs = new Set([
     'pj-media-library',
     'pj-accessibility',
