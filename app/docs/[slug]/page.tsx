@@ -2504,6 +2504,577 @@ Perfect for agencies, businesses, portfolios, blogs, and e-commerce stores.`,
       },
     ],
   },
+  'pj-menu-widget': {
+    name: 'PJ Menu and Widget',
+    type: 'plugin',
+    version: '25.0.0',
+    category: 'Utilities',
+    description: 'Advanced menu and widget management for WordPress',
+    pluginSlug: 'pj-menu-widget',
+    overview: `PJ Menu and Widget provides advanced menu and widget management capabilities for WordPress. Create mega menus, customize widgets, and enhance your site navigation.`,
+    features: [
+      'Mega Menu Builder',
+      'Custom Widget Areas',
+      'Mobile Menu Styles',
+      'Icon Integration',
+      'Conditional Display',
+      'Drag & Drop Interface',
+      'Responsive Design',
+      'Custom Styling',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Appearance > Menus',
+        'Configure mega menu settings',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Appearance > Menus and Appearance > Widgets. Customize menu and widget settings.`,
+    troubleshooting: [
+      {
+        question: 'Mega menu not displaying?',
+        answer: 'Ensure theme supports WordPress menus and clear cache.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Does it work with all themes?',
+        answer: 'Yes, works with any WordPress theme that supports standard menus.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.0.0',
+        date: '2025-01-15',
+        changes: [
+          'Major release',
+          'Mega menu support',
+          'Widget enhancements',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Get help.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-menu-widget', description: 'View features.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Verify license.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License info.' },
+      ],
+    },
+  },
+  'pj-store-locator': {
+    name: 'PJ Store Locator',
+    type: 'plugin',
+    version: '25.0.0',
+    category: 'E-commerce',
+    description: 'AJAX-powered store locator for physical locations',
+    pluginSlug: 'pj-store-locator',
+    overview: `PJ Store Locator helps customers find your physical store locations with an interactive map and search functionality. Perfect for multi-location businesses.`,
+    features: [
+      'Interactive Map',
+      'AJAX Search',
+      'Geolocation Support',
+      'Custom Markers',
+      'Store Details',
+      'Directions Integration',
+      'Mobile Optimized',
+      'Multiple Map Providers',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Add your store locations',
+        'Configure map settings',
+        'Add shortcode to page',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Settings > Store Locator. Add locations and customize map appearance.`,
+    troubleshooting: [
+      {
+        question: 'Map not displaying?',
+        answer: 'Check API key configuration and ensure locations are published.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Which map providers are supported?',
+        answer: 'Google Maps, OpenStreetMap, and Mapbox are supported.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.0.0',
+        date: '2025-01-15',
+        changes: [
+          'Major release',
+          'AJAX search',
+          'Multiple map providers',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Documentation.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-store-locator', description: 'Learn more.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'License check.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
+  'pj-accessibility': {
+    name: 'PJ Accessibility',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Utilities',
+    description: 'Complete accessibility toolkit for WCAG compliance',
+    pluginSlug: 'pj-accessibility',
+    overview: `PJ Accessibility provides comprehensive tools to make your WordPress site accessible to all users. Achieve WCAG 2.1 AA/AAA compliance with ease.`,
+    features: [
+      'Accessibility Widget',
+      'Screen Reader Support',
+      'Keyboard Navigation',
+      'Color Contrast Checker',
+      'Font Size Adjustment',
+      'Text to Speech',
+      'WCAG 2.1 Compliance',
+      'Accessibility Reports',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Configure accessibility settings',
+        'Run accessibility audit',
+        'Fix reported issues',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Settings > Accessibility. Enable features and customize appearance.`,
+    troubleshooting: [
+      {
+        question: 'Widget not appearing?',
+        answer: 'Check widget settings and ensure it is enabled in plugin configuration.',
+      },
+    ],
+    faq: [
+      {
+        question: 'What WCAG level does this support?',
+        answer: 'Supports WCAG 2.1 Level A, AA, and AAA compliance.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New version release',
+          'WCAG 2.1 updates',
+          'Enhanced screen reader support',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Help center.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-accessibility', description: 'Features.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Verify.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License.' },
+      ],
+    },
+  },
+  'pj-multicurrency': {
+    name: 'PJ Multicurrency',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'E-commerce',
+    description: 'Multi-currency support for WooCommerce stores',
+    pluginSlug: 'pj-multicurrency',
+    overview: `PJ Multicurrency enables your WooCommerce store to accept payments in multiple currencies. Automatic currency conversion, geolocation support, and more.`,
+    features: [
+      'Multiple Currency Support',
+      'Auto Currency Detection',
+      'Real-time Exchange Rates',
+      'Geolocation Support',
+      'Currency Switcher Widget',
+      'WooCommerce Integration',
+      'Payment Gateway Support',
+      'Custom Exchange Rates',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to WooCommerce > Multicurrency',
+        'Add currencies',
+        'Configure exchange rates',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'WooCommerce 7.0 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from WooCommerce > Multicurrency. Add currencies and set exchange rate sources.`,
+    troubleshooting: [
+      {
+        question: 'Prices not converting?',
+        answer: 'Check exchange rate settings and ensure currency is enabled.',
+      },
+    ],
+    faq: [
+      {
+        question: 'How often do exchange rates update?',
+        answer: 'Rates update hourly by default, configurable to your preference.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'Version update',
+          'Enhanced currency support',
+          'Improved exchange rate APIs',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Support.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-multicurrency', description: 'Details.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Check license.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
+  'pj-hide-my-admin': {
+    name: 'PJ Hide My Admin',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Security',
+    description: 'Security plugin to hide WordPress admin area',
+    pluginSlug: 'pj-hide-my-admin',
+    overview: `PJ Hide My Admin enhances your WordPress security by hiding the admin login URL. Protect against brute force attacks and unauthorized access attempts.`,
+    features: [
+      'Custom Login URL',
+      'Hide wp-admin',
+      'Hide wp-login.php',
+      'Brute Force Protection',
+      'Access Control',
+      'Login Attempt Limiting',
+      'Email Notifications',
+      'Compatible with Security Plugins',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Set custom login URL',
+        'Save settings',
+        'Bookmark new login URL',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Settings > Hide My Admin. Set custom login URL and security options.`,
+    troubleshooting: [
+      {
+        question: 'Cannot access admin area?',
+        answer: 'Use the recovery link sent to your email or contact hosting support.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Is this compatible with security plugins?',
+        answer: 'Yes, works with most popular security plugins like Wordfence and iThemes Security.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'Security updates',
+          'Enhanced compatibility',
+          'New recovery options',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Get support.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-hide-my-admin', description: 'Info.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'License.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
+  'pj-amazon-affiliate': {
+    name: 'PJ Amazon Affiliate',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'E-commerce',
+    description: 'Amazon affiliate product integration for WordPress',
+    pluginSlug: 'pj-amazon-affiliate',
+    overview: `PJ Amazon Affiliate makes it easy to add Amazon products to your WordPress site. Import products, display them beautifully, and earn commissions through the Amazon Associates program.`,
+    features: [
+      'Product Import',
+      'Auto-sync with Amazon',
+      'Product Display Templates',
+      'Comparison Tables',
+      'Price Tracking',
+      'Affiliate Link Management',
+      'Mobile Responsive',
+      'Analytics Integration',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Connect Amazon Associates account',
+        'Import products',
+        'Add products to posts/pages',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+        'Amazon Associates account',
+      ],
+    },
+    configuration: `Configure from Settings > Amazon Affiliate. Connect API and set display options.`,
+    troubleshooting: [
+      {
+        question: 'Products not importing?',
+        answer: 'Check API credentials and ensure your Amazon Associates account is active.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Do I need an Amazon Associates account?',
+        answer: 'Yes, you need an approved Amazon Associates account to use this plugin.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'Updated Amazon API',
+          'New display templates',
+          'Performance improvements',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Help.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-amazon-affiliate', description: 'View details.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Verify license.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License terms.' },
+      ],
+    },
+  },
+  'pj-woo-dropshipping': {
+    name: 'PJ Woo Dropshipping',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'E-commerce',
+    description: 'Complete dropshipping solution for WooCommerce',
+    pluginSlug: 'pj-woo-dropshipping',
+    overview: `PJ Woo Dropshipping provides everything you need to run a successful dropshipping business with WooCommerce. Supplier management, automated ordering, and inventory sync.`,
+    features: [
+      'Supplier Management',
+      'Product Import',
+      'Automated Ordering',
+      'Inventory Sync',
+      'Price Management',
+      'Order Tracking',
+      'Multi-supplier Support',
+      'CSV Import/Export',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Add suppliers',
+        'Import products',
+        'Configure automation rules',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'WooCommerce 7.0 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from WooCommerce > Dropshipping. Set up suppliers and automation.`,
+    troubleshooting: [
+      {
+        question: 'Orders not auto-forwarding?',
+        answer: 'Check automation settings and ensure supplier connections are active.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I manage multiple suppliers?',
+        answer: 'Yes, you can add and manage unlimited suppliers.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'Enhanced automation',
+          'Multi-supplier support',
+          'Improved tracking',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Support docs.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-woo-dropshipping', description: 'Learn more.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'License check.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License info.' },
+      ],
+    },
+  },
+  'pj-extra-product-options': {
+    name: 'PJ Extra Product Options',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'E-commerce',
+    description: 'Add custom fields and options to WooCommerce products',
+    pluginSlug: 'pj-extra-product-options',
+    overview: `PJ Extra Product Options allows you to add unlimited custom fields and options to your WooCommerce products. Perfect for personalization, customization, and additional product information.`,
+    features: [
+      'Custom Product Fields',
+      'Multiple Field Types',
+      'Conditional Logic',
+      'Price Adjustments',
+      'File Uploads',
+      'Date/Time Pickers',
+      'Validation Rules',
+      'Mobile Responsive',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to WooCommerce > Extra Options',
+        'Create field groups',
+        'Assign to products',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'WooCommerce 7.0 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from WooCommerce > Extra Options. Create fields and set pricing rules.`,
+    troubleshooting: [
+      {
+        question: 'Fields not showing on product page?',
+        answer: 'Ensure field group is assigned to product and published.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I charge extra for custom options?',
+        answer: 'Yes, you can add price adjustments to any field option.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New field types',
+          'Conditional logic',
+          'Performance improvements',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Documentation.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-extra-product-options', description: 'Features.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'License verification.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
 };
 
 export async function generateStaticParams() {
