@@ -60,15 +60,7 @@ export default async function PluginsPage({ searchParams }: { searchParams?: { s
     plugins = fallbackPlugins as any[];
   }
 
-  // Remove excluded plugins globally
-  const excludedSlugs = new Set([
-    'pj-media-library',
-    'pj-accessibility',
-    'pj-store-finder',
-    'pj-multicurrency',
-    'pj-product-designer',
-  ]);
-  plugins = (plugins as any[]).filter((p: any) => !excludedSlugs.has(p.slug));
+  // Include all curated plugins; no global exclusions
 
   // Normalize display name overrides
   plugins = (plugins as any[]).map((p: any) => ({ ...p, name: getPluginDisplayName(p) }));
@@ -173,11 +165,19 @@ export default async function PluginsPage({ searchParams }: { searchParams?: { s
                 )}
               </CardContent>
               <CardFooter className="flex gap-2">
-                <Link href={`/plugins/${getPluginDisplaySlug(plugin)}`} className="flex-1">
-                  <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700">
-                    View Details
-                  </Button>
-                </Link>
+                {(() => {
+                  const disabled = new Set([
+                    'pj-media-library','pj-accessibility','pj-store-locator','pj-multicurrency','pj-product-designer','pj-menu-widget','pj-woo-dropshipping','pj-amazon-affiliate','pj-extra-product-options','pj-hide-my-admin','pj-bookings','pj-membership','pj-gift-card','pj-event-calendar','pj-forms','pj-email-templates','pj-popup-master','pj-slider'
+                  ]);
+                  const href = disabled.has(plugin.slug) ? '#' : `/plugins/${getPluginDisplaySlug(plugin)}`;
+                  return (
+                    <Link href={href} className="flex-1">
+                      <Button variant="default" className="w-full bg-blue-600 hover:bg-blue-700">
+                        View Details
+                      </Button>
+                    </Link>
+                  );
+                })()}
               </CardFooter>
             </Card>
           ))}

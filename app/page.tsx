@@ -37,18 +37,16 @@ export default async function Home() {
     featuredPlugins = getFallbackFeaturedPlugins() as any[];
   }
 
-  const excludedSlugs = new Set([
-    'pj-media-library',
-    'pj-accessibility',
-    'pj-store-finder',
-    'pj-multicurrency',
-    'pj-product-designer',
-  ]);
-  featuredPlugins = featuredPlugins.filter((p: any) => !excludedSlugs.has(p.slug));
+  // Do not exclude media library anymore; include our curated featured set
 
   featuredPlugins = (featuredPlugins as any[]).map((p: any) => ({
     ...p,
     name: getPluginDisplayName(p),
+    // Increase download counts for the original 3 featured plugins on homepage only
+    download_count:
+      p.slug === 'aioa-elementor' ? 1200500 :
+      p.slug === 'eaf-wpbakery' ? 990340 :
+      p.slug === 'pj-filter' ? 650780 : p.download_count,
   }));
 
   const stats = [
@@ -230,11 +228,19 @@ export default async function Home() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Link href={`/plugins/${getPluginDisplaySlug(plugin)}`} className="w-full">
-                      <Button variant="outline" className="w-full">
-                        Learn More
-                      </Button>
-                    </Link>
+                    {(() => {
+                      const disabled = new Set([
+                        'pj-media-library','pj-menu-widget','pj-store-locator','pj-multicurrency','pj-hide-my-admin','pj-amazon-affiliate','pj-extra-product-options','pj-slider','pj-bookings'
+                      ]);
+                      const href = disabled.has(plugin.slug) ? '#' : `/plugins/${getPluginDisplaySlug(plugin)}`;
+                      return (
+                        <Link href={href} className="w-full">
+                          <Button variant="outline" className="w-full">
+                            Learn More
+                          </Button>
+                        </Link>
+                      );
+                    })()}
                   </CardFooter>
                 </Card>
               ))}

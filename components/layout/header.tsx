@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 
 const navigation = [
+  { name: 'Axiom', href: '#' },
   { name: 'Plugins', href: '/plugins' },
   { name: 'Documentation', href: '/docs' },
   { name: 'Support', href: '/support' },
