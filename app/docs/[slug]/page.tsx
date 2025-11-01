@@ -1954,7 +1954,7 @@ export default function ProductDocPage({ params }: DocPageProps) {
     ? (product as any).pluginSlug
     : params.slug;
 
-  const isWpBakeryDoc = params.slug === 'essential-addons-wpbakery';
+  const isWpBakeryDoc = params.slug === 'essential-addons-wpbakery' || params.slug === 'pj-filter';
   const triggerClass = isWpBakeryDoc
     ? 'justify-start w-full gap-3 rounded-none px-3 py-2 text-left data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 hover:bg-gray-100'
     : '';
