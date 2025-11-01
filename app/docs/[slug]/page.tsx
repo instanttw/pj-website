@@ -2547,9 +2547,9 @@ export default function ProductDocPage({ params }: DocPageProps) {
     : '';
 
   // Check if product has special tabs (Installation, Core, Elements) - only for certain products
-  const hasInstallationTab = params.slug === 'essential-addons-for-wpbakery';
-  const hasCoreTab = params.slug === 'essential-addons-for-wpbakery';
-  const hasElementsTab = params.slug === 'essential-addons-for-wpbakery';
+  const hasInstallationTab = params.slug === 'essential-addons-wpbakery';
+  const hasCoreTab = params.slug === 'essential-addons-wpbakery';
+  const hasElementsTab = params.slug === 'essential-addons-wpbakery';
 
   const tabTriggers = (
     <>
@@ -2676,8 +2676,6 @@ export default function ProductDocPage({ params }: DocPageProps) {
           ) : (
             <TabsList className="grid w-full grid-cols-3 lg:grid-cols-12 mb-8">{tabTriggers}</TabsList>
           )}
-
-          <div className={isWpBakeryDoc ? "lg:ml-64" : ""}>
             <TabsContent value="overview" className="space-y-6">
             <Card>
               <CardHeader>
@@ -3610,7 +3608,6 @@ export default function ProductDocPage({ params }: DocPageProps) {
               <CommunityForum />
             </TabsContent>
           )}
-          </div>
         </Tabs>
 
         <Card className="mt-8 bg-gradient-to-br from-blue-50 to-white">
