@@ -1856,6 +1856,220 @@ All settings auto-save and changes reflect immediately on your shop page. The Sm
       },
     ],
   },
+  'pj-bookings': {
+    name: 'PJ Bookings',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'E-commerce',
+    description: 'Complete booking and appointment management system',
+    pluginSlug: 'pj-bookings',
+    overview: `PJ Bookings provides a complete booking and appointment management system for WordPress. Perfect for service businesses, consultants, healthcare providers, and any business that needs scheduling capabilities.`,
+    features: [
+      'Appointment Scheduling',
+      'Calendar Management',
+      'Email Notifications',
+      'Payment Integration',
+      'Recurring Bookings',
+      'Multiple Staff Support',
+      'Time Zone Management',
+      'Booking Forms',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Bookings > Settings',
+        'Configure calendar and services',
+        'Add booking form to pages',
+      ],
+      requirements: [
+        'WordPress 5.8 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Bookings > Settings. Set up services, staff, and booking rules.`,
+    troubleshooting: [
+      {
+        question: 'Bookings not showing in calendar?',
+        answer: 'Ensure booking status is set to approved and calendar is refreshed.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I accept payments for bookings?',
+        answer: 'Yes, integrates with PayPal, Stripe, and WooCommerce payments.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'Version update',
+          'Enhanced calendar features',
+          'New payment options',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Help docs.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-bookings', description: 'Features.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'License.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
+  'pj-membership': {
+    name: 'PJ Membership',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'Membership',
+    description: 'Membership site builder with content restriction',
+    pluginSlug: 'pj-membership',
+    overview: `PJ Membership transforms your WordPress site into a powerful membership platform. Restrict content, create membership levels, manage subscriptions, and build a thriving community.`,
+    features: [
+      'Multiple Membership Levels',
+      'Content Restriction',
+      'Subscription Management',
+      'Payment Gateway Integration',
+      'Member Directory',
+      'Private Messaging',
+      'Drip Content',
+      'Membership Reports',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to Membership > Settings',
+        'Create membership levels',
+        'Set content restrictions',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from Membership > Settings. Create levels, set pricing, and restrict content.`,
+    troubleshooting: [
+      {
+        question: 'Members cannot access content?',
+        answer: 'Check membership level assignment and content restriction rules.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Does it support recurring payments?',
+        answer: 'Yes, supports recurring subscriptions with Stripe and PayPal.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New membership features',
+          'Enhanced restriction rules',
+          'Improved payment handling',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Support.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-membership', description: 'Details.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Verify.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License.' },
+      ],
+    },
+  },
+  'pj-gift-card': {
+    name: 'PJ Gift Card',
+    type: 'plugin',
+    version: '25.1.0',
+    category: 'E-commerce',
+    description: 'Digital gift card system for WooCommerce',
+    pluginSlug: 'pj-gift-card',
+    overview: `PJ Gift Card adds a complete digital gift card system to your WooCommerce store. Increase revenue and customer loyalty with customizable gift cards.`,
+    features: [
+      'Digital Gift Cards',
+      'Custom Designs',
+      'Email Delivery',
+      'Balance Management',
+      'Expiration Dates',
+      'Partial Redemption',
+      'Gift Card Reports',
+      'Custom Amounts',
+    ],
+    installation: {
+      steps: [
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to WooCommerce > Gift Cards',
+        'Create gift card products',
+        'Configure email templates',
+      ],
+      requirements: [
+        'WordPress 6.0 or higher',
+        'WooCommerce 7.0 or higher',
+        'PHP 7.4 or higher',
+      ],
+    },
+    configuration: `Configure from WooCommerce > Gift Cards. Set up designs and email templates.`,
+    troubleshooting: [
+      {
+        question: 'Gift card emails not sending?',
+        answer: 'Check email settings and ensure SMTP is configured properly.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can customers check their balance?',
+        answer: 'Yes, includes a balance checker shortcode for your website.',
+      },
+    ],
+    changelog: [
+      {
+        version: '25.1.0',
+        date: '2025-01-20',
+        changes: [
+          'New design templates',
+          'Improved balance tracking',
+          'Enhanced email delivery',
+        ],
+      },
+    ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Help.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-gift-card', description: 'View.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Check.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'Terms.' },
+      ],
+    },
+  },
   'axiom': {
     name: 'Axiom',
     type: 'theme',

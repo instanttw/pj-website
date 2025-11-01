@@ -96,6 +96,62 @@ const plugins = [
     version: '25.1.0',
     category: 'E-commerce',
   },
+  {
+    name: 'PJ Bookings',
+    slug: 'pj-bookings',
+    description: 'Complete booking and appointment management system',
+    version: '25.1.0',
+    category: 'E-commerce',
+  },
+  {
+    name: 'PJ Membership',
+    slug: 'pj-membership',
+    description: 'Membership site builder with content restriction',
+    version: '25.1.0',
+    category: 'Membership',
+  },
+  {
+    name: 'PJ Gift Card',
+    slug: 'pj-gift-card',
+    description: 'Digital gift card system for WooCommerce',
+    version: '25.1.0',
+    category: 'E-commerce',
+  },
+  {
+    name: 'PJ Event Calendar',
+    slug: 'pj-event-calendar',
+    description: 'Event management and calendar system',
+    version: '25.1.0',
+    category: 'Events',
+  },
+  {
+    name: 'PJ Forms',
+    slug: 'pj-forms',
+    description: 'Advanced form builder with conditional logic',
+    version: '25.1.0',
+    category: 'Forms',
+  },
+  {
+    name: 'PJ Email Templates',
+    slug: 'pj-email-templates',
+    description: 'Beautiful email template designer for WordPress',
+    version: '25.1.0',
+    category: 'Marketing',
+  },
+  {
+    name: 'PJ Popup Master',
+    slug: 'pj-popup-master',
+    description: 'Advanced popup builder with targeting options',
+    version: '25.1.0',
+    category: 'Marketing',
+  },
+  {
+    name: 'PJ Slider',
+    slug: 'pj-slider',
+    description: 'Responsive slider and carousel builder',
+    version: '25.1.0',
+    category: 'Media',
+  },
 ];
 
 const themes = [
