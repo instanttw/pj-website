@@ -1678,7 +1678,7 @@ All settings auto-save and changes reflect immediately on your shop page. The Sm
   'pj-media-library': {
     name: 'PJ Media Library',
     type: 'plugin',
-    version: '1.0.0',
+    version: '25.0.0',
     category: 'Media',
     description: 'Advanced media management and organization for WordPress',
     overview: `PJ Media Library transforms the default WordPress media library into a powerful media management system. Organize, search, and manage your media files with ease using folders, tags, and advanced filtering.`,
@@ -1729,60 +1729,77 @@ All settings auto-save and changes reflect immediately on your shop page. The Sm
       },
     ],
   },
-  'pj-site-kite': {
-    name: 'PJ Site Kite',
+  'pj-product-designer': {
+    name: 'PJ Product Designer',
     type: 'plugin',
-    version: '1.0.0',
-    category: 'Utilities',
-    description: 'Complete site management and optimization toolkit',
-    overview: `PJ Site Kite is your all-in-one WordPress site management and optimization toolkit. Monitor performance, manage backups, optimize databases, and enhance security—all from a single dashboard.`,
+    version: '25.0.0',
+    category: 'E-commerce',
+    description: 'Custom product design tool for WooCommerce',
+    pluginSlug: 'pj-product-designer',
+    overview: `PJ Product Designer enables your customers to create custom products with an intuitive design interface. Perfect for print-on-demand, personalized gifts, and custom merchandise stores.`,
     features: [
-      'Performance Monitoring',
-      'Automated Backups',
-      'Database Optimization',
-      'Security Scanner',
-      'Uptime Monitoring',
-      'SEO Tools',
-      'Cache Management',
-      'Plugin Manager',
+      'Visual Design Editor',
+      'Custom Text and Graphics',
+      'Template Library',
+      'Multi-Layer Support',
+      'High-Resolution Export',
+      'Mobile Responsive',
+      'WooCommerce Integration',
+      'Order Management',
     ],
     installation: {
       steps: [
-        'Install and activate the plugin',
-        'Navigate to Dashboard > Site Kite',
-        'Run initial site scan',
-        'Configure optimization settings',
+        'Download and install the plugin',
+        'Activate from Plugins page',
+        'Go to WooCommerce > Product Designer',
+        'Configure design templates',
+        'Add designer to products',
       ],
       requirements: [
-        'WordPress 5.5 or higher',
+        'WordPress 6.0 or higher',
+        'WooCommerce 7.0 or higher',
         'PHP 7.4 or higher',
-        'MySQL 5.6 or higher',
       ],
     },
-    configuration: `Access from Dashboard > Site Kite. Configure monitoring intervals, backup schedules, and optimization rules.`,
+    configuration: `Configure from WooCommerce > Product Designer. Set up templates, pricing rules, and design options.`,
     troubleshooting: [
       {
-        question: 'Backup not working?',
-        answer: 'Check your server has write permissions to the backup directory and sufficient disk space.',
+        question: 'Designer not loading?',
+        answer: 'Clear browser cache and ensure JavaScript is enabled. Check console for errors.',
       },
     ],
     faq: [
       {
-        question: 'Where are backups stored?',
-        answer: 'Backups are stored in your WordPress uploads directory by default, with options for remote storage.',
+        question: 'Can customers save their designs?',
+        answer: 'Yes, customers can save designs and return to edit them later.',
       },
     ],
     changelog: [
       {
-        version: '1.0.0',
-        date: '2025-01-05',
+        version: '25.0.0',
+        date: '2025-01-15',
         changes: [
-          'Initial release',
-          'Performance monitoring',
-          'Backup system',
+          'Major release',
+          'New visual editor',
+          'Enhanced mobile support',
         ],
       },
     ],
+    resources: {
+      support: [
+        { title: 'Support Center', href: '/support', description: 'Guides and FAQs.' },
+      ],
+      product: [
+        { title: 'Plugin Details', href: '/plugins/pj-product-designer', description: 'Features and pricing.' },
+      ],
+      tools: [
+        { title: 'Verify License', href: '/verify-license', description: 'Check license status.' },
+      ],
+      learning: [],
+      policies: [
+        { title: 'Licensing', href: '/licensing', description: 'License terms.' },
+      ],
+    },
   },
   'pj-store-kite': {
     name: 'PJ Store Kite',
@@ -1954,7 +1971,8 @@ export default function ProductDocPage({ params }: DocPageProps) {
     ? (product as any).pluginSlug
     : params.slug;
 
-  const isWpBakeryDoc = params.slug === 'essential-addons-wpbakery' || params.slug === 'pj-filter';
+  // Apply sidebar layout to all documentation pages
+  const isWpBakeryDoc = true; // Use sidebar navigation for all docs
   const triggerClass = isWpBakeryDoc
     ? 'justify-start w-full gap-3 rounded-none px-3 py-2 text-left data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700 hover:bg-gray-100'
     : '';
