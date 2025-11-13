@@ -3,9 +3,9 @@
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 
-const LicenseTable = dynamic(() => import('@/components/account/license-table').then(m => m.LicenseTable), { ssr: false });
+const LicenseTable = dynamicImport(() => import('@/components/account/license-table').then(m => m.LicenseTable), { ssr: false });
 
 export default function LicensesPage() {
   return (
