@@ -41,18 +41,28 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     e.preventDefault();
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: name ? { name } : undefined,
-          emailRedirectTo: typeof window !== 'undefined' ? `${window.location.origin}/account` : undefined,
-        },
+      // Call our API to create the user without email confirmation
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password }),
       });
-      if (error) throw error;
-      toast.success('Sign up successful. Please check your email to verify your account.');
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        // If user already exists, try login
+        if (res.status === 409) {
+          const { error } = await supabase.auth.signInWithPassword({ email, password });
+          if (error) throw error;
+        } else {
+          throw new Error(body.error || 'Sign up failed');
+        }
+      }
+      // After creating the user via admin, sign them in
+      const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+      if (loginError) throw loginError;
+
+      toast.success('Account created');
       onOpenChange(false);
-      // Depending on email confirmation settings, user may already be logged in.
       onSuccess?.();
     } catch (err: any) {
       toast.error(err.message || 'Sign up failed');
@@ -108,13 +118,14 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
           <TabsContent value="signup" className="mt-4">
             <form onSubmit={handleSignup} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="signup-name">Name (optional)</Label>
+                <Label htmlFor="signup-name">Name</Label>
                 <Input
                   id="signup-name"
                   type="text"
                   placeholder="Your name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
               <div className="space-y-2">
