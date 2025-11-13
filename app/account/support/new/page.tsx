@@ -35,7 +35,7 @@ export default function NewSupportTicketPage() {
         status: "Open",
         category: "General",
       }
-      const { error } = await supabase.from('support_tickets').insert(payload)
+      const { error } = await supabase.from('support_tickets').insert([payload])
       if (error) throw error;
       toast.success("Ticket submitted");
     } catch (err: any) {
