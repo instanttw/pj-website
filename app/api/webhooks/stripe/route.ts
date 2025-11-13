@@ -54,8 +54,9 @@ export async function POST(req: NextRequest) {
       // Line items and licenses
       const items = await stripe.checkout.sessions.listLineItems(session.id, { limit: 100 })
       for (const li of items.data) {
-        const plugin_id = session.metadata?.plugin_id || li.price?.metadata?.plugin_id
-        const pricing_id = session.metadata?.pricing_id || li.price?.id
+        const plugin_id = session.metadata?.plugin_id || (li.price?.metadata as any)?.plugin_id
+        // Prefer internal UUID mapping from Price metadata; fall back to session metadata
+        const pricing_id = session.metadata?.pricing_id || (li.price?.metadata as any)?.pricing_id
         const license_key = genKey()
         const priceEach = (li.amount_total ?? 0) / 100
 
