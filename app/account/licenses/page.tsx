@@ -1,5 +1,8 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { LicenseTable } from '@/components/account/license-table';
 
 export default function LicensesPage() {
