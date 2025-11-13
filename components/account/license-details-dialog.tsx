@@ -9,7 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import { LicenseRow, LicenseStatus } from './license-table';
 import { useMemo, useState } from 'react';
-import { Copy } from 'lucide-react';
 
 interface Props {
   open: boolean;
@@ -61,7 +60,7 @@ export function LicenseDetailsDialog({ open, onOpenChange, license }: Props) {
                 <div className="font-mono flex items-center gap-2">
                   {license.licenseKey}
                   <Button variant="ghost" size="sm" onClick={async () => { await navigator.clipboard.writeText(license.licenseKey); toast.success('Copied'); }}>
-                    <Copy className="h-4 w-4" />
+                    Copy
                   </Button>
                 </div>
               </div>

@@ -8,7 +8,6 @@ import { Badge } from '@/components/ui/badge';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
-import { MoreHorizontal, Eye, EyeOff, Copy, ChevronDown } from 'lucide-react';
 import {
   Pagination,
   PaginationContent,
@@ -249,7 +248,7 @@ export function LicenseTable() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={() => { setSortBy('expiry'); setSortDir(sortDir === 'asc' ? 'desc' : 'asc'); }}>
-            Sort by Expiry <ChevronDown className="h-4 w-4 ml-1" />
+            Sort by Expiry ▼
           </Button>
         </div>
       </div>
@@ -291,10 +290,10 @@ export function LicenseTable() {
                       <div className="flex items-center gap-2">
                         <span className="font-mono text-sm">{maskKey(r.licenseKey, reveal)}</span>
                         <Button variant="ghost" size="sm" onClick={() => toggleReveal(r.id)}>
-                          {reveal ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          {reveal ? 'Hide' : 'Show'}
                         </Button>
                         <Button variant="ghost" size="sm" onClick={() => copyKey(r.licenseKey)}>
-                          <Copy className="h-4 w-4" />
+                          Copy
                         </Button>
                       </div>
                     </TableCell>
@@ -305,8 +304,8 @@ export function LicenseTable() {
                     <TableCell className="text-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon">
-                            <MoreHorizontal className="h-4 w-4" />
+                          <Button variant="ghost" size="sm">
+                            Actions ⋯
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">

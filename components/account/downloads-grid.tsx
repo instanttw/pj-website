@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-import { Package, Download, CheckSquare } from 'lucide-react';
 import { toast } from 'sonner';
 import { getPluginDisplayName, getPluginDisplayPrice } from '@/lib/utils';
 import { fallbackPlugins } from '@/data/fallback-plugins';
@@ -195,7 +194,7 @@ export function DownloadsGrid() {
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={downloadAllLatest}>Download All Latest</Button>
           <Button onClick={downloadSelected} disabled={selectedIds.size === 0}>
-            <CheckSquare className="h-4 w-4 mr-2" /> Download Selected
+            Download Selected
           </Button>
         </div>
       </div>
@@ -210,8 +209,8 @@ export function DownloadsGrid() {
             <Card key={p.id} className="hover:shadow-lg transition-all hover:-translate-y-1">
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
-                  <div className="h-12 w-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                    <Package className="h-6 w-6 text-blue-600" />
+                  <div className="h-12 w-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                    PJ
                   </div>
                   {priceBadge}
                 </div>
@@ -257,10 +256,9 @@ export function DownloadsGrid() {
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col gap-3">
-                <Button className="w-full bg-blue-600 hover:bg-blue-700" onClick={() => onDownload(p)}>
-                  <Download className="h-4 w-4 mr-2" />
-                  Download
-                </Button>
+              <Button className="w-full bg-blue-600 hover:bg-blue-700" onClick={() => onDownload(p)}>
+                Download
+              </Button>
                 <div className="flex items-center justify-between w-full text-sm">
                   <Link href="#" className="text-blue-600 hover:underline">View Changelog</Link>
                   <Link href="/docs" className="text-blue-600 hover:underline">View Documentation</Link>
