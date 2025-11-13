@@ -142,28 +142,31 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 py-20 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-sky-400 to-blue-600" />
+          <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full blur-3xl opacity-10 bg-gradient-to-tr from-indigo-500 to-purple-600" />
+        </div>
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="mx-auto max-w-4xl text-center">
-            <Badge variant="secondary" className="mb-4">
+            <Badge variant="secondary" className="mb-4 px-4 py-1 rounded-full">
               Trusted by 571,300+ websites
             </Badge>
-            <h1 className="text-4xl font-extrabold tracking-tight text-black sm:text-5xl lg:text-6xl mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-black mb-6">
               Premium WordPress Plugins for Modern Websites
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Build faster, better WordPress sites with our collection of premium plugins.
-              Professional tools designed by developers, for developers.
+              Build faster with performance‑first, well‑documented plugins. Designed for professionals, loved by teams.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/plugins">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-base px-8">
+                <Button size="lg" className="bg-primary text-white hover:bg-blue-700 text-base px-8 shadow-sm">
                   Browse Plugins
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/docs">
-                <Button size="lg" variant="outline" className="text-base px-8">
+                <Button size="lg" variant="outline" className="text-base px-8 border-2">
                   View Documentation
                 </Button>
               </Link>
@@ -176,7 +179,7 @@ export default async function Home() {
               return (
                 <div
                   key={index}
-                  className="flex flex-col items-center p-6 bg-white rounded-xl border shadow-sm hover:shadow-md transition-shadow"
+                  className="flex flex-col items-center p-6 bg-white rounded-xl border border-slate-200 shadow-[0_1px_2px_rgba(16,24,40,.06),0_10px_20px_rgba(16,24,40,.04)] hover:shadow-[0_1px_2px_rgba(16,24,40,.10),0_12px_24px_rgba(16,24,40,.10)] transition-all"
                 >
                   <Icon className="h-8 w-8 text-blue-600 mb-3" />
                   <div className="text-3xl font-bold text-black mb-1">{stat.value}</div>

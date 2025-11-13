@@ -132,7 +132,7 @@ Premium WordPress plugins for everyone—site owners and developers alike.
 
         <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} PrintJones. All rights reserved. A subsidiary of Instant, LLC.
+© {new Date().getFullYear()} PrintJones. All rights reserved. A brand of Instant, LLC.
           </p>
           <p className="text-sm text-gray-600">
             Trusted by 571,300+ websites worldwide
