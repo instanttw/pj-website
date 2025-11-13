@@ -9,6 +9,14 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { supabase } from '@/lib/supabase';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const navigation = [
   { name: 'Axiom', href: '#' },
@@ -17,6 +25,40 @@ const navigation = [
   { name: 'Support', href: '/support' },
   { name: 'About', href: '/about' },
 ];
+
+function AccountMenu({ isAuthed, onLoginClick }: { isAuthed: boolean; onLoginClick: () => void }) {
+  const router = useRouter();
+  const [email, setEmail] = useState<string | null>(null);
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase.auth.getUser();
+      setEmail(data.user?.email ?? null);
+    })();
+  }, []);
+
+  if (!isAuthed) {
+    return (
+      <Button size="sm" className="bg-blue-600 hover:bg-blue-700" onClick={onLoginClick}>
+        My Account
+      </Button>
+    );
+  }
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button size="sm" className="bg-blue-600 hover:bg-blue-700">My Account</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        {email && <DropdownMenuLabel>{email}</DropdownMenuLabel>}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={() => router.push('/account/downloads')}>Downloads</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push('/account/settings')}>Settings</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={async () => { await supabase.auth.signOut(); router.push('/'); }}>Sign out</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 export function Header() {
   const router = useRouter();
@@ -96,9 +138,8 @@ export function Header() {
                 Verify License
               </Button>
             </Link>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700" onClick={handleAccountClick}>
-              My Account
-            </Button>
+            {/* My Account menu */}
+            <AccountMenu isAuthed={isAuthed} onLoginClick={handleAccountClick} />
 
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild className="md:hidden">

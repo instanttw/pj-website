@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { getPluginDisplayName, getPluginDisplayPrice } from '@/lib/utils';
-import { fallbackPlugins } from '@/data/fallback-plugins';
 
 interface PluginItem {
   id: string | number;
@@ -32,44 +31,32 @@ function computeVersions(current: string | undefined) {
   return [v1, v2, v3];
 }
 
-async function fetchDownloads(): Promise<PluginItem[]> {
+async function fetchDownloadsForUser(): Promise<PluginItem[]> {
   try {
     const { supabase } = await import('@/lib/supabase');
+    const { data: userData } = await supabase.auth.getUser();
+    const userId = userData.user?.id;
+    if (!userId) return [];
+    // Fetch user's licenses and join plugin info
     const { data, error } = await supabase
-      .from('plugins' as any)
-      .select(`
-        *,
-        categories(name, slug)
-      ` as any)
-      .eq('is_active', true)
-      .order('download_count', { ascending: false });
+      .from('licenses' as any)
+      .select('*, plugins:plugin_id (id, name, slug, version, tagline, updated_at)') as any;
     if (error) throw error;
-    if (data && data.length) {
-      return (data as any[]).map((p) => ({
-        id: p.id,
-        name: getPluginDisplayName(p as any),
-        slug: p.slug,
-        version: p.version ?? '1.0.0',
-        updated_at: p.updated_at ?? new Date().toISOString(),
-        download_url: p.download_url ?? null,
-        tagline: p.tagline,
-        categoryName: p.categories?.name ?? undefined,
-        categorySlug: p.categories?.slug ?? undefined,
-      }));
-    }
-  } catch {}
-  // Fallback curated list
-  return (fallbackPlugins as any[]).map((p) => ({
-    id: p.id,
-    name: getPluginDisplayName(p as any),
-    slug: p.slug,
-    version: p.version ?? '1.0.0',
-    updated_at: new Date().toISOString(),
-    download_url: p.download_url ?? null,
-    tagline: p.tagline,
-    categoryName: (p as any).categories?.name,
-    categorySlug: (p as any).categories?.slug,
-  }));
+    const rows = (data || []).filter((r: any) => r.user_id === userId);
+    return rows.map((r: any) => ({
+      id: r.plugins?.id ?? r.plugin_id,
+      name: getPluginDisplayName(r.plugins || {}),
+      slug: r.plugins?.slug ?? 'unknown',
+      version: r.plugins?.version ?? '1.0.0',
+      updated_at: r.plugins?.updated_at ?? new Date().toISOString(),
+      download_url: null,
+      tagline: r.plugins?.tagline ?? '',
+      categoryName: undefined,
+      categorySlug: undefined,
+    }));
+  } catch {
+    return [];
+  }
 }
 
 export function DownloadsGrid() {
@@ -82,7 +69,7 @@ export function DownloadsGrid() {
 
   useEffect(() => {
     let mounted = true;
-    fetchDownloads()
+    fetchDownloadsForUser()
       .then((items) => {
         if (!mounted) return;
         setPlugins(items);
@@ -165,7 +152,7 @@ export function DownloadsGrid() {
   }
 
   if (plugins.length === 0) {
-    return <div className="text-gray-500">No downloads yet.</div>;
+    return <div className="text-gray-500">You have no downloads yet.</div>;
   }
 
   return (
@@ -203,7 +190,7 @@ export function DownloadsGrid() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filtered.map((p) => {
           const versions = computeVersions(p.version);
-          const priceBadge = <Badge className="bg-blue-600">${getPluginDisplayPrice(p as any)}</Badge>;
+          const priceBadge = null;
           const isSelected = selectedIds.has(p.id);
           return (
             <Card key={p.id} className="hover:shadow-lg transition-all hover:-translate-y-1">

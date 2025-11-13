@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { supabase } from '@/lib/supabase';
 import { toast } from 'sonner';
+import Link from 'next/link';
 
 interface AuthModalProps {
   open: boolean;
@@ -19,7 +20,10 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPw, setShowPw] = useState(false);
+  const [showPw2, setShowPw2] = useState(false);
   const [name, setName] = useState('');
+  const [tab, setTab] = useState<'login' | 'signup'>('login');
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -48,7 +52,14 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
           data: name ? { name } : undefined,
         },
       });
-      if (error) throw error;
+      if (error) {
+        if (error.message?.toLowerCase().includes('already')) {
+          toast.error('An account with this email already exists. Please log in.');
+          setTab('login');
+          return;
+        }
+        throw error;
+      }
       toast.success('Account created successfully');
       onOpenChange(false);
       onSuccess?.();
@@ -67,7 +78,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
           <DialogDescription>Log in to access your dashboard, or create a new account.</DialogDescription>
         </DialogHeader>
 
-        <Tabs defaultValue="login" className="w-full">
+        <Tabs value={tab} onValueChange={(v) => setTab(v as any)} className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="login">Login</TabsTrigger>
             <TabsTrigger value="signup">Sign Up</TabsTrigger>
@@ -88,14 +99,27 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="login-password">Password</Label>
-                <Input
-                  id="login-password"
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                <div className="relative">
+                  <Input
+                    id="login-password"
+                    type={showPw ? 'text' : 'password'}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPw((s) => !s)}
+                    className="absolute inset-y-0 right-2 text-sm text-gray-600"
+                  >
+                    {showPw ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div />
+                <Link href="/reset-password" className="text-sm text-blue-600 hover:underline">Forgot password?</Link>
               </div>
               <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={loading}>
                 {loading ? 'Logging in...' : 'Log In'}
@@ -129,14 +153,23 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="signup-password">Password</Label>
-                <Input
-                  id="signup-password"
-                  type="password"
-                  placeholder="At least 8 characters"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                <div className="relative">
+                  <Input
+                    id="signup-password"
+                    type={showPw2 ? 'text' : 'password'}
+                    placeholder="At least 8 characters"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPw2((s) => !s)}
+                    className="absolute inset-y-0 right-2 text-sm text-gray-600"
+                  >
+                    {showPw2 ? 'Hide' : 'Show'}
+                  </button>
+                </div>
               </div>
               <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={loading}>
                 {loading ? 'Creating account...' : 'Create Account'}

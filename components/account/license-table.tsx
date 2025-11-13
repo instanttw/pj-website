@@ -53,65 +53,31 @@ function statusBadge(status: LicenseStatus) {
   }
 }
 
-async function fetchLicenses(): Promise<LicenseRow[]> {
+async function fetchLicenses(userId: string | null): Promise<LicenseRow[]> {
   try {
+    if (!userId) return [];
     const { supabase } = await import('@/lib/supabase');
-    // Attempt to fetch from a 'licenses' table if it exists
     const { data, error } = await supabase
       .from('licenses' as any)
-      .select('*' as any);
+      .select('*' as any)
+      .eq('user_id', userId);
     if (error) throw error;
     if (Array.isArray(data) && data.length) {
-      // Map data into LicenseRow shape if schema differs; using best-effort mapping
       return data.map((d: any) => ({
-        id: String(d.id ?? crypto.randomUUID()),
+        id: String(d.id),
         pluginName: d.plugin_name ?? d.plugin ?? 'Unknown Plugin',
-        licenseKey: d.license_key ?? d.key ?? 'XXXX-XXXX-XXXX-XXXX',
+        licenseKey: d.license_key ?? '',
         type: (d.license_type ?? 'Personal') as LicenseType,
-        used: Number(d.sites_used ?? d.used ?? 0),
-        total: Number(d.sites_total ?? d.total ?? 1),
-        expiry: d.expiry_date ?? d.expiry ?? new Date().toISOString(),
+        used: Number(d.sites_used ?? 0),
+        total: Number(d.sites_total ?? 0),
+        expiry: d.expiry_date ?? new Date().toISOString(),
         status: (d.status ?? 'active') as LicenseStatus,
       }));
     }
   } catch (e) {
-    // fall back to curated data below
+    // ignore; show empty
   }
-  // Fallback sample data
-  const now = new Date();
-  const fmt = (d: Date) => d.toISOString();
-  return [
-    {
-      id: 'lic_1',
-      pluginName: 'PJ Filter',
-      licenseKey: 'PJFL-ABCD-1234-EFGH-5678',
-      type: 'Personal',
-      used: 1,
-      total: 3,
-      expiry: fmt(new Date(now.getFullYear(), now.getMonth() + 1, now.getDate())),
-      status: 'active',
-    },
-    {
-      id: 'lic_2',
-      pluginName: 'Advanced Widgets for Elementor',
-      licenseKey: 'AWEP-9876-ZYXW-4321-QWER',
-      type: 'Business',
-      used: 3,
-      total: 5,
-      expiry: fmt(new Date(now.getFullYear(), now.getMonth(), now.getDate() + 10)),
-      status: 'expiring',
-    },
-    {
-      id: 'lic_3',
-      pluginName: 'EAF for WPBakery',
-      licenseKey: 'EAFW-5555-6666-7777-8888',
-      type: 'Personal',
-      used: 5,
-      total: 5,
-      expiry: fmt(new Date(now.getFullYear(), now.getMonth() - 1, now.getDate())),
-      status: 'expired',
-    },
-  ];
+  return [];
 }
 
 export function LicenseTable() {
@@ -130,15 +96,15 @@ export function LicenseTable() {
 
   useEffect(() => {
     let mounted = true;
-    fetchLicenses()
-      .then((data) => {
-        if (!mounted) return;
-        setRows(data);
-      })
-      .finally(() => mounted && setLoading(false));
-    return () => {
-      mounted = false;
-    };
+    (async () => {
+      const { supabase } = await import('@/lib/supabase');
+      const { data } = await supabase.auth.getUser();
+      const userId = data.user?.id ?? null;
+      const dataRows = await fetchLicenses(userId);
+      if (mounted) setRows(dataRows);
+      if (mounted) setLoading(false);
+    })();
+    return () => { mounted = false; };
   }, []);
 
   const filtered = useMemo(() => {
