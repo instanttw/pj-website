@@ -3,8 +3,10 @@
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-import { DownloadsGrid } from '@/components/account/downloads-grid';
-import { DownloadHistory } from '@/components/account/download-history';
+import dynamic from 'next/dynamic';
+
+const DownloadsGrid = dynamic(() => import('@/components/account/downloads-grid').then(m => m.DownloadsGrid), { ssr: false });
+const DownloadHistory = dynamic(() => import('@/components/account/download-history').then(m => m.DownloadHistory), { ssr: false });
 
 export default function DownloadsPage() {
   return (
