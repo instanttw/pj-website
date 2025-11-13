@@ -6,7 +6,6 @@ const footerLinks = {
     { name: 'All Plugins', href: '/plugins' },
     { name: 'Featured', href: '/plugins?featured=true' },
     { name: 'Pricing', href: '/plugins' },
-    { name: 'Changelog', href: '/changelog' },
   ],
   support: [
     { name: 'Documentation', href: '/docs' },
@@ -17,7 +16,6 @@ const footerLinks = {
   company: [
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Blog', href: '/blog' },
   ],
   legal: [
     { name: 'Terms of Service', href: '/terms' },

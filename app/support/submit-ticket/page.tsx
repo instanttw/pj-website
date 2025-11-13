@@ -220,11 +220,7 @@ export default function SubmitTicketPage() {
                       View common issues
                     </Link>
                   </li>
-                  <li>
-                    <Link href="/changelog" className="text-blue-600 hover:underline">
-                      Check recent updates
-                    </Link>
-                  </li>
+                  
                 </ul>
               </CardContent>
             </Card>
