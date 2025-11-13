@@ -4,9 +4,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Menu, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
+import { AuthModal } from '@/components/auth/auth-modal';
+import { supabase } from '@/lib/supabase';
 
 const navigation = [
   { name: 'Axiom', href: '#' },
@@ -19,6 +21,33 @@ const navigation = [
 export function Header() {
   const router = useRouter();
   const [q, setQ] = useState('');
+  const [authOpen, setAuthOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isAuthed, setIsAuthed] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    supabase.auth.getUser().then(({ data }) => {
+      if (!mounted) return;
+      setIsAuthed(!!data.user);
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_evt, session) => {
+      setIsAuthed(!!session?.user);
+    });
+    return () => {
+      mounted = false;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
+
+  const handleAccountClick = () => {
+    if (isAuthed) {
+      router.push('/account');
+    } else {
+      setAuthOpen(true);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto px-4 lg:px-8">
@@ -67,13 +96,11 @@ export function Header() {
                 Verify License
               </Button>
             </Link>
-            <Link href="/account">
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                My Account
-              </Button>
-            </Link>
+            <Button size="sm" className="bg-blue-600 hover:bg-blue-700" onClick={handleAccountClick}>
+              My Account
+            </Button>
 
-            <Sheet>
+            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="ghost" size="icon">
                   <Menu className="h-5 w-5" />
@@ -86,6 +113,7 @@ export function Header() {
                       key={item.name}
                       href={item.href}
                       className="text-lg font-medium text-gray-600 hover:text-black transition-colors"
+                      onClick={() => setMobileOpen(false)}
                     >
                       {item.name}
                     </Link>
@@ -93,15 +121,34 @@ export function Header() {
                   <Link
                     href="/verify-license"
                     className="text-lg font-medium text-gray-600 hover:text-black transition-colors"
+                    onClick={() => setMobileOpen(false)}
                   >
                     Verify License
                   </Link>
+                  <button
+                    className="text-left text-lg font-medium text-blue-600 hover:text-blue-700"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      handleAccountClick();
+                    }}
+                  >
+                    My Account
+                  </button>
                 </nav>
               </SheetContent>
             </Sheet>
           </div>
         </div>
       </div>
+
+      <AuthModal
+        open={authOpen}
+        onOpenChange={setAuthOpen}
+        onSuccess={() => {
+          setAuthOpen(false);
+          router.push('/account');
+        }}
+      />
     </header>
   );
 }
