@@ -1,5 +1,3 @@
-import fetch from 'node-fetch'
-
 export function getPayPalApiBase() {
   const env = (process.env.PAYPAL_ENV || 'sandbox').toLowerCase()
   const override = process.env.PAYPAL_API_BASE
