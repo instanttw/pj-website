@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getStripeClient } from '@/lib/stripe/client'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
+import type { Database } from '@/lib/database.types'
 
 export const dynamic = 'force-dynamic'
 
@@ -44,9 +45,15 @@ export async function POST(req: NextRequest) {
       }
 
       // Insert order
-      const { data: order, error: orderErr } = await supabaseAdmin
+      const orderPayload: Database['public']['Tables']['orders']['Insert'] = {
+        user_id: userId,
+        total_amount: total,
+        status: 'completed',
+        payment_method: 'card',
+      }
+      const { data: order, error: orderErr } = await (supabaseAdmin as any)
         .from('orders')
-        .insert({ user_id: userId, total_amount: total, status: 'completed', payment_method: 'card' })
+        .insert(orderPayload)
         .select('*')
         .single()
       if (orderErr) throw orderErr
@@ -54,40 +61,43 @@ export async function POST(req: NextRequest) {
       // Line items and licenses
       const items = await stripe.checkout.sessions.listLineItems(session.id, { limit: 100 })
       for (const li of items.data) {
-        const plugin_id = session.metadata?.plugin_id || (li.price?.metadata as any)?.plugin_id
+        const plugin_id = (session.metadata?.plugin_id as string | undefined) || (li.price?.metadata as any)?.plugin_id
         // Prefer internal UUID mapping from Price metadata; fall back to session metadata
-        const pricing_id = session.metadata?.pricing_id || (li.price?.metadata as any)?.pricing_id
+        const pricing_id = (session.metadata?.pricing_id as string | undefined) || (li.price?.metadata as any)?.pricing_id
         const license_key = genKey()
         const priceEach = (li.amount_total ?? 0) / 100
 
-        await supabaseAdmin.from('order_items').insert({
+        const itemPayload: Database['public']['Tables']['order_items']['Insert'] = {
           order_id: order.id,
           user_id: userId,
-          plugin_id,
-          pricing_id,
+          plugin_id: plugin_id ?? null,
+          pricing_id: pricing_id ?? null,
           price: priceEach,
           license_key,
-        })
+        }
+        await (supabaseAdmin as any).from('order_items').insert(itemPayload)
 
         if (plugin_id) {
-          await supabaseAdmin.from('licenses').insert({
+          const licPayload: Database['public']['Tables']['licenses']['Insert'] = {
             user_id: userId,
             plugin_id,
-            pricing_id,
+            pricing_id: pricing_id ?? null,
             license_key,
             status: 'active',
-          })
+          }
+          await (supabaseAdmin as any).from('licenses').insert(licPayload)
         }
       }
 
       // Invoice stub
-      await supabaseAdmin.from('invoices').insert({
+      const invPayload: Database['public']['Tables']['invoices']['Insert'] = {
         order_id: order.id,
         user_id: userId,
         invoice_number: `INV-${(session.id || '').slice(-8).toUpperCase()}`,
         amount: total,
         status: 'paid',
-      })
+      }
+      await (supabaseAdmin as any).from('invoices').insert(invPayload)
     }
 
     // TODO: handle refunds/cancellations -> mark orders/invoices and deactivate licenses
