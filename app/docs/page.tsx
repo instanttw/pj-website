@@ -6,10 +6,10 @@ import { Search, Package, Palette, ArrowRight } from 'lucide-react';
 
 const plugins = [
   {
-    name: 'PJ Essential Addons for Elementor',
-    slug: 'pj-essential-addons-elementor',
-    description: 'Supercharge Your Elementor Website with 100+ Premium Widgets',
-    version: '25.0.0',
+    name: 'Advanced Widgets for Elementor Pro',
+    slug: 'advanced-widgets-elementor',
+    description: '538 widgets, AI-powered features, 72 WooCommerce widgets, and 48% faster performance',
+    version: '26.0.0',
     category: 'Page Builder',
   },
   {
@@ -151,6 +151,27 @@ const plugins = [
     description: 'Responsive slider and carousel builder',
     version: '12.0.0',
     category: 'Media',
+  },
+  {
+    name: 'PJ SEO',
+    slug: 'pj-seo',
+    description: 'All‑in‑one SEO toolkit with schema, sitemaps, redirects & AI suggestions',
+    version: '26.1.0',
+    category: 'Marketing',
+  },
+  {
+    name: 'PJ Security',
+    slug: 'pj-security',
+    description: 'Harden WordPress with firewall, malware scan, 2FA, and login limits',
+    version: '26.0.4',
+    category: 'Security',
+  },
+  {
+    name: 'PJ Backup',
+    slug: 'pj-backup',
+    description: 'Automated backups with incremental strategy and cloud storage',
+    version: '26.1.2',
+    category: 'Utilities',
   },
 ];
 

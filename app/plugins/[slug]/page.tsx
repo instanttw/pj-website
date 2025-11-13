@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,6 +28,7 @@ import { supabase } from '@/lib/supabase';
 import { getPluginDisplayName, getPluginDisplaySlug, getPluginDisplayPrice } from '@/lib/utils';
 import { getFallbackPluginBySlug, getFallbackRelated, fallbackPlugins } from '@/data/fallback-plugins';
 import { PJFilterOverview, PJFilterIntegrations, PJFilterFeatures, PJFilterFAQs, PJFilterROI, PJFilterTestimonials } from '@/components/pj-filter-content';
+import { CheckoutButtons } from '@/components/checkout-buttons';
 
 interface PluginPageProps {
   params: {
@@ -127,6 +128,9 @@ export async function generateMetadata({ params }: PluginPageProps): Promise<Met
 }
 
 export default async function PluginDetailPage({ params }: PluginPageProps) {
+  if (params.slug === 'aioa-elementor') {
+    redirect('/plugins/advanced-widgets-elementor');
+  }
   let plugin = await getPluginBySlug(params.slug);
 
   if (!plugin) {
@@ -139,7 +143,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   // Enforce specific Active Installations on detail pages for key plugins
   const downloadOverrides: Record<string, number> = {
     'pj-filter': 650780,
-    'aioa-elementor': 1200500,
+    'advanced-widgets-elementor': 1200500,
     'eaf-wpbakery': 990340,
   };
   if (downloadOverrides[plugin.slug]) {
@@ -206,13 +210,8 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
     'Developer friendly',
   ];
 
-  // Override demo URLs when needed (ensures correct links even if DB is outdated)
-  const demoUrlOverrides: Record<string, string> = {
-    'eaf-wpbakery': 'https://eaw.printjones.com',
-    'pj-filter': 'https://filter.printjones.com',
-    'pj-product-filter': 'https://filter.printjones.com',
-  };
-  const demoUrl = demoUrlOverrides[plugin.slug] || plugin.demo_url;
+  // Prefer download link (Google Drive) over legacy demo links
+  const downloadUrl = plugin.download_url || null;
 
   const sampleReviews = [
     {
@@ -416,26 +415,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                     </div>
 
                     {/* CTA Buttons */}
-                    <div className="space-y-3">
-                      <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg">
-                        <ShoppingCart className="w-5 h-5 mr-2" />
-                        Add to Cart - ${displayPrice}
-                      </Button>
-                      {demoUrl && (
-                        <a href={demoUrl} target="_blank" rel="noopener noreferrer" className="block">
-                          <Button size="lg" variant="outline" className="w-full border-2 border-gray-300">
-                            <ExternalLink className="w-5 h-5 mr-2" />
-                            View Live Demo
-                          </Button>
-                        </a>
-                      )}
-                      {plugin.download_url && (
-                        <Button size="sm" variant="ghost" className="w-full text-gray-600">
-                          <Download className="w-4 h-4 mr-2" />
-                          Try Free Version
-                        </Button>
-                      )}
-                    </div>
+                    <CheckoutButtons slug={plugin.slug} price={displayPrice} downloadUrl={downloadUrl} name={plugin.name} />
 
                     {/* Trust Signals */}
                     <div className="text-center pt-4 border-t border-gray-200">
@@ -444,7 +424,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         <CreditCard className="w-4 h-4" />
                         <RotateCcw className="w-4 h-4" />
                       </div>
-                      <p className="text-xs text-gray-500">Secure checkout via {plugin.slug === 'aioa-elementor' ? 'Stripe' : 'Codecanyon'}</p>
+                      <p className="text-xs text-gray-500">Secure checkout via Stripe or PayPal</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -481,6 +461,18 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                   className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
                 >
                   Reviews
+                </TabsTrigger>
+                <TabsTrigger
+                  value="comparison"
+                  className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                >
+                  Comparison
+                </TabsTrigger>
+                <TabsTrigger
+                  value="use-cases"
+                  className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                >
+                  Use Cases
                 </TabsTrigger>
                 <TabsTrigger
                   value="faqs"
@@ -653,6 +645,115 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                 </div>
               </TabsContent>
 
+              <TabsContent value="comparison" className="py-16">
+                {plugin.slug === 'advanced-widgets-elementor' ? (
+                  <div className="prose max-w-none">
+                    <h2 className="text-3xl font-bold mb-6">Why Advanced Widgets Crushes the Competition</h2>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-200 text-sm">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="p-3 text-left">Feature</th>
+                            <th className="p-3 text-left">Advanced Widgets Pro</th>
+                            <th className="p-3 text-left">Essential Addons</th>
+                            <th className="p-3 text-left">ElementsKit</th>
+                            <th className="p-3 text-left">Premium Addons</th>
+                            <th className="p-3 text-left">Astra Sites*</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-t">
+                            <td className="p-3">Total Widgets</td>
+                            <td className="p-3 font-semibold">538 ✅</td>
+                            <td className="p-3">110+</td>
+                            <td className="p-3">90+</td>
+                            <td className="p-3">90+</td>
+                            <td className="p-3">N/A (Templates)</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">AI Content Generation</td>
+                            <td className="p-3 font-semibold">✅ Industry‑First</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">✅ (Limited)</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">AI Image Alt Text</td>
+                            <td className="p-3 font-semibold">✅</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">Performance Optimization</td>
+                            <td className="p-3 font-semibold">48% Faster ✅</td>
+                            <td className="p-3">Basic</td>
+                            <td className="p-3">Minimal</td>
+                            <td className="p-3">Basic</td>
+                            <td className="p-3">N/A</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">WooCommerce Widgets</td>
+                            <td className="p-3 font-semibold">72 ✅</td>
+                            <td className="p-3">11</td>
+                            <td className="p-3">4</td>
+                            <td className="p-3">4</td>
+                            <td className="p-3">N/A</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">REST API</td>
+                            <td className="p-3 font-semibold">16 Endpoints ✅</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">WP‑CLI Tools</td>
+                            <td className="p-3 font-semibold">30+ Commands ✅</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                            <td className="p-3">❌</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="text-xs mt-3 text-gray-500">*Astra Sites is primarily a template library, not a widget addon, so direct comparison is limited.</p>
+
+                    <h3 className="text-2xl font-bold mt-10 mb-4">Key Differentiators</h3>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li><strong>Unmatched Widget Count:</strong> 538 widgets (≈5x more than nearest competitor)</li>
+                      <li><strong>AI‑Powered Features:</strong> content generation, image alt text, layout suggestions</li>
+                      <li><strong>WooCommerce Dominance:</strong> 72 specialized widgets</li>
+                      <li><strong>Developer Tools:</strong> 16 REST endpoints + 30+ WP‑CLI commands</li>
+                      <li><strong>Performance First:</strong> 48% faster average page loads</li>
+                    </ul>
+                  </div>
+                ) : (
+                  <div className="text-gray-600">No comparison available for this plugin.</div>
+                )}
+              </TabsContent>
+
+
+              <TabsContent value="use-cases" className="py-16">
+                {plugin.slug === 'advanced-widgets-elementor' ? (
+                  <div className="prose max-w-none">
+                    <h2 className="text-3xl font-bold mb-6">Use Cases</h2>
+                    <h3 className="text-2xl font-semibold mb-2">The Overwhelmed Freelancer</h3>
+                    <p>Build full client pages in minutes using AI‑generated copy and 538 widgets. Reduce project time from 40 hours to 18 hours and take on more clients.</p>
+                    <h3 className="text-2xl font-semibold mt-6 mb-2">The Ambitious Agency Owner</h3>
+                    <p>Standardize delivery with pre‑built templates, AI assistance, and 72 WooCommerce widgets. Increase throughput by ~40% without adding headcount.</p>
+                    <h3 className="text-2xl font-semibold mt-6 mb-2">The E‑commerce Underdog</h3>
+                    <p>Transform store UX with product carousels, quick view, and advanced checkout layouts. Lower cart abandonment and raise AOV with zero custom code.</p>
+                  </div>
+                ) : (
+                  <div className="text-gray-600">No use cases available for this plugin.</div>
+                )}
+              </TabsContent>
+
               <TabsContent value="faqs" className="py-16">
                 {plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
                   <div>
@@ -777,11 +878,11 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Buy Now - ${displayPrice}
               </Button>
-              {demoUrl && (
-                <a href={demoUrl} target="_blank" rel="noopener noreferrer">
+              {downloadUrl && (
+                <a href={downloadUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8">
-                    <ExternalLink className="w-5 h-5 mr-2" />
-                    View Live Demo
+                    <Download className="w-5 h-5 mr-2" />
+                    Download Core Plugin
                   </Button>
                 </a>
               )}

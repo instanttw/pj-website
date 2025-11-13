@@ -4,7 +4,7 @@
 -- Note: Update category_id values based on your categories table
 -- Example categories: 1=Page Builders, 2=E-commerce, 3=Accessibility, 4=Media, 5=Utility
 
--- 1. All-in-One Addons for Elementor
+-- 1. Advanced Widgets for Elementor Pro
 INSERT INTO plugins (
   name, 
   slug, 
@@ -23,10 +23,10 @@ INSERT INTO plugins (
   features,
   demo_url
 ) VALUES (
-  'All-in-One Addons for Elementor',
-  'aioa-elementor',
-  'Supercharge Your Elementor Website with 100+ Premium Widgets',
-  'The most comprehensive collection of Elementor widgets and extensions. Build stunning websites faster with our premium addons designed for speed and flexibility.',
+  'Advanced Widgets for Elementor Pro',
+  'advanced-widgets-elementor',
+  '538 professional widgets, AI-powered, 48% faster',
+  'Comprehensive Elementor addon with 538 widgets, AI content generation, 72 WooCommerce widgets, and performance-first architecture.',
   49.00,
   4.9,
   1250,
@@ -34,11 +34,11 @@ INSERT INTO plugins (
   true,
   true,
   1, -- Update with your Page Builders category ID
-  '1.0.0',
+  '25.0.0',
   '6.4+',
   NOW(),
-  '["100+ Premium Widgets", "Responsive Design", "Regular Updates", "Premium Support", "Lightweight Code", "SEO Optimized", "Translation Ready", "Developer Friendly"]'::jsonb,
-  'https://printjones.com/demos/aioa-elementor'
+  '["538 Professional Widgets", "AI Content Generation", "48% Faster Pages", "72 WooCommerce Widgets", "100+ Templates", "REST API", "WP-CLI", "BYOK AI Model"]'::jsonb,
+  'https://printjones.com/demos/advanced-widgets-elementor'
 );
 
 -- 2. Essential Addons for WPBakery Page Builder

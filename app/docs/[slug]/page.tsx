@@ -55,40 +55,39 @@ interface DocPageProps {
 }
 
 const products = {
-  'pj-essential-addons-elementor': {
-    name: 'PJ Essential Addons for Elementor',
+'advanced-widgets-elementor': {
+name: 'Advanced Widgets for Elementor Pro',
     type: 'plugin',
-    version: '25.0.0',
+    version: '26.0.0',
     category: 'Page Builder',
-    description: 'Supercharge Your Elementor Website with 100+ Premium Widgets',
+description: '538 widgets, AI-powered features, 72 WooCommerce widgets, and 48% faster performance',
     // Link to matching plugin detail page slug
-    pluginSlug: 'aioa-elementor',
-    overview: `PJ Essential Addons for Elementor is the most comprehensive collection of premium widgets and extensions for Elementor. With over 100 powerful widgets, you can create stunning websites faster than ever before.
+pluginSlug: 'advanced-widgets-elementor',
+overview: `Advanced Widgets for Elementor Pro is the most comprehensive Elementor addon available, featuring an unprecedented 538 professional widgets, 15 extensions, 23 dynamic tags, and cutting-edge AI-powered features.
 
-This plugin is designed with performance in mind, ensuring your website stays fast while adding incredible functionality. Each widget is carefully crafted to be flexible, customizable, and easy to use.`,
-    features: [
-      '100+ Premium Widgets',
-      'Advanced Form Builder',
-      'WooCommerce Integration',
-      'Dynamic Content Support',
-      'Template Library',
-      'Cross-Domain Copy Paste',
-      'Custom CSS & JavaScript',
-      'RTL Support',
-      'Translation Ready',
-      'Regular Updates',
-      'Premium Support',
-      'Lifetime Updates',
+Key advantages:
+• Unmatched library — 538 widgets across 17 categories
+• AI-powered content, alt text, and layout suggestions
+• Performance-first — 48% faster average page loads via conditional assets
+• Complete WooCommerce solution — 72 specialized widgets
+• Developer tools — 16 REST endpoints and 30+ WP-CLI commands
+• BYOK AI model — roughly $0.01 per generation`,
+features: [
+      '538 Professional Widgets across 17 categories',
+      'AI-powered content generation and layout suggestions',
+      '48% faster page loads with conditional asset loading',
+      '72 WooCommerce widgets for product, cart and checkout',
+      '100+ pre-built templates (import in minutes)',
+      'REST API (16 endpoints) and 30+ WP-CLI commands',
+      'BYOK AI model (~$0.01 per generation)',
+      'Developer-grade tools and complete documentation',
     ],
-    installation: {
+installation: {
       steps: [
-        'Download the plugin zip file from your account',
-        'Go to WordPress Admin > Plugins > Add New',
-        'Click "Upload Plugin" and choose the zip file',
-        'Click "Install Now" and then "Activate"',
-        'Navigate to Elementor > PJ Essential Addons',
-        'Enable the widgets you want to use',
-        'Start building amazing pages!',
+        'Go to Plugins > Add New and search “Advanced Widgets for Elementor Pro”',
+        'Click Install Now, then Activate',
+        'Or upload ZIP via Plugins > Add New > Upload Plugin',
+        'Open AIOA > Dashboard to manage widgets and AI features',
       ],
       requirements: [
         'WordPress 5.0 or higher',
@@ -97,7 +96,7 @@ This plugin is designed with performance in mind, ensuring your website stays fa
         'MySQL 5.6 or higher',
       ],
     },
-    configuration: `After installation, navigate to Elementor > PJ Essential Addons in your WordPress admin panel. Here you can:
+configuration: `After installation, navigate to AIOA > Dashboard to:
 
 • Enable/Disable specific widgets to optimize performance
 • Configure global settings
@@ -120,8 +119,8 @@ This plugin is designed with performance in mind, ensuring your website stays fa
     ],
     faq: [
       {
-        question: 'Do I need Elementor Pro?',
-        answer: 'No, PJ Essential Addons works with both free and Pro versions of Elementor. However, some advanced features may require Elementor Pro.',
+question: 'Do I need Elementor Pro?',
+        answer: 'No. Advanced Widgets works with the free version of Elementor. Some advanced layouts may benefit from Elementor Pro if you choose to use it.',
       },
       {
         question: 'How many sites can I use this on?',
@@ -1117,6 +1116,139 @@ All settings auto-save and apply instantly. Changes reflect immediately in the W
           'Improved dynamic content handling for ACF and JetEngine',
           'Added visual dashboard with analytics',
           'Bug fixes and stability improvements',
+        ],
+      },
+    ],
+  },
+'pj-seo': {
+    version: '26.1.0',
+    troubleshooting: [
+      { question: 'Sitemap not updating?', answer: 'Clear caches and resave settings under SEO > Sitemaps. Verify cron is running and check robots settings.' },
+      { question: 'Schema warnings in Search Console?', answer: 'Validate required fields, pick correct schema types, and re‑index. Use the schema validator in the plugin.' },
+    ],
+    name: 'PJ SEO',
+    type: 'plugin',
+    version: '1.0.0',
+    category: 'Marketing',
+    description: 'All‑in‑one SEO toolkit with schema, sitemaps, redirects & AI suggestions',
+    pluginSlug: 'pj-seo',
+    overview: `Boost rankings with automated technical SEO: XML/HTML sitemaps, schema.org markup, robots directives, and breadcrumbs. On‑page audits with AI‑assisted titles and descriptions. WooCommerce product markup included.`,
+    features: [
+      'XML/HTML sitemaps and schema generator',
+      'Redirect manager with 404 monitor',
+      'AI suggestions for titles and meta descriptions',
+      'WooCommerce product schema & breadcrumbs',
+      'Robots.txt editor and meta directives',
+    ],
+    installation: {
+      steps: [
+        'Go to Plugins > Add New and search “PJ SEO” (or upload the ZIP)',
+        'Install and Activate the plugin',
+        'Open SEO > Dashboard to run the setup wizard',
+      ],
+      requirements: [
+        'WordPress 6.0+',
+        'PHP 7.4+',
+      ],
+    },
+    faq: [
+      { question: 'Does PJ SEO work with WooCommerce?', answer: 'Yes, it includes product schema, breadcrumbs, and meta tools for WooCommerce.' },
+      { question: 'Can I import from other SEO plugins?', answer: 'Planned importers for popular plugins; manual meta import supported via CSV.' },
+    ],
+    changelog: [
+      {
+        version: '1.0.0',
+        date: '2025-11-01',
+        changes: [
+          'Initial release with sitemaps, schema, redirects, and WooCommerce schema',
+        ],
+      },
+    ],
+  },
+'pj-security': {
+    version: '26.0.4',
+    troubleshooting: [
+      { question: 'Locked out after enabling protections?', answer: 'Whitelist your IP in Security > Firewall and disable overly strict rules. Check server‑level WAF conflicts.' },
+      { question: 'High CPU during scans?', answer: 'Use incremental scans off‑peak, exclude large backup folders, and limit concurrency in settings.' },
+    ],
+    name: 'PJ Security',
+    type: 'plugin',
+    version: '1.0.0',
+    category: 'Security',
+    description: 'Harden WordPress with firewall, malware scan, 2FA, and login limits',
+    pluginSlug: 'pj-security',
+    overview: `Protect your site with real‑time firewall, brute‑force login protection, file integrity scans, 2FA, and hardening presets. Alerts and auto‑fix options streamline remediation.`,
+    features: [
+      'Web application firewall',
+      'Login limits, CAPTCHA, and two‑factor authentication',
+      'File integrity and malware scans',
+      'Security headers and hardening presets',
+    ],
+    installation: {
+      steps: [
+        'Upload or install “PJ Security” from Plugins > Add New',
+        'Activate and run the Security Setup Wizard',
+        'Enable 2FA and brute‑force protection from the dashboard',
+      ],
+      requirements: [
+        'WordPress 6.0+',
+        'PHP 7.4+',
+      ],
+    },
+    faq: [
+      { question: 'Does PJ Security work with caching?', answer: 'Yes. Exclude security endpoints if your cache requires rules; most setups work out of the box.' },
+      { question: 'Will scans slow my site?', answer: 'Scans run incrementally and off‑peak by default to minimize load.' },
+    ],
+    changelog: [
+      {
+        version: '1.0.0',
+        date: '2025-11-01',
+        changes: [
+          'Initial release with firewall, 2FA, brute-force, and malware scans',
+        ],
+      },
+    ],
+  },
+'pj-backup': {
+    version: '26.1.2',
+    troubleshooting: [
+      { question: 'Backups fail or time out?', answer: 'Increase PHP max_execution_time, use incremental mode, and verify cloud credentials and available storage.' },
+      { question: 'Restore stuck at extracting?', answer: 'Check file permissions, available disk space, and retry with database‑only or split archives.' },
+    ],
+    name: 'PJ Backup',
+    type: 'plugin',
+    version: '1.0.0',
+    category: 'Utilities',
+    description: 'Automated backups with incremental strategy and cloud storage',
+    pluginSlug: 'pj-backup',
+    overview: `Reliable backups with incremental/differential strategies, schedules, and 1‑click restore. Store backups locally or off‑site (S3, Google Drive, Dropbox).`,
+    features: [
+      'Incremental backups and scheduling',
+      'Cloud storage: S3, Google Drive, Dropbox',
+      'One‑click restore and site migration',
+      'Exclude paths or database‑only mode',
+    ],
+    installation: {
+      steps: [
+        'Install “PJ Backup” via Plugins > Add New (or upload ZIP)',
+        'Activate and open Backup > Settings',
+        'Connect storage provider and create a schedule',
+      ],
+      requirements: [
+        'WordPress 6.0+',
+        'PHP 7.4+',
+      ],
+    },
+    faq: [
+      { question: 'Are backups compressed/encrypted?', answer: 'Yes. Use compressed archives with optional encryption via settings.' },
+      { question: 'Can I restore to a new domain?', answer: 'Yes. Use the migration wizard to replace URLs and restore to a new site.' },
+    ],
+    changelog: [
+      {
+        version: '1.0.0',
+        date: '2025-11-01',
+        changes: [
+          'Initial release with incremental backups, cloud storage, and 1-click restore',
         ],
       },
     ],

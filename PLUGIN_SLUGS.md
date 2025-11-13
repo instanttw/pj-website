@@ -7,10 +7,10 @@ This document contains the correct slugs and URLs for all PrintJones plugins.
 When adding plugins to the Supabase database, use these exact slugs:
 
 ### Page Builder Addons
-1. **All-in-One Addons for Elementor**
-   - Slug: `aioa-elementor`
-   - URL: https://printjones.com/aioa-elementor
-   - Full Path: `/plugins/aioa-elementor`
+1. **Advanced Widgets for Elementor Pro**
+   - Slug: `advanced-widgets-elementor`
+   - URL: https://printjones.com/advanced-widgets-elementor
+   - Full Path: `/plugins/advanced-widgets-elementor`
 
 2. **Essential Addons for WPBakery Page Builder**
    - Slug: `eaf-wpbakery`
@@ -55,7 +55,7 @@ When inserting these plugins into Supabase, use the following structure:
 ```sql
 INSERT INTO plugins (name, slug, tagline, description, price, rating, review_count, download_count, is_featured, is_active, category_id, version)
 VALUES 
-  ('All-in-One Addons for Elementor', 'aioa-elementor', 'Your tagline here', 'Description...', 49.00, 4.8, 1250, 50000, true, true, 1, '1.0.0'),
+  ('Advanced Widgets for Elementor Pro', 'advanced-widgets-elementor', '538 widgets, AI-powered, 48% faster', 'Comprehensive Elementor addon with AI and performance-first architecture.', 49.00, 4.9, 1250, 50000, true, true, 1, '25.0.0'),
   ('Essential Addons for WPBakery Page Builder', 'eaf-wpbakery', 'Your tagline here', 'Description...', 49.00, 4.7, 980, 35000, true, true, 1, '1.0.0');
 ```
 
@@ -70,7 +70,7 @@ VALUES
 ## Verification
 
 After adding plugins to the database, verify the URLs work:
-- https://printjones.com/plugins/aioa-elementor
+- https://printjones.com/plugins/advanced-widgets-elementor
 - https://printjones.com/plugins/eaf-wpbakery
 - https://printjones.com/plugins/pj-product-filter
 - https://printjones.com/plugins/pj-media-library
