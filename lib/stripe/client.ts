@@ -9,8 +9,10 @@ export function getStripeClient() {
 }
 
 export function getSiteUrl() {
-  const url = process.env.NEXT_PUBLIC_SITE_URL || ''
-  if (!url) throw new Error('Missing NEXT_PUBLIC_SITE_URL')
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const vercel = process.env.VERCEL_URL // e.g. printjones.com or *.vercel.app
+  const url = (envUrl && envUrl.trim())
+    || (vercel ? `https://${vercel}` : 'http://localhost:3000')
   return url.replace(/\/$/, '')
 }
 
