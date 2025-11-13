@@ -352,6 +352,138 @@ export interface Database {
           updated_at?: string
         }
       }
+      ,
+      orders: {
+        Row: {
+          id: string
+          user_id: string
+          total_amount: number
+          status: string
+          payment_method: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          total_amount: number
+          status?: string
+          payment_method?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          total_amount?: number
+          status?: string
+          payment_method?: string | null
+          created_at?: string
+        }
+      }
+      ,
+      order_items: {
+        Row: {
+          id: string
+          order_id: string
+          user_id: string
+          plugin_id: string | null
+          pricing_id: string | null
+          price: number
+          license_key: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          order_id: string
+          user_id: string
+          plugin_id?: string | null
+          pricing_id?: string | null
+          price: number
+          license_key?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          order_id?: string
+          user_id?: string
+          plugin_id?: string | null
+          pricing_id?: string | null
+          price?: number
+          license_key?: string | null
+          created_at?: string
+        }
+      }
+      ,
+      invoices: {
+        Row: {
+          id: string
+          order_id: string | null
+          user_id: string
+          invoice_number: string
+          amount: number
+          status: string
+          issue_date: string | null
+          due_date: string | null
+          pdf_url: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          order_id?: string | null
+          user_id: string
+          invoice_number: string
+          amount: number
+          status?: string
+          issue_date?: string | null
+          due_date?: string | null
+          pdf_url?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          order_id?: string | null
+          user_id?: string
+          invoice_number?: string
+          amount?: number
+          status?: string
+          issue_date?: string | null
+          due_date?: string | null
+          pdf_url?: string | null
+          created_at?: string
+        }
+      }
+      ,
+      payment_methods: {
+        Row: {
+          id: string
+          user_id: string
+          brand: string | null
+          last4: string | null
+          exp_month: number | null
+          exp_year: number | null
+          is_default: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          brand?: string | null
+          last4?: string | null
+          exp_month?: number | null
+          exp_year?: number | null
+          is_default?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          brand?: string | null
+          last4?: string | null
+          exp_month?: number | null
+          exp_year?: number | null
+          is_default?: boolean
+          created_at?: string
+        }
+      }
     }
   }
 }
