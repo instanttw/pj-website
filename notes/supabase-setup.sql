@@ -3,6 +3,9 @@
 -- =====================================
 -- Public catalog (readable by everyone)
 -- =====================================
+-- Enable required extension
+create extension if not exists pgcrypto;
+
 -- 0) Categories
 create table if not exists public.categories (
   id uuid primary key default gen_random_uuid(),
@@ -60,11 +63,14 @@ alter table public.categories enable row level security;
 alter table public.plugins enable row level security;
 alter table public.plugin_pricing enable row level security;
 
-create policy if not exists "categories_read_anon" on public.categories
+drop policy if exists "categories_read_anon" on public.categories;
+create policy "categories_read_anon" on public.categories
   for select using (true);
-create policy if not exists "plugins_read_anon" on public.plugins
+drop policy if exists "plugins_read_anon" on public.plugins;
+create policy "plugins_read_anon" on public.plugins
   for select using (is_active = true);
-create policy if not exists "pricing_read_anon" on public.plugin_pricing
+drop policy if exists "pricing_read_anon" on public.plugin_pricing;
+create policy "pricing_read_anon" on public.plugin_pricing
   for select using (true);
 
 -- =====================================
@@ -106,19 +112,25 @@ create table if not exists public.support_tickets (
 alter table public.licenses enable row level security;
 alter table public.support_tickets enable row level security;
 
-create policy if not exists "licenses_select_own" on public.licenses
+drop policy if exists "licenses_select_own" on public.licenses;
+create policy "licenses_select_own" on public.licenses
   for select using (auth.uid() = user_id);
-create policy if not exists "support_select_own" on public.support_tickets
+drop policy if exists "support_select_own" on public.support_tickets;
+create policy "support_select_own" on public.support_tickets
   for select using (auth.uid() = user_id);
 
-create policy if not exists "licenses_insert_own" on public.licenses
+drop policy if exists "licenses_insert_own" on public.licenses;
+create policy "licenses_insert_own" on public.licenses
   for insert with check (auth.uid() = user_id);
-create policy if not exists "support_insert_own" on public.support_tickets
+drop policy if exists "support_insert_own" on public.support_tickets;
+create policy "support_insert_own" on public.support_tickets
   for insert with check (auth.uid() = user_id);
 
-create policy if not exists "licenses_update_own" on public.licenses
+drop policy if exists "licenses_update_own" on public.licenses;
+create policy "licenses_update_own" on public.licenses
   for update using (auth.uid() = user_id);
-create policy if not exists "support_update_own" on public.support_tickets
+drop policy if exists "support_update_own" on public.support_tickets;
+create policy "support_update_own" on public.support_tickets
   for update using (auth.uid() = user_id);
 
 -- =====================================
@@ -174,26 +186,35 @@ alter table public.order_items enable row level security;
 alter table public.invoices enable row level security;
 alter table public.payment_methods enable row level security;
 
-create policy if not exists "orders_select_own" on public.orders
+drop policy if exists "orders_select_own" on public.orders;
+create policy "orders_select_own" on public.orders
   for select using (auth.uid() = user_id);
-create policy if not exists "orders_insert_own" on public.orders
+drop policy if exists "orders_insert_own" on public.orders;
+create policy "orders_insert_own" on public.orders
   for insert with check (auth.uid() = user_id);
-create policy if not exists "orders_update_own" on public.orders
+drop policy if exists "orders_update_own" on public.orders;
+create policy "orders_update_own" on public.orders
   for update using (auth.uid() = user_id);
 
-create policy if not exists "order_items_select_own" on public.order_items
+drop policy if exists "order_items_select_own" on public.order_items;
+create policy "order_items_select_own" on public.order_items
   for select using (auth.uid() = user_id);
-create policy if not exists "order_items_insert_own" on public.order_items
+drop policy if exists "order_items_insert_own" on public.order_items;
+create policy "order_items_insert_own" on public.order_items
   for insert with check (auth.uid() = user_id);
 
-create policy if not exists "invoices_select_own" on public.invoices
+drop policy if exists "invoices_select_own" on public.invoices;
+create policy "invoices_select_own" on public.invoices
   for select using (auth.uid() = user_id);
-create policy if not exists "invoices_insert_own" on public.invoices
+drop policy if exists "invoices_insert_own" on public.invoices;
+create policy "invoices_insert_own" on public.invoices
   for insert with check (auth.uid() = user_id);
 
-create policy if not exists "pm_select_own" on public.payment_methods
+drop policy if exists "pm_select_own" on public.payment_methods;
+create policy "pm_select_own" on public.payment_methods
   for select using (auth.uid() = user_id);
-create policy if not exists "pm_insert_own" on public.payment_methods
+drop policy if exists "pm_insert_own" on public.payment_methods;
+create policy "pm_insert_own" on public.payment_methods
   for insert with check (auth.uid() = user_id);
 
 -- Note: enable extension pgcrypto (Database → Extensions) for gen_random_uuid().

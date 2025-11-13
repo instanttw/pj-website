@@ -1,52 +1,67 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getPayPalAccessToken, getPayPalApiBase } from '@/lib/paypal/client'
+import { supabaseAdmin } from '@/lib/supabaseAdmin'
 
+export const dynamic = 'force-dynamic'
+
+function genKey() {
+  const s = () => Math.random().toString(36).slice(2, 6).toUpperCase()
+  return `${s()}-${s()}-${s()}-${s()}`
+}
+
+// Minimal relay endpoint for syncing PayPal payments into Supabase.
+// Secure with a shared token: set PAYPAL_WEBHOOK_TOKEN in your env and send it in header `x-webhook-token`.
 export async function POST(req: NextRequest) {
+  const token = req.headers.get('x-webhook-token')
+  const expected = process.env.PAYPAL_WEBHOOK_TOKEN
+  if (!expected || token !== expected) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const body = await req.json().catch(() => null)
+  if (!body) return NextResponse.json({ error: 'Bad JSON' }, { status: 400 })
+
   try {
-    const bodyText = await req.text()
-    const webhookEvent = JSON.parse(bodyText)
+    const { user_id, total_amount, items = [], invoice_number, status = 'paid' } = body
+    if (!user_id) return NextResponse.json({ error: 'Missing user_id' }, { status: 400 })
 
-    const transmissionId = req.headers.get('paypal-transmission-id') || ''
-    const transmissionTime = req.headers.get('paypal-transmission-time') || ''
-    const certUrl = req.headers.get('paypal-cert-url') || ''
-    const authAlgo = req.headers.get('paypal-auth-algo') || ''
-    const transmissionSig = req.headers.get('paypal-transmission-sig') || ''
-    const webhookId = process.env.PAYPAL_WEBHOOK_ID || ''
+    const { data: order, error: orderErr } = await supabaseAdmin
+      .from('orders')
+      .insert({ user_id, total_amount, status: status === 'paid' ? 'completed' : status, payment_method: 'paypal' })
+      .select('*')
+      .single()
+    if (orderErr) throw orderErr
 
-    if (!webhookId) {
-      return NextResponse.json({ error: 'Missing PAYPAL_WEBHOOK_ID' }, { status: 500 })
+    for (const it of items) {
+      const license_key = it.license_key || genKey()
+      await supabaseAdmin.from('order_items').insert({
+        order_id: order.id,
+        user_id,
+        plugin_id: it.plugin_id,
+        pricing_id: it.pricing_id,
+        price: it.price,
+        license_key,
+      })
+      if (it.plugin_id) {
+        await supabaseAdmin.from('licenses').insert({
+          user_id,
+          plugin_id: it.plugin_id,
+          pricing_id: it.pricing_id,
+          license_key,
+          status: status === 'paid' ? 'active' : 'pending',
+        })
+      }
     }
 
-    // Verify webhook signature with PayPal
-    const token = await getPayPalAccessToken()
-    const base = getPayPalApiBase()
-    const verifyRes = await fetch(`${base}/v1/notifications/verify-webhook-signature`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        transmission_id: transmissionId,
-        transmission_time: transmissionTime,
-        cert_url: certUrl,
-        auth_algo: authAlgo,
-        transmission_sig: transmissionSig,
-        webhook_id: webhookId,
-        webhook_event: webhookEvent,
-      }),
+    await supabaseAdmin.from('invoices').insert({
+      order_id: order.id,
+      user_id,
+      invoice_number: invoice_number || `INV-${order.id.slice(0, 8).toUpperCase()}`,
+      amount: total_amount,
+      status,
     })
 
-    const verifyJson = await verifyRes.json()
-    if (!verifyRes.ok || verifyJson.verification_status !== 'SUCCESS') {
-      return NextResponse.json({ error: 'Invalid PayPal signature', details: verifyJson }, { status: 400 })
-    }
-
-    // TODO: handle events, e.g., CHECKOUT.ORDER.APPROVED and PAYMENT.CAPTURE.COMPLETED
-    // console.log('PayPal event:', webhookEvent.event_type)
-
-    return NextResponse.json({ received: true })
+    return NextResponse.json({ ok: true })
   } catch (e: any) {
-    return NextResponse.json({ error: e?.message || 'Webhook error' }, { status: 500 })
+    return NextResponse.json({ error: e?.message || 'Processing error' }, { status: 500 })
   }
 }
