@@ -1,3 +1,5 @@
+'use client';
+
 import { LicenseTable } from '@/components/account/license-table';
 
 export default function LicensesPage() {

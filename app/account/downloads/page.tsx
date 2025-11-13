@@ -1,3 +1,5 @@
+'use client';
+
 import { DownloadsGrid } from '@/components/account/downloads-grid';
 import { DownloadHistory } from '@/components/account/download-history';
 
