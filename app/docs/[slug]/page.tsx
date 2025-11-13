@@ -1150,6 +1150,7 @@ All settings auto-save and apply instantly. Changes reflect immediately in the W
         'PHP 7.4+',
       ],
     },
+    configuration: `Open SEO > Settings. Enable XML sitemap and schema defaults. Configure redirect rules and connect to Search Console. For WooCommerce, enable product schema in the Woo tab.`,
     faq: [
       { question: 'Does PJ SEO work with WooCommerce?', answer: 'Yes, it includes product schema, breadcrumbs, and meta tools for WooCommerce.' },
       { question: 'Can I import from other SEO plugins?', answer: 'Planned importers for popular plugins; manual meta import supported via CSV.' },
@@ -1193,6 +1194,7 @@ All settings auto-save and apply instantly. Changes reflect immediately in the W
         'PHP 7.4+',
       ],
     },
+    configuration: `Open Security > Settings. Turn on the firewall, set login limit thresholds, enable 2FA provider, and schedule malware scans. Use Hardening to apply headers.`,
     faq: [
       { question: 'Does PJ Security work with caching?', answer: 'Yes. Exclude security endpoints if your cache requires rules; most setups work out of the box.' },
       { question: 'Will scans slow my site?', answer: 'Scans run incrementally and off‑peak by default to minimize load.' },
@@ -1236,6 +1238,7 @@ All settings auto-save and apply instantly. Changes reflect immediately in the W
         'PHP 7.4+',
       ],
     },
+    configuration: `Open Backup > Settings. Choose incremental backups, select cloud storage (S3/Drive/Dropbox), set schedule (daily/weekly), and include database & uploads.`,
     faq: [
       { question: 'Are backups compressed/encrypted?', answer: 'Yes. Use compressed archives with optional encryption via settings.' },
       { question: 'Can I restore to a new domain?', answer: 'Yes. Use the migration wizard to replace URLs and restore to a new site.' },
