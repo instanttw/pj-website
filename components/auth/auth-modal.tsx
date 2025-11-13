@@ -41,27 +41,15 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     e.preventDefault();
     setLoading(true);
     try {
-      // Call our API to create the user without email confirmation
-      const res = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }),
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: name ? { name } : undefined,
+        },
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        // If user already exists, try login
-        if (res.status === 409) {
-          const { error } = await supabase.auth.signInWithPassword({ email, password });
-          if (error) throw error;
-        } else {
-          throw new Error(body.error || 'Sign up failed');
-        }
-      }
-      // After creating the user via admin, sign them in
-      const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
-      if (loginError) throw loginError;
-
-      toast.success('Account created');
+      if (error) throw error;
+      toast.success('Account created successfully');
       onOpenChange(false);
       onSuccess?.();
     } catch (err: any) {
