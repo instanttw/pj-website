@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
+import type { Database } from '@/lib/database.types'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,41 +25,51 @@ export async function POST(req: NextRequest) {
     const { user_id, total_amount, items = [], invoice_number, status = 'paid' } = body
     if (!user_id) return NextResponse.json({ error: 'Missing user_id' }, { status: 400 })
 
-    const { data: order, error: orderErr } = await supabaseAdmin
+    const orderPayload: Database['public']['Tables']['orders']['Insert'] = {
+      user_id,
+      total_amount,
+      status: status === 'paid' ? 'completed' : status,
+      payment_method: 'paypal',
+    }
+    const { data: order, error: orderErr } = await (supabaseAdmin as any)
       .from('orders')
-      .insert({ user_id, total_amount, status: status === 'paid' ? 'completed' : status, payment_method: 'paypal' })
+      .insert(orderPayload)
       .select('*')
       .single()
     if (orderErr) throw orderErr
 
     for (const it of items) {
       const license_key = it.license_key || genKey()
-      await supabaseAdmin.from('order_items').insert({
+      const itemPayload: Database['public']['Tables']['order_items']['Insert'] = {
         order_id: order.id,
         user_id,
-        plugin_id: it.plugin_id,
-        pricing_id: it.pricing_id,
+        plugin_id: it.plugin_id ?? null,
+        pricing_id: it.pricing_id ?? null,
         price: it.price,
         license_key,
-      })
+      }
+      await (supabaseAdmin as any).from('order_items').insert(itemPayload)
+
       if (it.plugin_id) {
-        await supabaseAdmin.from('licenses').insert({
+        const licPayload: Database['public']['Tables']['licenses']['Insert'] = {
           user_id,
           plugin_id: it.plugin_id,
-          pricing_id: it.pricing_id,
+          pricing_id: it.pricing_id ?? null,
           license_key,
           status: status === 'paid' ? 'active' : 'pending',
-        })
+        }
+        await (supabaseAdmin as any).from('licenses').insert(licPayload)
       }
     }
 
-    await supabaseAdmin.from('invoices').insert({
+    const invPayload: Database['public']['Tables']['invoices']['Insert'] = {
       order_id: order.id,
       user_id,
       invoice_number: invoice_number || `INV-${order.id.slice(0, 8).toUpperCase()}`,
       amount: total_amount,
       status,
-    })
+    }
+    await (supabaseAdmin as any).from('invoices').insert(invPayload)
 
     return NextResponse.json({ ok: true })
   } catch (e: any) {
