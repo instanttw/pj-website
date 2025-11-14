@@ -100,15 +100,17 @@ export function Header() {
             </Link>
 
             <nav className="hidden md:flex items-center gap-6">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation
+                .filter((item) => item.name !== 'Axiom' && item.name !== 'Plugins')
+                .map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
             </nav>
           </div>
 
@@ -149,16 +151,18 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col gap-4 mt-8">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-lg font-medium text-gray-600 hover:text-black transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                  {navigation
+                    .filter((item) => item.name !== 'Axiom' && item.name !== 'Plugins')
+                    .map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="text-lg font-medium text-gray-600 hover:text-black transition-colors"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
                   <Link
                     href="/verify-license"
                     className="text-lg font-medium text-gray-600 hover:text-black transition-colors"

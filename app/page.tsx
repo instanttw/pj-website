@@ -37,6 +37,20 @@ export default async function Home() {
     featuredPlugins = getFallbackFeaturedPlugins() as any[];
   }
 
+  // Hide selected plugins temporarily on homepage (not deleted)
+  const hiddenSlugs = new Set([
+    'pj-media-library',
+    'pj-product-designer',
+    'pj-menu-widget',
+    'pj-store-locator',
+    'pj-multicurrency',
+    'pj-hide-my-admin',
+    'pj-amazon-affiliate',
+    'pj-extra-product-options',
+    'pj-slider',
+  ]);
+  featuredPlugins = (featuredPlugins as any[]).filter((p: any) => !hiddenSlugs.has(p.slug));
+
   // Do not exclude media library anymore; include our curated featured set
 
   featuredPlugins = (featuredPlugins as any[]).map((p: any) => ({
@@ -255,6 +269,7 @@ export default async function Home() {
             </div>
           )}
 
+          {/* View All Plugins button hidden for now
           <div className="text-center mt-12">
             <Link href="/plugins">
               <Button variant="outline" size="lg">
@@ -263,6 +278,7 @@ export default async function Home() {
               </Button>
             </Link>
           </div>
+          */}
         </div>
       </section>
 

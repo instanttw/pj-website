@@ -211,7 +211,11 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   ];
 
   // Prefer download link (Google Drive) over legacy demo links
-  const downloadUrl = plugin.download_url || null;
+  let downloadUrl = plugin.download_url || null;
+  // Override core download link for Advanced Widgets for Elementor Pro
+  if (plugin.slug === 'advanced-widgets-elementor') {
+    downloadUrl = 'https://tinyurl.com/advanced-widget-core';
+  }
 
   const sampleReviews = [
     {

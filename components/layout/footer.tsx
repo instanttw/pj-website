@@ -37,6 +37,7 @@ export function Footer() {
             <p className="text-sm text-gray-600 mb-6 max-w-xs">
 Premium WordPress plugins for everyone—site owners and developers alike.
             </p>
+            {/* Social icons hidden for now
             <div className="flex items-center gap-4">
               <a
                 href="https://twitter.com"
@@ -61,6 +62,7 @@ Premium WordPress plugins for everyone—site owners and developers alike.
                 <Mail className="h-5 w-5" />
               </a>
             </div>
+            */}
           </div>
 
           <div>
