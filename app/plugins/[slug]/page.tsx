@@ -225,7 +225,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   }
   // Override core download link for PJ Filter Free
   if (plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter') {
-    downloadUrl = 'https://tinyurl.com/pj-filter-free';
+    downloadUrl = 'https://tinyurl.com/pj-filter-free-plugin';
   }
 
   const sampleReviews = [
