@@ -773,6 +773,18 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         and granular controls that go beyond basic optimization in competing addons.
                       </li>
                     </ul>
+
+                    <div className="mt-10 rounded-xl border border-blue-100 bg-blue-50/60 px-6 py-5 not-prose">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-1">Already using the free version?</h4>
+                      <p className="text-sm text-blue-900/80 mb-3">
+                        Upgrade to Advanced Widgets Pro to unlock the full 538+ widget library, 72 WooCommerce widgets, and over 100
+                        templates while keeping your existing layouts.
+                      </p>
+                      <p className="text-xs text-blue-900/70">
+                        Install Pro alongside the free plugin and activate your license. Existing widgets continue to work, and you
+                        gain more options everywhere you already build.
+                      </p>
+                    </div>
                   </div>
                 ) : (
                   <div className="text-gray-600">No comparison available for this plugin.</div>
