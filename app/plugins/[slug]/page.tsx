@@ -786,6 +786,78 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                       </p>
                     </div>
                   </div>
+                ) : plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
+                  <div className="prose max-w-none">
+                    <h2 className="text-3xl font-bold mb-2">How PJ Filter Compares</h2>
+                    <p className="text-lg text-gray-600 mb-6">
+                      PJ Filter is built for conversion and merchandising, not just navigation. Heres how it differs from typical
+                      WooCommerce filter plugins and from the free evaluation version:
+                    </p>
+
+                    <div className="overflow-x-auto mb-10">
+                      <table className="min-w-full border border-gray-200 text-sm">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="p-3 text-left">Area</th>
+                            <th className="p-3 text-left">PJ Filter Pro</th>
+                            <th className="p-3 text-left">Most filter addons*</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Filtering scope</td>
+                            <td className="p-3">Products, categories, taxonomies, attributes, price, rating, stock/sale status, ACF & meta fields, date</td>
+                            <td className="p-3">Primarily products and basic taxonomies/attributes</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">View types</td>
+                            <td className="p-3">8 view types including checkboxes, radios, dropdowns, sliders, color swatches, date pickers, toggles, rating stars</td>
+                            <td className="p-3">Standard checkboxes, radios, and dropdowns</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Analytics & A/B testing</td>
+                            <td className="p-3">Built-in analytics dashboard, conversion and revenue impact tracking, A/B tests for filter sets</td>
+                            <td className="p-3">Usually no built-in analytics; relies on external tools like Google Analytics</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">AI & recommendations</td>
+                            <td className="p-3">AI/ML recommendation engine, visual & voice search, smart suggestions</td>
+                            <td className="p-3">Typically no AI or recommendation layer</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">SEO & URLs</td>
+                            <td className="p-3">Clean filter URLs, dynamic meta tags, schema markup for filtered views</td>
+                            <td className="p-3">Basic SEO-friendly URLs if configured; limited meta/schema control</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Onboarding & presets</td>
+                            <td className="p-3">5-step wizard with industry presets (fashion, electronics, grocery, home, beauty, sports)</td>
+                            <td className="p-3">Manual setup; presets are rare or limited</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Enterprise & dev tools</td>
+                            <td className="p-3">Multi-site & multi-vendor ready, REST & GraphQL APIs, webhooks, WP-CLI commands</td>
+                            <td className="p-3">Usually REST-only, no webhooks or WP-CLI tooling</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p className="mt-3 text-xs text-gray-500">
+                        *Based on common feature sets in popular WooCommerce filter plugins; exact capabilities vary by product.
+                      </p>
+                    </div>
+
+                    <div className="mt-8 rounded-xl border border-blue-100 bg-blue-50/60 px-6 py-5 not-prose">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-1">Already tried PJ Filter Free?</h4>
+                      <p className="text-sm text-blue-900/80 mb-3">
+                        The free version is intentionally limited to 3 filters and 2 attribute filters with no AJAX or analytics. PJ Filter
+                        Pro removes those limits and adds smart dashboards, AI search, and revenue-focused reporting.
+                      </p>
+                      <p className="text-xs text-blue-900/70">
+                        Install PJ Filter Pro alongside the free plugin and activate your license. Your existing filters keep working, and
+                        you unlock advanced controls instead of rebuilding from scratch.
+                      </p>
+                    </div>
+                  </div>
                 ) : (
                   <div className="text-gray-600">No comparison available for this plugin.</div>
                 )}
@@ -1012,6 +1084,99 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                               <li>Agencies and freelancers shipping many Elementor sites</li>
                               <li>Stores that rely on WooCommerce for serious revenue</li>
                               <li>Teams that want the full 538+ widget library and templates</li>
+                            </ul>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </div>
+                  ) : plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
+                    <div className="space-y-10">
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full border border-gray-200 text-sm">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th className="p-3 text-left">Area</th>
+                              <th className="p-3 text-left">PJ Filter Free</th>
+                              <th className="p-3 text-left">PJ Filter Pro</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Purpose</td>
+                              <td className="p-3">Basic WooCommerce product filtering for evaluation and small catalogs</td>
+                              <td className="p-3 font-semibold">Full production filter suite for high-traffic, revenue-focused stores</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Number of filters</td>
+                              <td className="p-3">Limited to 3 filters and 2 attribute filters</td>
+                              <td className="p-3 font-semibold">Unlimited filters, groups, and attribute filters</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Filter types</td>
+                              <td className="p-3">Core product taxonomies and attributes</td>
+                              <td className="p-3 font-semibold">Taxonomies, attributes, price range, rating, stock/sale status, ACF & meta fields, date filters</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Filter views</td>
+                              <td className="p-3">Standard checkbox and dropdown controls</td>
+                              <td className="p-3 font-semibold">8 view types: checkboxes, radios, dropdowns, sliders, color swatches, date pickers, toggles, rating stars</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">AJAX & UX</td>
+                              <td className="p-3">No AJAX; filters reload the page</td>
+                              <td className="p-3 font-semibold">AJAX filtering with instant updates and smart loading states</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Analytics & A/B testing</td>
+                              <td className="p-3">No built-in analytics or tests</td>
+                              <td className="p-3 font-semibold">Smart dashboard, conversion & revenue tracking, A/B tests for filter sets</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">AI & search</td>
+                              <td className="p-3">Standard filter logic only</td>
+                              <td className="p-3 font-semibold">AI/ML recommendations, visual & voice search, natural language queries</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">SEO & URLs</td>
+                              <td className="p-3">No SEO URLs or meta/schema controls</td>
+                              <td className="p-3 font-semibold">Clean filter URLs, dynamic meta tags, schema markup for filtered views</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Onboarding & presets</td>
+                              <td className="p-3">Manual setup of each filter</td>
+                              <td className="p-3 font-semibold">5-step wizard with industry presets for common store types</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Enterprise & dev tools</td>
+                              <td className="p-3">Single-site usage; no dedicated APIs or CLI tools</td>
+                              <td className="p-3 font-semibold">Multi-site and multi-vendor ready, REST & GraphQL APIs, webhooks, WP-CLI commands</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-sm text-gray-700">
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">When PJ Filter Free is enough</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Small catalogs testing whether filters improve UX</li>
+                              <li>Personal or side projects with simple requirements</li>
+                              <li>Teams evaluating PJ Filter before rolling it out broadly</li>
+                            </ul>
+                          </CardContent>
+                        </Card>
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">When to upgrade to Pro</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Stores where filtering impacts real revenue and KPIs</li>
+                              <li>Catalogs with many attributes, taxonomies, or custom data</li>
+                              <li>Teams that need analytics, AI search, and enterprise tooling</li>
                             </ul>
                           </CardContent>
                         </Card>
