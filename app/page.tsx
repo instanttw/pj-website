@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,6 +7,12 @@ import { ArrowRight, Download, Star, Users, Package, Zap, RefreshCw, HeadphonesI
 import { supabase } from '@/lib/supabase';
 import { getFallbackFeaturedPlugins } from '@/data/fallback-plugins';
 import { getPluginDisplayName, getPluginDisplaySlug, getPluginDisplayPrice } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: 'Premium WordPress & WooCommerce Plugins for Modern Sites | PrintJones',
+  description:
+    'Discover premium WordPress and WooCommerce plugins built for performance, SEO, and conversions. Trusted by 500K+ active installations worldwide.',
+};
 
 async function getFeaturedPlugins() {
   try {
@@ -154,8 +161,35 @@ export default async function Home() {
     },
   ];
 
+  const orgAndSiteSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'PrintJones',
+      url: 'https://printjones.com',
+      areaServed: ['US', 'CA', 'AU', 'NZ', 'EU'],
+      description:
+        'Premium WordPress and WooCommerce plugins for performance, SEO, and conversions.',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'PrintJones',
+      url: 'https://printjones.com',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: 'https://printjones.com/plugins?search={search_term_string}',
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ];
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgAndSiteSchema) }}
+      />
       <section className="relative overflow-hidden bg-white py-24 lg:py-32">
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-sky-400 to-blue-600" />

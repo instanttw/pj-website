@@ -7,9 +7,44 @@ import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://printjones.com';
+
 export const metadata: Metadata = {
-  title: 'PrintJones - Premium WordPress Plugins',
-  description: 'Premium WordPress plugins for modern websites. Built by developers, for developers.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Premium WordPress & WooCommerce Plugins | PrintJones',
+    template: '%s | PrintJones',
+  },
+  description:
+    'Premium WordPress and WooCommerce plugins focused on performance, SEO, and conversion. Built by developers, for teams that care about results.',
+  openGraph: {
+    title: 'Premium WordPress & WooCommerce Plugins | PrintJones',
+    description:
+      'Browse premium WordPress and WooCommerce plugins engineered for speed, SEO, and conversions. Trusted by thousands of sites worldwide.',
+    url: '/',
+    type: 'website',
+    siteName: 'PrintJones',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Premium WordPress & WooCommerce Plugins | PrintJones',
+    description:
+      'Premium WordPress and WooCommerce plugins engineered for performance, SEO, and conversions.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      maxImagePreview: 'large',
+      maxSnippet: -1,
+      maxVideoPreview: -1,
+    },
+  },
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({

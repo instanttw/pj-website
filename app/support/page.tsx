@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, BookOpen, MessageSquare, Key, HelpCircle } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Support Center | PrintJones WordPress Plugins',
+  description:
+    'Get help with PrintJones WordPress and WooCommerce plugins. Browse documentation, submit a support ticket, or verify your license.',
+};
 
 const supportOptions = [
   {

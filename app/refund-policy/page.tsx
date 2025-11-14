@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Refund Policy | PrintJones',
+  description:
+    'Learn about the PrintJones 30-day money-back guarantee and refund terms for our premium WordPress and WooCommerce plugins.',
+};
+
 export default function RefundPolicyPage() {
   return (
     <div className="px-4 lg:px-8 py-12">

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -279,6 +280,132 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
       date: '2025-05-09',
     },
   ];
+
+  const screenshotItems = (() => {
+    if (plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter') {
+      return [
+        {
+          src: '/images/pj-filter-tools.png',
+          alt: 'PJ Filter Tools & Utilities screen in WordPress admin',
+          title: 'Tools & Utilities — maintenance shortcuts',
+          description:
+            'Clear filter cache, rebuild the product index, clear transients, and optimize the database from a single maintenance panel.',
+        },
+        {
+          src: '/images/pj-filter-settings.png',
+          alt: 'PJ Filter Settings screen showing basic configuration options',
+          title: 'Settings — core filter behavior and UX',
+          description:
+            'Configure AJAX filtering, product counts, loading indicators, and other options that control how shoppers experience your filters.',
+        },
+        {
+          src: '/images/pj-filter-dashboard.png',
+          alt: 'PJ Filter analytics dashboard with key metrics and usage trend graph',
+          title: 'Dashboard — filter performance overview',
+          description:
+            'Get a high-level overview of total filters, filter sessions, conversions, and conversion rate, plus usage trends and recent activity.',
+        },
+        {
+          src: '/images/pj-filter-analytics.png',
+          alt: 'PJ Filter Analytics dashboard with usage and conversion metrics',
+          title: 'Analytics — detailed usage and conversion tracking',
+          description:
+            'Drill into page views, filter interactions, conversion rate, and revenue to see which filters actually drive results.',
+        },
+        {
+          src: '/images/pj-filter-seo.png',
+          alt: 'PJ Filter Enterprise SEO Management settings',
+          title: 'SEO — enterprise SEO management for filtered pages',
+          description:
+            'Control indexing, meta tags, schema markup, and URL structure for filter result pages to keep SEO under control.',
+        },
+        {
+          src: '/images/pj-filter-filter-sets.png',
+          alt: 'PJ Filter Product Filters screen listing filter sets and presets',
+          title: 'Product Filters — manage filter sets and layouts',
+          description:
+            'Create filter sets, use presets, and configure dependencies for product filters across your WooCommerce catalog.',
+        },
+      ];
+    }
+
+    if (plugin.slug === 'advanced-widgets-elementor') {
+      return [
+        {
+          src: '/images/advanced-widgets-dashboard.png',
+          alt: 'Advanced Widgets dashboard with widget and performance metrics',
+          title: 'Dashboard — widget usage and performance overview',
+          description:
+            'See how many widgets are active, how they are distributed by category, and core performance metrics for your site.',
+        },
+        {
+          src: '/images/advanced-widgets-widgets.png',
+          alt: 'Advanced Widgets screen listing individual widgets with enable toggles',
+          title: 'Widgets — manage 538+ widgets',
+          description:
+            'Enable or disable individual widgets across many categories so you only load what each project actually needs.',
+        },
+        {
+          src: '/images/advanced-widgets-templates.png',
+          alt: 'Advanced Widgets integrations or library screen inside WordPress admin',
+          title: 'Library & integrations — ready-made building blocks',
+          description:
+            'Access ready-made blocks, templates, or integrations directly from the editor to speed up site building.',
+        },
+        {
+          src: '/images/advanced-widgets-extensions.png',
+          alt: 'Advanced Widgets Extensions page with performance and visual effect toggles',
+          title: 'Extensions — performance and visual controls',
+          description:
+            'Toggle global extensions like lazy loading, performance options, and visual effects per project.',
+        },
+      ];
+    }
+
+    if (plugin.slug === 'eaf-wpbakery') {
+      return [
+        {
+          src: '/images/eaf-wpbakery-dashboard.png',
+          alt: 'Essential Addons for WPBakery dashboard with element and performance metrics',
+          title: 'Dashboard — overview of EA for WPBakery',
+          description:
+            'View how many elements are active, how they are distributed by category, and key performance details for your WPBakery site.',
+        },
+        {
+          src: '/images/eaf-wpbakery-elements.png',
+          alt: 'EA for WPBakery Elements screen listing individual elements with enable toggles',
+          title: 'Elements — manage WPBakery elements',
+          description:
+            'Enable or disable individual EA elements so each page only loads the blocks it really needs.',
+        },
+        {
+          src: '/images/eaf-wpbakery-integrations.png',
+          alt: 'EA for WPBakery Integrations screen showing third-party services',
+          title: 'Integrations — connect third-party services',
+          description:
+            'Connect Google Maps, Mailchimp, Stripe, social networks, and other services to unlock extra functionality.',
+        },
+        {
+          src: '/images/eaf-wpbakery-extensions.png',
+          alt: 'EA for WPBakery Extensions page with performance and visual feature toggles',
+          title: 'Extensions — global WPBakery enhancements',
+          description:
+            'Control global extensions such as parallax, custom CSS, sticky elements, and reveal effects for your layouts.',
+        },
+      ];
+    }
+
+    return null;
+  })();
+
+  const screenshotCaption =
+    plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter'
+      ? 'All screenshots are from the PJ Filter interface inside the WordPress / WooCommerce admin dashboard.'
+      : plugin.slug === 'advanced-widgets-elementor'
+      ? 'All screenshots are from the Advanced Widgets admin screens inside WordPress.'
+      : plugin.slug === 'eaf-wpbakery'
+      ? 'All screenshots are from the Essential Addons for WPBakery admin screens inside WordPress.'
+      : null;
 
   return (
     <>
@@ -1028,22 +1155,50 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                     Preview how {plugin.name} looks inside WordPress before you install it.
                   </p>
 
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {[1, 2, 3].map((index) => (
-                      <Card key={index} className="overflow-hidden">
-                        <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-                          <span className="text-sm text-gray-500">Screenshot {index} placeholder</span>
-                        </div>
-                        <CardHeader className="pb-2">
-                          <CardTitle className="text-base">
-                            {index === 1 && `${plugin.name} dashboard`}
-                            {index === 2 && 'Key settings panel'}
-                            {index === 3 && 'Frontend result on your site'}
-                          </CardTitle>
-                        </CardHeader>
-                      </Card>
-                    ))}
-                  </div>
+                  {screenshotItems ? (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {screenshotItems.map((shot) => (
+                        <Card key={shot.title} className="overflow-hidden">
+                          <div className="relative aspect-video bg-slate-100">
+                            <Image
+                              src={shot.src}
+                              alt={shot.alt}
+                              fill
+                              className="object-cover"
+                              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                            />
+                          </div>
+                          <CardHeader className="pb-2">
+                            <CardTitle className="text-base">{shot.title}</CardTitle>
+                            <CardDescription className="text-sm">{shot.description}</CardDescription>
+                          </CardHeader>
+                        </Card>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {[1, 2, 3].map((index) => (
+                        <Card key={index} className="overflow-hidden">
+                          <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+                            <span className="text-sm text-gray-500">Screenshot {index} placeholder</span>
+                          </div>
+                          <CardHeader className="pb-2">
+                            <CardTitle className="text-base">
+                              {index === 1 && `${plugin.name} dashboard`}
+                              {index === 2 && 'Key settings panel'}
+                              {index === 3 && 'Frontend result on your site'}
+                            </CardTitle>
+                          </CardHeader>
+                        </Card>
+                      ))}
+                    </div>
+                  )}
+
+                  {screenshotCaption && (
+                    <p className="text-sm text-gray-500 mt-4 text-center max-w-3xl mx-auto">
+                      {screenshotCaption}
+                    </p>
+                  )}
 
                   {plugin.demo_url && (
                     <div className="text-center mt-10">

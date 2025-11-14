@@ -1,5 +1,12 @@
+import type { Metadata } from 'next';
 import fs from 'fs/promises';
 import path from 'path';
+
+export const metadata: Metadata = {
+  title: 'Licensing Information | PrintJones WordPress Plugins',
+  description:
+    'View licensing details and GPL information for PrintJones WordPress and WooCommerce plugins.',
+};
 
 export default async function LicensingPage() {
   const cwd = process.cwd();

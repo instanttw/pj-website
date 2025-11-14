@@ -1,5 +1,12 @@
+import type { Metadata } from 'next';
 import { Card, CardContent } from '@/components/ui/card';
 import { Users, Target, Heart, Zap } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'About PrintJones | Premium WordPress Plugin Team',
+  description:
+    'Learn about PrintJones, the team behind premium WordPress and WooCommerce plugins trusted by sites across the US, Canada, Australia, New Zealand, and the EU.',
+};
 
 export default function AboutPage() {
   const values = [

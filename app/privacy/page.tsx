@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | PrintJones',
+  description:
+    'Read the PrintJones privacy policy to understand how we collect, use, and protect your data when you use our WordPress and WooCommerce plugins.',
+};
+
 export default function PrivacyPage() {
   return (
     <div className="px-4 lg:px-8 py-12">

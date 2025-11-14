@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,6 +7,12 @@ import { Star, Download, Package } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { fallbackPlugins } from '@/data/fallback-plugins';
 import { getPluginDisplayName, getPluginDisplaySlug, getPluginDisplayPrice } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: 'All WordPress & WooCommerce Plugins | PrintJones',
+  description:
+    'Browse the full catalog of premium WordPress and WooCommerce plugins from PrintJones, including Elementor widgets, WPBakery addons, and WooCommerce extensions.',
+};
 
 async function getPlugins() {
   try {

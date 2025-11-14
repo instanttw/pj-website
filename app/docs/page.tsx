@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Search, Package, Palette, ArrowRight } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Plugin & Theme Documentation | PrintJones',
+  description:
+    'Find setup guides, configuration tutorials, and troubleshooting documentation for all PrintJones WordPress plugins and themes.',
+};
 
 const plugins = [
   {

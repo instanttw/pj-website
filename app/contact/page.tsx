@@ -1,5 +1,6 @@
 'use client';
 
+import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,6 +9,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, MapPin, Clock } from 'lucide-react';
 import { useState } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Contact PrintJones | Sales & Support',
+  description:
+    'Contact the PrintJones team for sales questions, partnership opportunities, or technical support about our WordPress and WooCommerce plugins.',
+};
 
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);

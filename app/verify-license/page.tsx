@@ -1,5 +1,6 @@
 'use client';
 
+import type { Metadata } from 'next';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,12 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle, XCircle, Calendar, Shield } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Verify License | PrintJones',
+  description:
+    'Verify the status and activations of your PrintJones WordPress plugin licenses.',
+};
 
 export default function VerifyLicensePage() {
   const [licenseKey, setLicenseKey] = useState('');

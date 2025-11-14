@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | PrintJones',
+  description:
+    'Review the PrintJones Terms of Service covering licensing, usage, and refund policy for our premium WordPress and WooCommerce plugins.',
+};
+
 export default function TermsPage() {
   return (
     <div className="px-4 lg:px-8 py-12">
