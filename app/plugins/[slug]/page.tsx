@@ -210,6 +210,13 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
     'Developer friendly',
   ];
 
+  const freeVersionSlugs = new Set([
+    'advanced-widgets-elementor',
+    'eaf-wpbakery',
+    'pj-filter',
+  ]);
+  const hasFreeVersion = freeVersionSlugs.has(plugin.slug);
+
   // Prefer download link (Google Drive) over legacy demo links
   let downloadUrl = plugin.download_url || null;
   // Override core download link for Advanced Widgets for Elementor Pro
@@ -483,6 +490,18 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                   className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
                 >
                   FAQs
+                </TabsTrigger>
+                <TabsTrigger
+                  value="screenshots"
+                  className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                >
+                  Screenshots
+                </TabsTrigger>
+                <TabsTrigger
+                  value="free-vs-pro"
+                  className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                >
+                  Free vs Pro
                 </TabsTrigger>
               </TabsList>
 
@@ -810,17 +829,117 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
                       <Card>
                         <CardHeader>
-                          <CardTitle className="text-xl">What if I'm not satisfied?</CardTitle>
+                          <CardTitle className="text-xl">What if I&apos;m not satisfied?</CardTitle>
                         </CardHeader>
                         <CardContent>
                           <p className="text-gray-700 leading-relaxed">
-                            We offer a 30-day money-back guarantee. If you're not completely satisfied, contact us for a full refund.
+                            We offer a 30-day money-back guarantee. If you&apos;re not completely satisfied, contact us for a full refund.
                           </p>
                         </CardContent>
                       </Card>
                     </div>
                   </div>
                 )}
+              </TabsContent>
+
+              <TabsContent value="screenshots" className="py-16">
+                <div>
+                  <h2 className="text-4xl font-bold mb-6 text-center">Screenshots</h2>
+                  <p className="text-xl text-gray-600 mb-12 text-center">
+                    Preview how {plugin.name} looks inside WordPress before you install it.
+                  </p>
+
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[1, 2, 3].map((index) => (
+                      <Card key={index} className="overflow-hidden">
+                        <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+                          <span className="text-sm text-gray-500">Screenshot {index} placeholder</span>
+                        </div>
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-base">
+                            {index === 1 && `${plugin.name} dashboard`}
+                            {index === 2 && 'Key settings panel'}
+                            {index === 3 && 'Frontend result on your site'}
+                          </CardTitle>
+                        </CardHeader>
+                      </Card>
+                    ))}
+                  </div>
+
+                  {plugin.demo_url && (
+                    <div className="text-center mt-10">
+                      <a
+                        href={plugin.demo_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        View full live demo
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="free-vs-pro" className="py-16">
+                <div>
+                  <h2 className="text-4xl font-bold mb-6 text-center">Free vs Pro</h2>
+                  <p className="text-xl text-gray-600 mb-12 text-center">
+                    See what you get when you upgrade to the full version of {plugin.name}.
+                  </p>
+
+                  {hasFreeVersion ? (
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-200 text-sm">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="p-3 text-left">Feature</th>
+                            <th className="p-3 text-left">Free (WordPress.org)</th>
+                            <th className="p-3 text-left">{plugin.name} Pro</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-t">
+                            <td className="p-3">Core features</td>
+                            <td className="p-3">Limited selection of core functionality</td>
+                            <td className="p-3 font-semibold">All core features unlocked</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">Advanced options</td>
+                            <td className="p-3">Basic customization</td>
+                            <td className="p-3 font-semibold">Advanced controls, conditions & integrations</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">Sites allowed</td>
+                            <td className="p-3">Unlimited</td>
+                            <td className="p-3 font-semibold">Unlimited (with commercial usage)</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">Support</td>
+                            <td className="p-3">Community / forum only</td>
+                            <td className="p-3 font-semibold">Priority ticket support</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3">Updates</td>
+                            <td className="p-3">Regular bug fixes</td>
+                            <td className="p-3 font-semibold">Feature releases + early access</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <div className="max-w-2xl mx-auto text-center text-gray-700">
+                      <p className="mb-4">
+                        {plugin.name} is offered as a single premium version with all features included.
+                      </p>
+                      <p>
+                        There is no limited free edition to manage – you get the full experience, priority support, and ongoing
+                        updates with every license.
+                      </p>
+                    </div>
+                  )}
+                </div>
               </TabsContent>
             </Tabs>
           </div>
