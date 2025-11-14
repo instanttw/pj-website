@@ -671,7 +671,11 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               <TabsContent value="comparison" className="py-16">
                 {plugin.slug === 'advanced-widgets-elementor' ? (
                   <div className="prose max-w-none">
-                    <h2 className="text-3xl font-bold mb-6">Why Advanced Widgets Crushes the Competition</h2>
+                    <h2 className="text-3xl font-bold mb-2">Where Advanced Widgets Pro Stands</h2>
+                    <p className="text-lg text-gray-600 mb-6">
+                      The free version already gives you 152+ professional widgets. When you upgrade to Advanced Widgets Pro, you
+                      unlock the full 538+ widget library and also leap ahead of other popular Elementor addons:
+                    </p>
                     <div className="overflow-x-auto">
                       <table className="min-w-full border border-gray-200 text-sm">
                         <thead className="bg-gray-50">
@@ -748,11 +752,26 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
                     <h3 className="text-2xl font-bold mt-10 mb-4">Key Differentiators</h3>
                     <ul className="list-disc pl-6 space-y-2">
-                      <li><strong>Unmatched Widget Count:</strong> 538 widgets (≈5x more than nearest competitor)</li>
-                      <li><strong>AI‑Powered Features:</strong> content generation, image alt text, layout suggestions</li>
-                      <li><strong>WooCommerce Dominance:</strong> 72 specialized widgets</li>
-                      <li><strong>Developer Tools:</strong> 16 REST endpoints + 30+ WP‑CLI commands</li>
-                      <li><strong>Performance First:</strong> 48% faster average page loads</li>
+                      <li>
+                        <strong>Unmatched Widget Count:</strong> 538 widgets (vs 152+ in the free version and around 90–110 in
+                        competing addons).
+                      </li>
+                      <li>
+                        <strong>AI‑Powered Features:</strong> both free and Pro include AI content and image tools when you connect
+                        your own API key; Pro adds deeper integration and presets designed for agencies and power users.
+                      </li>
+                      <li>
+                        <strong>WooCommerce Dominance:</strong> 72 specialized widgets for product discovery, merchandising, and
+                        checkout flows.
+                      </li>
+                      <li>
+                        <strong>Developer Tools:</strong> 16 REST endpoints and 30+ WP‑CLI commands to automate and integrate your
+                        Elementor builds.
+                      </li>
+                      <li>
+                        <strong>Performance First:</strong> 48% faster average page loads thanks to conditional loading, critical CSS,
+                        and granular controls that go beyond basic optimization in competing addons.
+                      </li>
                     </ul>
                   </div>
                 ) : (
@@ -1031,7 +1050,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         {plugin.name} is offered as a single premium version with all features included.
                       </p>
                       <p>
-                        There is no limited free edition to manage  you get the full experience, priority support, and ongoing
+                        There is no limited free edition to manage – you get the full experience, priority support, and ongoing
                         updates with every license.
                       </p>
                     </div>
