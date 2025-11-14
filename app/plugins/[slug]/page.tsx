@@ -223,6 +223,10 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   if (plugin.slug === 'advanced-widgets-elementor') {
     downloadUrl = 'https://tinyurl.com/advanced-widget-core';
   }
+  // Override core download link for Essential Addons for WPBakery (Free core)
+  if (plugin.slug === 'eaf-wpbakery') {
+    downloadUrl = 'https://tinyurl.com/essential-addons-wpbalery-free';
+  }
   // Override core download link for PJ Filter Free
   if (plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter') {
     downloadUrl = 'https://tinyurl.com/pj-filter-free-plugin';
@@ -790,6 +794,74 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                       </p>
                     </div>
                   </div>
+                ) : plugin.slug === 'eaf-wpbakery' ? (
+                  <div className="prose max-w-none">
+                    <h2 className="text-3xl font-bold mb-2">Where Essential Addons for WPBakery Pro Stands</h2>
+                    <p className="text-lg text-gray-600 mb-6">
+                      The free version gives you 60+ core elements across 8 categories. Essential Addons Pro unlocks the full 538+ element
+                      library across 17 categories and adds performance, analytics, and developer tooling beyond typical WPBakery addons.
+                    </p>
+
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border border-gray-200 text-sm">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="p-3 text-left">Area</th>
+                            <th className="p-3 text-left">EA for WPBakery Pro</th>
+                            <th className="p-3 text-left">Typical WPBakery addons*</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Element coverage</td>
+                            <td className="p-3">538+ elements across 17 categories (content, post, media, marketing, dynamic, WooCommerce, forms, navigation, data, sliders, utility, events, email, auth, payment, sales, header/footer)</td>
+                            <td className="p-3">Dozens of elements focused on core content, media, and WooCommerce layouts</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Marketing & sales</td>
+                            <td className="p-3">Dedicated marketing, sales & promotion, and email categories with countdowns, CTAs, banners, coupons, and opt-in blocks</td>
+                            <td className="p-3">Marketing elements spread across a few generic widgets</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Dynamic content</td>
+                            <td className="p-3">Dynamic content category for pulling data from posts, taxonomies, custom fields, and external sources</td>
+                            <td className="p-3">Limited dynamic content support tied to WPBakery core features</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Performance & analytics</td>
+                            <td className="p-3">Conditional asset loading, minified CSS/JS, custom analytics DB, performance monitoring dashboard, Query Monitor integration</td>
+                            <td className="p-3">Basic performance options; typically no built-in analytics or monitoring</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Developer experience</td>
+                            <td className="p-3">50+ hooks & filters, custom param types, detailed analytics, white-label options, and PHPCS-compliant codebase</td>
+                            <td className="p-3">Limited hooks and configuration; white-label and deep analytics are uncommon</td>
+                          </tr>
+                          <tr className="border-t">
+                            <td className="p-3 font-medium">Templates & workflow</td>
+                            <td className="p-3">Premium templates, import/export of settings, and tools to identify unused/slow elements</td>
+                            <td className="p-3">Template libraries vary; most lack element-level performance insights</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p className="mt-3 text-xs text-gray-500">
+                        *Based on common feature sets in popular WPBakery addons (including Ultimate Addons); exact capabilities vary by
+                        product.
+                      </p>
+                    </div>
+
+                    <div className="mt-10 rounded-xl border border-blue-100 bg-blue-50/60 px-6 py-5 not-prose">
+                      <h4 className="text-lg font-semibold text-blue-900 mb-1">Already using the free version?</h4>
+                      <p className="text-sm text-blue-900/80 mb-3">
+                        Upgrade to Essential Addons Pro to unlock the full 538+ element library, advanced categories, performance
+                        analytics, and white-label options  while keeping your existing WPBakery layouts.
+                      </p>
+                      <p className="text-xs text-blue-900/70">
+                        Install Pro, activate your license, and continue editing in WPBakery as usual. Existing sections keep working,
+                        and you gain more specialized elements wherever you already build.
+                      </p>
+                    </div>
+                  </div>
                 ) : plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
                   <div className="prose max-w-none">
                     <h2 className="text-3xl font-bold mb-2">How PJ Filter Compares</h2>
@@ -1088,6 +1160,84 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                               <li>Agencies and freelancers shipping many Elementor sites</li>
                               <li>Stores that rely on WooCommerce for serious revenue</li>
                               <li>Teams that want the full 538+ widget library and templates</li>
+                            </ul>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </div>
+                  ) : plugin.slug === 'eaf-wpbakery' ? (
+                    <div className="space-y-10">
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full border border-gray-200 text-sm">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th className="p-3 text-left">Area</th>
+                              <th className="p-3 text-left">EA for WPBakery Free</th>
+                              <th className="p-3 text-left">EA for WPBakery Pro</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Elements & categories</td>
+                              <td className="p-3">60+ core elements across 8 essential categories</td>
+                              <td className="p-3 font-semibold">538+ elements across 17 categories, including marketing, sales, dynamic content, events, email, auth, payment, and header/footer</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Locked categories</td>
+                              <td className="p-3">Marketing, sales & promotions, dynamic content, events, email, auth, payment, header/footer builder, and data display are not available</td>
+                              <td className="p-3 font-semibold">All 17 categories unlocked with full access to advanced marketing, sales, and data elements</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Templates</td>
+                              <td className="p-3">Starter section and page templates to get going</td>
+                              <td className="p-3 font-semibold">Large library of premium templates and layouts optimized for conversions</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Extensions</td>
+                              <td className="p-3">Core extensions only</td>
+                              <td className="p-3 font-semibold">15+ extensions for marketing, dynamic content, sales, and workflow enhancements</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Performance & analytics</td>
+                              <td className="p-3">Conditional asset loading and minified CSS/JS for solid baseline performance</td>
+                              <td className="p-3 font-semibold">Everything in Free plus a dedicated analytics database, performance dashboard, Query Monitor integration, and slow-element detection</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Developer & branding</td>
+                              <td className="p-3">Standard hooks and configuration options</td>
+                              <td className="p-3 font-semibold">50+ hooks & filters, advanced analytics, white-label options, and custom branding controls</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Support & updates</td>
+                              <td className="p-3">Community/standard support and regular compatibility updates</td>
+                              <td className="p-3 font-semibold">Priority support, premium updates, and extended documentation</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-sm text-gray-700">
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">When EA Free is enough</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Smaller WPBakery sites that need a solid set of core elements</li>
+                              <li>Personal projects and MVPs validating layout ideas</li>
+                              <li>Teams evaluating Essential Addons before rolling it out across clients</li>
+                            </ul>
+                          </CardContent>
+                        </Card>
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">When to upgrade to Pro</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Agencies building many WPBakery sites with varied requirements</li>
+                              <li>Stores and marketing teams needing advanced elements and analytics</li>
+                              <li>Teams that care about performance insights, white-labeling, and developer tooling</li>
                             </ul>
                           </CardContent>
                         </Card>
