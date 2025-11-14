@@ -886,10 +886,107 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                 <div>
                   <h2 className="text-4xl font-bold mb-6 text-center">Free vs Pro</h2>
                   <p className="text-xl text-gray-600 mb-12 text-center">
-                    See what you get when you upgrade to the full version of {plugin.name}.
+                    See exactly what you get in the free version versus the full {plugin.name} Pro.
                   </p>
 
-                  {hasFreeVersion ? (
+                  {plugin.slug === 'advanced-widgets-elementor' ? (
+                    <div className="space-y-10">
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full border border-gray-200 text-sm">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th className="p-3 text-left">Area</th>
+                              <th className="p-3 text-left">Free</th>
+                              <th className="p-3 text-left">Pro</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Total widgets</td>
+                              <td className="p-3">152+ widgets across 11 categories</td>
+                              <td className="p-3 font-semibold">538+ professional widgets across 17 categories</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">WooCommerce widgets</td>
+                              <td className="p-3">20+ product, cart, and shop widgets</td>
+                              <td className="p-3 font-semibold">72+ WooCommerce widgets for grids, carts, checkout, offers, and more</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Dynamic tags</td>
+                              <td className="p-3">3 dynamic tags (Post Title, Site Title, Post Date)</td>
+                              <td className="p-3 font-semibold">23+ dynamic tags for posts, users, WooCommerce, and custom fields</td>
+                            </tr>
+                            <tr className="border-t bg-slate-50">
+                              <td className="p-3 font-medium">AI features</td>
+                              <td className="p-3">
+                                AI content, image alt text, and layout suggestions included when you connect your own API key
+                              </td>
+                              <td className="p-3 font-semibold">
+                                Same AI engine plus advanced presets, better prompts, and tighter integration with Pro widgets
+                              </td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Template library</td>
+                              <td className="p-3">20+ pre-built section and page templates</td>
+                              <td className="p-3 font-semibold">100+ professionally designed templates and starter sites</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Performance tools</td>
+                              <td className="p-3">Lazy loading, critical CSS, conditional loading, asset minification, smart caching</td>
+                              <td className="p-3 font-semibold">Everything in free plus more granular controls per widget, device, and breakpoint</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Developer tools</td>
+                              <td className="p-3">REST API (16 endpoints) and 30+ WP-CLI commands</td>
+                              <td className="p-3 font-semibold">Same APIs plus extended hooks, filters, and Pro-only helper functions</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Usage & licensing</td>
+                              <td className="p-3">Free forever for personal and client sites</td>
+                              <td className="p-3 font-semibold">Commercial license with priority support and usage on unlimited client projects</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Support</td>
+                              <td className="p-3">Community and standard support</td>
+                              <td className="p-3 font-semibold">Priority ticket support from the core team</td>
+                            </tr>
+                            <tr className="border-t">
+                              <td className="p-3 font-medium">Updates</td>
+                              <td className="p-3">Regular bug fixes and compatibility releases</td>
+                              <td className="p-3 font-semibold">All free updates plus new widgets, extensions, and early access features</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-sm text-gray-700">
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">Who the Free version is for</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>New Elementor users exploring what advanced widgets can do</li>
+                              <li>Smaller sites that only need a subset of widgets</li>
+                              <li>Teams validating layout ideas before committing to Pro</li>
+                            </ul>
+                          </CardContent>
+                        </Card>
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="text-lg">Who the Pro version is for</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="list-disc pl-5 space-y-1">
+                              <li>Agencies and freelancers shipping many Elementor sites</li>
+                              <li>Stores that rely on WooCommerce for serious revenue</li>
+                              <li>Teams that want the full 538+ widget library and templates</li>
+                            </ul>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </div>
+                  ) : hasFreeVersion ? (
                     <div className="overflow-x-auto">
                       <table className="min-w-full border border-gray-200 text-sm">
                         <thead className="bg-gray-50">
@@ -934,7 +1031,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         {plugin.name} is offered as a single premium version with all features included.
                       </p>
                       <p>
-                        There is no limited free edition to manage – you get the full experience, priority support, and ongoing
+                        There is no limited free edition to manage  you get the full experience, priority support, and ongoing
                         updates with every license.
                       </p>
                     </div>
