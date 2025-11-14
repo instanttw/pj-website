@@ -223,6 +223,10 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   if (plugin.slug === 'advanced-widgets-elementor') {
     downloadUrl = 'https://tinyurl.com/advanced-widget-core';
   }
+  // Override core download link for PJ Filter Free
+  if (plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter') {
+    downloadUrl = 'https://tinyurl.com/pj-filter-free';
+  }
 
   const sampleReviews = [
     {
