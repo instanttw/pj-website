@@ -268,16 +268,32 @@ export default async function Home() {
                     <CardDescription className="line-clamp-2">{plugin.tagline}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
-                      <div className="flex items-center gap-1">
-                        <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        <span className="font-medium">{plugin.rating.toFixed(1)}</span>
+                    {/* Hide rating and download count for free version of Advanced Widgets */}
+                    {plugin.slug !== 'advanced-widgets-elementor' && (
+                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                        <div className="flex items-center gap-1">
+                          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                          <span className="font-medium">{plugin.rating.toFixed(1)}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Download className="h-4 w-4" />
+                          <span>{plugin.download_count.toLocaleString()}+</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Download className="h-4 w-4" />
-                        <span>{plugin.download_count.toLocaleString()}+</span>
+                    )}
+                    {/* Commented out for free version - to be activated later */}
+                    {/* {plugin.slug === 'advanced-widgets-elementor' && (
+                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                        <div className="flex items-center gap-1">
+                          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                          <span className="font-medium">{plugin.rating.toFixed(1)}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Download className="h-4 w-4" />
+                          <span>{plugin.download_count.toLocaleString()}+</span>
+                        </div>
                       </div>
-                    </div>
+                    )} */}
                   </CardContent>
                   <CardFooter>
                     {(() => {
