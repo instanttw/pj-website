@@ -599,15 +599,17 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                     {/* CTA Buttons */}
                     <CheckoutButtons slug={plugin.slug} price={displayPrice} downloadUrl={downloadUrl} name={plugin.name} isFreeVersion={isFreeVersion} />
 
-                    {/* Trust Signals */}
-                    <div className="text-center pt-4 border-t border-gray-200">
-                      <div className="flex justify-center gap-4 text-gray-500 mb-2">
-                        <Shield className="w-4 h-4" />
-                        <CreditCard className="w-4 h-4" />
-                        <RotateCcw className="w-4 h-4" />
+                    {/* Trust Signals - Only show for paid versions */}
+                    {!isFreeVersion && (
+                      <div className="text-center pt-4 border-t border-gray-200">
+                        <div className="flex justify-center gap-4 text-gray-500 mb-2">
+                          <Shield className="w-4 h-4" />
+                          <CreditCard className="w-4 h-4" />
+                          <RotateCcw className="w-4 h-4" />
+                        </div>
+                        <p className="text-xs text-gray-500">Secure checkout via Stripe or PayPal</p>
                       </div>
-                      <p className="text-xs text-gray-500">Secure checkout via Stripe or PayPal</p>
-                    </div>
+                    )}
                   </CardContent>
                 </Card>
               </div>
