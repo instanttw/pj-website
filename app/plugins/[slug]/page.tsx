@@ -130,7 +130,7 @@ export async function generateMetadata({ params }: PluginPageProps): Promise<Met
 
 export default async function PluginDetailPage({ params }: PluginPageProps) {
   if (params.slug === 'aioa-elementor') {
-    redirect('/plugins/advanced-widgets-elementor');
+    redirect('/plugins/advanced-widgets-elementor-pro');
   }
   let plugin = await getPluginBySlug(params.slug);
 
@@ -144,7 +144,8 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   // Enforce specific Active Installations on detail pages for key plugins
   const downloadOverrides: Record<string, number> = {
     'pj-filter': 650780,
-    'advanced-widgets-elementor': 1200500,
+    'advanced-widgets-elementor': 450000,
+    'advanced-widgets-elementor-pro': 1200500,
     'eaf-wpbakery': 990340,
   };
   if (downloadOverrides[plugin.slug]) {
@@ -213,15 +214,19 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
   const freeVersionSlugs = new Set([
     'advanced-widgets-elementor',
+    'advanced-widgets-elementor-pro',
     'eaf-wpbakery',
     'pj-filter',
   ]);
   const hasFreeVersion = freeVersionSlugs.has(plugin.slug);
 
+  // Check if this is the free version page
+  const isFreeVersion = plugin.slug === 'advanced-widgets-elementor' && plugin.price === 0;
+
   // Prefer download link (Google Drive) over legacy demo links
   let downloadUrl = plugin.download_url || null;
-  // Override core download link for Advanced Widgets for Elementor Pro
-  if (plugin.slug === 'advanced-widgets-elementor') {
+  // Override core download link for Advanced Widgets for Elementor (free version)
+  if (plugin.slug === 'advanced-widgets-elementor' && plugin.price === 0) {
     downloadUrl = 'https://tinyurl.com/advanced-widget-core';
   }
   // Override core download link for Essential Addons for WPBakery (Free core)
@@ -329,7 +334,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
       ];
     }
 
-    if (plugin.slug === 'advanced-widgets-elementor') {
+    if (plugin.slug === 'advanced-widgets-elementor' || plugin.slug === 'advanced-widgets-elementor-pro') {
       return [
         {
           src: '/images/advanced-widgets-dashboard.png',
@@ -401,7 +406,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
   const screenshotCaption =
     plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter'
       ? 'All screenshots are from the PJ Filter interface inside the WordPress / WooCommerce admin dashboard.'
-      : plugin.slug === 'advanced-widgets-elementor'
+      : plugin.slug === 'advanced-widgets-elementor' || plugin.slug === 'advanced-widgets-elementor-pro'
       ? 'All screenshots are from the Advanced Widgets admin screens inside WordPress.'
       : plugin.slug === 'eaf-wpbakery'
       ? 'All screenshots are from the Essential Addons for WPBakery admin screens inside WordPress.'
@@ -475,31 +480,62 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
                 {/* Metadata Row */}
                 <div className="flex flex-wrap items-center gap-4 mb-6">
-                  {/* Star Rating */}
-                  <div className="flex items-center gap-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-6 w-6 ${
-                            i < Math.floor(plugin.rating)
-                              ? 'fill-amber-500 text-amber-500'
-                              : 'text-gray-300'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-lg font-medium text-black">{plugin.rating.toFixed(1)}</span>
-                    <a href="#reviews" className="text-gray-600 hover:underline">
-                      ({plugin.review_count.toLocaleString()} reviews)
-                    </a>
-                  </div>
+                  {!isFreeVersion && (
+                    <>
+                      {/* Star Rating */}
+                      <div className="flex items-center gap-2">
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-6 w-6 ${
+                                i < Math.floor(plugin.rating)
+                                  ? 'fill-amber-500 text-amber-500'
+                                  : 'text-gray-300'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <span className="text-lg font-medium text-black">{plugin.rating.toFixed(1)}</span>
+                        <a href="#reviews" className="text-gray-600 hover:underline">
+                          ({plugin.review_count.toLocaleString()} reviews)
+                        </a>
+                      </div>
 
-                  {/* Download Count */}
-                  <Badge className="bg-blue-50 text-blue-700 hover:bg-blue-100 px-4 py-2 text-base">
-                    <Download className="h-4 w-4 mr-2" />
-                    {plugin.download_count.toLocaleString()}+ Active Installations
-                  </Badge>
+                      {/* Download Count */}
+                      <Badge className="bg-blue-50 text-blue-700 hover:bg-blue-100 px-4 py-2 text-base">
+                        <Download className="h-4 w-4 mr-2" />
+                        {plugin.download_count.toLocaleString()}+ Active Installations
+                      </Badge>
+                    </>
+                  )}
+                  {/* For free version, comment out but keep the code */}
+                  {/* {isFreeVersion && (
+                    <>
+                      <div className="flex items-center gap-2">
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-6 w-6 ${
+                                i < Math.floor(plugin.rating)
+                                  ? 'fill-amber-500 text-amber-500'
+                                  : 'text-gray-300'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <span className="text-lg font-medium text-black">{plugin.rating.toFixed(1)}</span>
+                        <a href="#reviews" className="text-gray-600 hover:underline">
+                          ({plugin.review_count.toLocaleString()} reviews)
+                        </a>
+                      </div>
+                      <Badge className="bg-blue-50 text-blue-700 hover:bg-blue-100 px-4 py-2 text-base">
+                        <Download className="h-4 w-4 mr-2" />
+                        {plugin.download_count.toLocaleString()}+ Active Installations
+                      </Badge>
+                    </>
+                  )} */}
                 </div>
 
                 {/* Additional Metadata */}
@@ -561,7 +597,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                     </div>
 
                     {/* CTA Buttons */}
-                    <CheckoutButtons slug={plugin.slug} price={displayPrice} downloadUrl={downloadUrl} name={plugin.name} />
+                    <CheckoutButtons slug={plugin.slug} price={displayPrice} downloadUrl={downloadUrl} name={plugin.name} isFreeVersion={isFreeVersion} />
 
                     {/* Trust Signals */}
                     <div className="text-center pt-4 border-t border-gray-200">
@@ -602,12 +638,22 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                 >
                   Installation
                 </TabsTrigger>
-                <TabsTrigger
-                  value="reviews"
-                  className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
-                >
-                  Reviews
-                </TabsTrigger>
+                {!isFreeVersion && (
+                  <TabsTrigger
+                    value="reviews"
+                    className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                  >
+                    Reviews
+                  </TabsTrigger>
+                )}
+                {/* {isFreeVersion && (
+                  <TabsTrigger
+                    value="reviews"
+                    className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                  >
+                    Reviews
+                  </TabsTrigger>
+                )} */}
                 <TabsTrigger
                   value="comparison"
                   className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
@@ -626,12 +672,22 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                 >
                   FAQs
                 </TabsTrigger>
-                <TabsTrigger
-                  value="screenshots"
-                  className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
-                >
-                  Screenshots
-                </TabsTrigger>
+                {!isFreeVersion && (
+                  <TabsTrigger
+                    value="screenshots"
+                    className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                  >
+                    Screenshots
+                  </TabsTrigger>
+                )}
+                {/* {isFreeVersion && (
+                  <TabsTrigger
+                    value="screenshots"
+                    className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
+                  >
+                    Screenshots
+                  </TabsTrigger>
+                )} */}
                 <TabsTrigger
                   value="free-vs-pro"
                   className="px-6 py-4 text-base lg:text-lg font-medium data-[state=active]:border-b-4 data-[state=active]:border-blue-600 rounded-none"
@@ -642,6 +698,30 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
               {/* Tab Content */}
               <TabsContent value="overview" className="py-16">
+                {isFreeVersion && (
+                  <div className="mb-12 rounded-xl border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 px-8 py-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                          Want More? Upgrade to Advanced Widgets Pro
+                        </h3>
+                        <p className="text-lg text-gray-700 mb-4">
+                          Get access to the full 538+ widget library, 72 WooCommerce widgets, AI-powered features, 100+ templates, and priority support.
+                        </p>
+                        <Link href="/plugins/advanced-widgets-elementor-pro">
+                          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+                            <ArrowRight className="w-5 h-5 mr-2" />
+                            View Pro Features
+                          </Button>
+                        </Link>
+                      </div>
+                      <div className="hidden lg:block">
+                        <div className="text-6xl font-bold text-blue-600">538+</div>
+                        <div className="text-sm text-gray-600 text-center">Widgets</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {plugin.slug === 'pj-filter' || plugin.slug === 'pj-product-filter' ? (
                   <div className="space-y-16">
                     <PJFilterOverview />
@@ -715,6 +795,23 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                         </div>
                       ))}
                     </div>
+
+                    {isFreeVersion && (
+                      <div className="mt-12 text-center p-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-2 border-blue-200">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                          Need More Advanced Features?
+                        </h3>
+                        <p className="text-lg text-gray-700 mb-5 max-w-2xl mx-auto">
+                          Advanced Widgets Pro includes 386 additional widgets, AI content generation, advanced WooCommerce tools, premium templates, and much more.
+                        </p>
+                        <Link href="/plugins/advanced-widgets-elementor-pro">
+                          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+                            <TrendingUp className="w-5 h-5 mr-2" />
+                            Upgrade to Pro
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 )}
               </TabsContent>
@@ -804,7 +901,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               </TabsContent>
 
               <TabsContent value="comparison" className="py-16">
-                {plugin.slug === 'advanced-widgets-elementor' ? (
+                {plugin.slug === 'advanced-widgets-elementor-pro' ? (
                   <div className="prose max-w-none">
                     <h2 className="text-3xl font-bold mb-2">Where Advanced Widgets Pro Stands</h2>
                     <p className="text-lg text-gray-600 mb-6">
@@ -1068,7 +1165,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
 
 
               <TabsContent value="use-cases" className="py-16">
-                {plugin.slug === 'advanced-widgets-elementor' ? (
+                {plugin.slug === 'advanced-widgets-elementor' || plugin.slug === 'advanced-widgets-elementor-pro' ? (
                   <div className="prose max-w-none">
                     <h2 className="text-3xl font-bold mb-6">Use Cases</h2>
                     <h3 className="text-2xl font-semibold mb-2">The Overwhelmed Freelancer</h3>
@@ -1223,7 +1320,7 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
                     See exactly what you get in the free version versus the full {plugin.name} Pro.
                   </p>
 
-                  {plugin.slug === 'advanced-widgets-elementor' ? (
+                  {plugin.slug === 'advanced-widgets-elementor' || plugin.slug === 'advanced-widgets-elementor-pro' ? (
                     <div className="space-y-10">
                       <div className="overflow-x-auto">
                         <table className="min-w-full border border-gray-200 text-sm">
@@ -1599,33 +1696,45 @@ export default async function PluginDetailPage({ params }: PluginPageProps) {
               Join {plugin.download_count.toLocaleString()}+ users and enhance your WordPress site today
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-lg px-8">
-                <ShoppingCart className="w-5 h-5 mr-2" />
-                Buy Now - ${displayPrice}
-              </Button>
+              {!isFreeVersion && (
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-lg px-8">
+                  <ShoppingCart className="w-5 h-5 mr-2" />
+                  Buy Now - ${displayPrice}
+                </Button>
+              )}
+              {isFreeVersion && (
+                <Link href="/plugins/advanced-widgets-elementor-pro">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-lg px-8">
+                    <TrendingUp className="w-5 h-5 mr-2" />
+                    Upgrade to Pro - $49
+                  </Button>
+                </Link>
+              )}
               {downloadUrl && (
                 <a href={downloadUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8">
                     <Download className="w-5 h-5 mr-2" />
-                    Download Core Plugin
+                    {isFreeVersion ? 'Download Free Version' : 'Download Core Plugin'}
                   </Button>
                 </a>
               )}
             </div>
-            <div className="flex items-center justify-center gap-6 mt-8 text-sm text-blue-100">
-              <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4" />
-                30-Day Money Back Guarantee
+            {!isFreeVersion && (
+              <div className="flex items-center justify-center gap-6 mt-8 text-sm text-blue-100">
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4" />
+                  30-Day Money Back Guarantee
+                </div>
+                <div className="flex items-center gap-2">
+                  <Star className="h-4 w-4" />
+                  {plugin.rating} Star Rating
+                </div>
+                <div className="flex items-center gap-2">
+                  <HeadphonesIcon className="h-4 w-4" />
+                  24/7 Support
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4" />
-                {plugin.rating} Star Rating
-              </div>
-              <div className="flex items-center gap-2">
-                <HeadphonesIcon className="h-4 w-4" />
-                24/7 Support
-              </div>
-            </div>
+            )}
           </div>
         </section>
       </div>

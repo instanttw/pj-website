@@ -24,7 +24,7 @@ INSERT INTO plugins (
   demo_url
 ) VALUES (
   'Advanced Widgets for Elementor Pro',
-  'advanced-widgets-elementor',
+  'advanced-widgets-elementor-pro',
   '538 professional widgets, AI-powered, 48% faster',
   'Comprehensive Elementor addon with 538 widgets, AI content generation, 72 WooCommerce widgets, and performance-first architecture.',
   49.00,
@@ -38,6 +38,41 @@ INSERT INTO plugins (
   '6.4+',
   NOW(),
   '["538 Professional Widgets", "AI Content Generation", "48% Faster Pages", "72 WooCommerce Widgets", "100+ Templates", "REST API", "WP-CLI", "BYOK AI Model"]'::jsonb,
+  'https://printjones.com/demos/advanced-widgets-elementor'
+);
+
+-- Insert Advanced Widgets for Elementor (Free)
+INSERT INTO plugins (
+  name,
+  slug,
+  tagline,
+  description,
+  price,
+  rating,
+  review_count,
+  download_count,
+  is_featured,
+  is_active,
+  category_id,
+  version,
+  created_at,
+  features,
+  demo_url
+) VALUES (
+  'Advanced Widgets for Elementor',
+  'advanced-widgets-elementor',
+  '152+ professional widgets for Elementor — lightweight and fast',
+  'Essential Elementor addon with 152+ professional widgets across core categories, WooCommerce integration, and performance-optimized architecture. Perfect for building beautiful WordPress sites without coding.',
+  0.00,
+  4.8,
+  850,
+  450000,
+  true,
+  true,
+  1,
+  '25.0.0',
+  NOW(),
+  '["152+ Professional Widgets", "Essential WooCommerce widgets", "Performance-optimized", "Mobile responsive design", "Translation ready", "Regular updates", "Community support", "Easy to use interface"]'::jsonb,
   'https://printjones.com/demos/advanced-widgets-elementor'
 );
 

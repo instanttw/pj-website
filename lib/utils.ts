@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getPluginDisplayName(p: { slug?: string; name: string }) {
   if (!p) return '' as any;
-  if (p?.slug === 'aioa-elementor' || p?.slug === 'advanced-widgets-elementor') {
+  if (p?.slug === 'aioa-elementor') {
     return 'Advanced Widgets for Elementor Pro';
   }
   return p?.name;
@@ -16,7 +16,7 @@ export function getPluginDisplayName(p: { slug?: string; name: string }) {
 export function getPluginDisplaySlug(p: { slug: string }) {
   if (!p?.slug) return p?.slug as any;
   if (p.slug === 'pj-product-filter') return 'pj-filter';
-  if (p.slug === 'aioa-elementor') return 'advanced-widgets-elementor';
+  if (p.slug === 'aioa-elementor') return 'advanced-widgets-elementor-pro';
   return p.slug;
 }
 

@@ -22,11 +22,13 @@ export function CheckoutButtons({
   price,
   downloadUrl,
   name,
+  isFreeVersion = false,
 }: {
   slug: string;
   price: number;
   downloadUrl?: string | null;
   name?: string;
+  isFreeVersion?: boolean;
 }) {
   const [loading, setLoading] = useState<'stripe' | 'paypal' | null>(null);
 
@@ -55,6 +57,33 @@ export function CheckoutButtons({
       alert('Unable to start PayPal checkout.');
     }
   };
+
+  // For free version, only show download button
+  if (isFreeVersion) {
+    return (
+      <div className="space-y-3">
+        {downloadUrl ? (
+          <a href={downloadUrl} target="_blank" rel="noopener noreferrer" className="block">
+            <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg">
+              <Download className="w-5 h-5 mr-2" />
+              Download Core Version
+              <sup className="ml-1 text-xs align-super">Free</sup>
+            </Button>
+          </a>
+        ) : (
+          <Button
+            size="lg"
+            disabled
+            className="w-full bg-gray-200 text-gray-700 opacity-100 disabled:opacity-100 cursor-not-allowed"
+          >
+            <Download className="w-5 h-5 mr-2 text-gray-600" />
+            Download Core Version
+            <sup className="ml-1 text-xs text-gray-600 align-super">Free</sup>
+          </Button>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-3">

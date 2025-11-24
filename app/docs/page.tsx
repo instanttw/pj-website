@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const plugins = [
   {
     name: 'Advanced Widgets for Elementor Pro',
-    slug: 'advanced-widgets-elementor',
+    slug: 'advanced-widgets-elementor-pro',
     description: '538 widgets, AI-powered features, 72 WooCommerce widgets, and 48% faster performance',
     version: '26.0.0',
     category: 'Page Builder',

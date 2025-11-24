@@ -65,7 +65,8 @@ export default async function Home() {
     name: getPluginDisplayName(p),
     // Increase download counts for the original 3 featured plugins on homepage only
     download_count:
-      p.slug === 'advanced-widgets-elementor' ? 1200500 :
+      p.slug === 'advanced-widgets-elementor' ? 450000 :
+      p.slug === 'advanced-widgets-elementor-pro' ? 1200500 :
       p.slug === 'eaf-wpbakery' ? 990340 :
       p.slug === 'pj-filter' ? 650780 : p.download_count,
   }));

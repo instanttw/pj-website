@@ -55,14 +55,14 @@ interface DocPageProps {
 }
 
 const products = {
-'advanced-widgets-elementor': {
+'advanced-widgets-elementor-pro': {
 name: 'Advanced Widgets for Elementor Pro',
     type: 'plugin',
     version: '26.0.0',
     category: 'Page Builder',
 description: '538 widgets, AI-powered features, 72 WooCommerce widgets, and 48% faster performance',
     // Link to matching plugin detail page slug
-pluginSlug: 'advanced-widgets-elementor',
+pluginSlug: 'advanced-widgets-elementor-pro',
 overview: `Advanced Widgets for Elementor Pro is the most comprehensive Elementor addon available, featuring an unprecedented 538 professional widgets, 15 extensions, 23 dynamic tags, and cutting-edge AI-powered features.
 
 Key advantages:
